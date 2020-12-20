@@ -1,0 +1,79 @@
+.cm-btn-1 {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 4px;
+    color: $color-btn-text;
+    background-color: transparent;
+    border: 1px solid $color-btn;
+    cursor: pointer;
+    outline: none;
+}
+
+.cm-btn-1:hover {
+    color: $color-btn-hover;
+    border-color: $color-btn-hover;
+}
+
+.cm-btn-2 {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-radius: 4px;
+    color: #fff;
+    background-color: $color-btn;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid $color-btn;
+}
+
+.cm-btn-2:hover {
+    background-color: $color-btn-hover;
+}
+
+.cm-btn-3 {
+    position: relative;
+    padding: .8rem 2.6rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: .1px;
+    background-color: #e91e63;
+    color: #fff;
+    border-color: transparent;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all .3s;
+}
+
+.cm-btn-3,
+.cm-btn-3::before {
+    transition: all .3s;
+}
+
+.cm-btn-3::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #c2185b;
+    height: 100%;
+    border-radius: 3rem;
+    width: 100%;
+    z-index: -1;
+}
+
+.cm-btn-4 {
+    position: relative;
+    padding: .8rem 2.6rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: .1px;
+    background-color: transparent;
+    border: 2px solid #e91e63;
+    color: #e91e63;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: all .3s;
+}

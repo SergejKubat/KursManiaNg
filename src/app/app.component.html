@@ -1,4 +1,70 @@
-<h1 class="heading">Hello</h1>
-<svg aria-label="Cart" focusable="false" class="udlite-icon udlite-icon-medium udlite-icon-color-neutral">
-    <use xlink:href="../assets/svg/icons.svg#icon-people"></use>
-</svg>
+<header class="cm-header">
+    <div class="cm-header__contact">
+        <div class="cm-header__contact--left">
+            <span><i class="fa fa-clock-o" aria-hidden="true"></i> Ponedeljak - Petak: 09:00 - 17:00</span>
+            <span><i class="fa fa-paper-plane" aria-hidden="true"></i> helpdesk@kursmania.rs</span>
+            <span><i class="fa fa-phone" aria-hidden="true"></i> +381 011 322 543</span>
+        </div>
+        <div class="cm-header__contact--right">
+            <ul class="cm-social">
+                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="cm-header__top">
+        <a href="#">
+            <img src="../assets/img/favicon.png" alt="KursMania Logo">
+        </a>
+        <nav class="cm-categories">
+            <button class="cm-categories__btn">Kategorije</button>
+            <div class="cm-categories__hidden">
+                <ul class="cm-categories__list">
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">IT & Softver</a></li>
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Biznis</a></li>
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Marketing</a></li>
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Dizajn</a></li>
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Fotografija & video</a></li>
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Muzika</a></li>
+                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Zdravlje</a></li>
+                </ul>
+            </div>
+        </nav>
+        <form action="#" class="cm-search">
+            <input type="text" name="q" placeholder="Pretražite kurseve" value="" class="cm-search__input" autocomplete="off">
+            <button type="submit" class="cm-search__btn">
+                <svg class="cm-search__icon">
+                    <use xlink:href="../assets/svg/icons.svg#icon-search"></use>
+                </svg>
+            </button>
+        </form>
+        <div class="cm-user">
+            <div class="cm-user__card">
+                <svg class="cm-user__card--icon">
+                    <use xlink:href="../assets/svg/icons.svg#icon-cart"></use>
+                </svg>
+            </div>
+            <button class="cm-btn-3">Registracija</button>
+        </div>
+    </div>
+    <div class="cm-header__content">
+        <div class="cm-login">
+            <h1 class="cm-login__heading">Prijavite se</h1>
+            <p class="cm-login__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, ullam quam dolore.</p>
+            <form action="#" class="cm-login__form">
+                <div class="cm-login__form-control">
+                    <input type="text" name="email" id="email" class="cm-login__form-input" placeholder="Email" required autocomplete="off">
+                </div>
+                <div class="cm-login__form-control">
+                    <input type="password" name="password" id="password" class="cm-login__form-input" placeholder="Lozinka" required>
+                </div>
+                <div class="cm-login__form-control">
+                    <input type="submit" value="Prijavite se" class="cm-btn-3">
+                </div>
+            </form>
+        </div>
+    </div>
+</header>

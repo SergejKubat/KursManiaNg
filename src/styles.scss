@@ -6,4 +6,11 @@
 @import './sass/base/typography';
 @import './sass/base/utilities';
 
+@import "./sass/components/button";
+@import "./sass/components/search";
+
+@import "./sass/layouts/footer";
+@import "./sass/layouts/header";
+
+
 @import './sass/pages/home';

@@ -1,0 +1,46 @@
+.cm-search {
+    flex: 0 0 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  &__input {
+    margin: 0;
+    box-sizing: inherit;
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.4rem;
+    background-color: #f4f2f2;
+    padding: .7rem 2rem;
+    height: 5rem;
+    border-radius: 100px;
+    outline: none;
+    width: 80%;
+    margin-right: -3.5rem;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  &__input::-webkit-input-placeholder {
+    /*font-weight: 100;*/
+    color: #ccc;
+  }
+
+  &__input:focus {
+      outline: none;
+      width: 90%;
+      background-color: $color-grey-light-2;
+  }
+
+  &__btn {
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+  &__icon {
+    height: 2.5rem;
+    width: 2.5rem;
+    fill: #73726c;
+  }
+}
