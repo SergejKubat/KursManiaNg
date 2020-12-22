@@ -1,70 +1,483 @@
 <header class="cm-header">
-    <div class="cm-header__contact">
-        <div class="cm-header__contact--left">
-            <span><i class="fa fa-clock-o" aria-hidden="true"></i> Ponedeljak - Petak: 09:00 - 17:00</span>
-            <span><i class="fa fa-paper-plane" aria-hidden="true"></i> helpdesk@kursmania.rs</span>
-            <span><i class="fa fa-phone" aria-hidden="true"></i> +381 011 322 543</span>
-        </div>
-        <div class="cm-header__contact--right">
-            <ul class="cm-social">
-                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                <li class="cm-social__item"><a href="#" class="cm-social__link"><i class="fa fa-youtube-play" aria-hidden="true"></i></a></li>
-            </ul>
-        </div>
+  <div class="cm-header__contact">
+    <div class="cm-header__contact--left">
+      <span
+        ><i class="fa fa-clock-o" aria-hidden="true"></i> Ponedeljak - Petak:
+        09:00 - 17:00</span
+      >
+      <span
+        ><i class="fa fa-paper-plane" aria-hidden="true"></i>
+        helpdesk@kursmania.rs</span
+      >
+      <span
+        ><i class="fa fa-phone" aria-hidden="true"></i> +381 011 322 543</span
+      >
     </div>
-    <div class="cm-header__top">
-        <a href="#">
-            <img src="../assets/img/favicon.png" alt="KursMania Logo">
-        </a>
-        <nav class="cm-categories">
-            <button class="cm-categories__btn">Kategorije</button>
-            <div class="cm-categories__hidden">
-                <ul class="cm-categories__list">
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">IT & Softver</a></li>
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Biznis</a></li>
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Marketing</a></li>
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Dizajn</a></li>
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Fotografija & video</a></li>
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Muzika</a></li>
-                    <li class="cm-categories__item"><a href="#" class="cm-categories__link">Zdravlje</a></li>
-                </ul>
-            </div>
-        </nav>
-        <form action="#" class="cm-search">
-            <input type="text" name="q" placeholder="Pretražite kurseve" value="" class="cm-search__input" autocomplete="off">
-            <button type="submit" class="cm-search__btn">
-                <svg class="cm-search__icon">
-                    <use xlink:href="../assets/svg/icons.svg#icon-search"></use>
-                </svg>
-            </button>
-        </form>
-        <div class="cm-user">
-            <div class="cm-user__card">
-                <svg class="cm-user__card--icon">
-                    <use xlink:href="../assets/svg/icons.svg#icon-cart"></use>
-                </svg>
-            </div>
-            <button class="cm-btn-3">Registracija</button>
-        </div>
+    <div class="cm-header__contact--right">
+      <ul class="cm-social">
+        <li class="cm-social__item">
+          <a href="#" class="cm-social__link"
+            ><i class="fa fa-twitter" aria-hidden="true"></i
+          ></a>
+        </li>
+        <li class="cm-social__item">
+          <a href="#" class="cm-social__link"
+            ><i class="fa fa-facebook" aria-hidden="true"></i
+          ></a>
+        </li>
+        <li class="cm-social__item">
+          <a href="#" class="cm-social__link"
+            ><i class="fa fa-instagram" aria-hidden="true"></i
+          ></a>
+        </li>
+        <li class="cm-social__item">
+          <a href="#" class="cm-social__link"
+            ><i class="fa fa-linkedin" aria-hidden="true"></i
+          ></a>
+        </li>
+        <li class="cm-social__item">
+          <a href="#" class="cm-social__link"
+            ><i class="fa fa-youtube-play" aria-hidden="true"></i
+          ></a>
+        </li>
+      </ul>
     </div>
-    <div class="cm-header__content">
-        <div class="cm-login">
-            <h1 class="cm-login__heading">Prijavite se</h1>
-            <p class="cm-login__paragraph">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, ullam quam dolore.</p>
-            <form action="#" class="cm-login__form">
-                <div class="cm-login__form-control">
-                    <input type="text" name="email" id="email" class="cm-login__form-input" placeholder="Email" required autocomplete="off">
-                </div>
-                <div class="cm-login__form-control">
-                    <input type="password" name="password" id="password" class="cm-login__form-input" placeholder="Lozinka" required>
-                </div>
-                <div class="cm-login__form-control">
-                    <input type="submit" value="Prijavite se" class="cm-btn-3">
-                </div>
-            </form>
-        </div>
+  </div>
+  <div class="cm-header__top">
+    <a href="#">
+      <div class="cm-logo">
+        <img
+          src="../assets/img/favicon.png"
+          alt="KursMania Logo"
+          class="cm-logo__img"
+        />
+        <h1 class="cm-logo__text">KursMania</h1>
+      </div>
+    </a>
+    <div class="cm-search">
+      <form action="#" class="cm-search__form">
+        <input
+          type="text"
+          name="q"
+          placeholder="Pretražite kurseve"
+          value=""
+          class="cm-search__input"
+          autocomplete="off"
+        />
+        <button type="submit" class="cm-search__btn">
+          <svg class="cm-search__icon">
+            <use xlink:href="../assets/svg/icons.svg#icon-search"></use>
+          </svg>
+        </button>
+      </form>
+      <div class="cm-search__results">
+        <ul class="cm-search__list">
+          <li class="cm-search__item">
+            <i class="fa fa-search" aria-hidden="true"></i> Autor
+          </li>
+          <li class="cm-search__item">
+            <i class="fa fa-search" aria-hidden="true"></i> Kurs 1
+          </li>
+          <li class="cm-search__item">
+            <i class="fa fa-search" aria-hidden="true"></i> Kurs 2
+          </li>
+          <li class="cm-search__item">
+            <i class="fa fa-search" aria-hidden="true"></i> Kategorija
+          </li>
+          <li class="cm-search__item">
+            <i class="fa fa-search" aria-hidden="true"></i> Kurs 2
+          </li>
+        </ul>
+      </div>
     </div>
+    <nav class="cm-categories">
+      <button class="cm-categories__btn">
+        Kategorije
+        <i class="fa fa-angle-down" aria-hidden="true"></i>
+      </button>
+      <div class="cm-categories__hidden">
+        <ul class="cm-categories__list">
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">IT & Softver</a>
+          </li>
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">Biznis</a>
+          </li>
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">Marketing</a>
+          </li>
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">Dizajn</a>
+          </li>
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">Fotografija & video</a>
+          </li>
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">Muzika</a>
+          </li>
+          <li class="cm-categories__item">
+            <a href="#" class="cm-categories__link">Zdravlje</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="cm-user">
+      <div class="cm-user__card">
+        <div class="cm-user__card--container">
+          <svg class="cm-user__card--icon">
+            <use xlink:href="../assets/svg/icons.svg#icon-cart"></use>
+          </svg>
+        </div>
+        <div class="cm-user__card--content">
+          <p>Vaša korpa je prazna.</p>
+          <a href="#">Prijavite se</a>
+        </div>
+      </div>
+      <button class="cm-btn">Registracija</button>
+    </div>
+  </div>
+  <div class="cm-header__content">
+    <div class="cm-login">
+      <h1 class="cm-login__heading">Prijavite se</h1>
+      <p class="cm-login__paragraph">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nam, ullam
+        quam dolore.
+      </p>
+      <form action="#" class="cm-login__form">
+        <div class="cm-login__form-control">
+          <input
+            type="text"
+            name="email"
+            id="email"
+            class="cm-login__form-input"
+            placeholder="Email"
+            required
+            autocomplete="off"
+          />
+        </div>
+        <div class="cm-login__form-control">
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="cm-login__form-input"
+            placeholder="Lozinka"
+            required
+          />
+        </div>
+        <div class="cm-login__form-control">
+          <input type="submit" value="Prijavite se" class="cm-btn" />
+        </div>
+      </form>
+    </div>
+  </div>
 </header>
+
+<main class="cm-main">
+  <section class="cm-all-categories">
+    <h1 class="cm-all-categories__heading">
+      <span class="cm-all-categories__main">Dobrodošli na KursManiju.</span>
+      <span class="cm-all-categories__sub">Kategorije Kurseva</span>
+      <span class="cm-all-categories__hr"></span>
+    </h1>
+    <div class="cm-categories-list">
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-it.jpg"
+          alt="Category - IT"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>It & Softver</h4>
+          <p>12 Kurseva</p>
+        </div>
+      </div>
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-business.jpg"
+          alt="Category - Business"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>Biznis</h4>
+          <p>5 Kurseva</p>
+        </div>
+      </div>
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-marketing.jpg"
+          alt="Category - Marketing"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>Marketing</h4>
+          <p>7 Kurseva</p>
+        </div>
+      </div>
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-design.jpg"
+          alt="Category - Design"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>Dizajn</h4>
+          <p>4 Kursa</p>
+        </div>
+      </div>
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-photography.jpeg"
+          alt="Category - Photography"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>Fotografija & Video</h4>
+          <p>8 Kurseva</p>
+        </div>
+      </div>
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-music.jpg"
+          alt="Category - Music"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>Muzika</h4>
+          <p>2 Kursa</p>
+        </div>
+      </div>
+      <div class="cm-categories-item" tabindex="0">
+        <img
+          src="../assets/img/course-health.jpg"
+          alt="Category - Health"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>Zdravlje</h4>
+          <p>3 Kursa</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cm-about">
+    <div class="cm-about__details">
+      <h1>O našoj kompaniji</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio.
+        Quisque volutpat mattis eros.
+      </p>
+      <p>
+        Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non,
+        semper suscipit, posuere a, pede.
+      </p>
+      <p>
+        Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris
+        sit amet orci. Aenean dignissim pellentesque felis.
+      </p>
+      <button class="cm-btn-outline">Više detalja</button>
+    </div>
+    <div class="cm-about__img">
+      <img src="../assets/img/about-us.jpg" alt="About us" />
+    </div>
+  </section>
+
+  <section class="cm-popular-courses">
+    <h1 class="cm-all-categories__heading">
+      <span class="cm-all-categories__sub">Popularni kursevi</span>
+      <span class="cm-all-categories__main"
+        >Pregledajte neke od najpopularnijih kurseva na kursmaniji.</span
+      >
+      <span class="cm-all-categories__hr"></span>
+    </h1>
+
+    <div class="cm-popular-courses__list">
+      <div class="cm-popular-courses__item">
+        <div class="cm-popular-courses__thumbnail">
+          <img
+            src="../assets/img/course-javascript.jpg"
+            alt="Course - Javascript"
+            class="cm-popular-courses__img"
+          />
+          <div class="cm-popular-courses__hidden">
+            <button class="cm-btn">Detalji</button>
+          </div>
+          <span class="cm-popular-courses__popular">Popularan</span>
+          <span class="cm-popular-courses__price">$11.99</span>
+          <span class="cm-popular-courses__rating">
+            <span class="average">4.5</span>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span class="count">(32)</span>
+          </span>
+        </div>
+        <div class="cm-popular-courses__details">
+          <h3>JavaScript Full Course</h3>
+          <div class="cm-popular-courses__info">
+            <span>
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              <a href="#">Autor 1</a>
+            </span>
+            <span>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              41 student
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-popular-courses__item">
+        <div class="cm-popular-courses__thumbnail">
+          <img
+            src="../assets/img/course-electrical.jpg"
+            alt="Course - Javascript"
+            class="cm-popular-courses__img"
+          />
+          <div class="cm-popular-courses__hidden">
+            <button class="cm-btn">Detalji</button>
+          </div>
+          <span class="cm-popular-courses__popular">Popularan</span>
+          <span class="cm-popular-courses__price">$19.99</span>
+          <span class="cm-popular-courses__rating">
+            <span class="average">4.3</span>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span class="count">(21)</span>
+          </span>
+        </div>
+        <div class="cm-popular-courses__details">
+          <h3>Električno inženjerstvo</h3>
+          <div class="cm-popular-courses__info">
+            <span>
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              <a href="#">Autor 2</a>
+            </span>
+            <span>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              29 student
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-popular-courses__item">
+        <div class="cm-popular-courses__thumbnail">
+          <img
+            src="../assets/img/course-tw.jpg"
+            alt="Course - Javascript"
+            class="cm-popular-courses__img"
+          />
+          <div class="cm-popular-courses__hidden">
+            <button class="cm-btn">Detalji</button>
+          </div>
+          <span class="cm-popular-courses__popular">Popularan</span>
+          <span class="cm-popular-courses__price">$11.99</span>
+          <span class="cm-popular-courses__rating">
+            <span class="average">4.7</span>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span class="count">(56)</span>
+          </span>
+        </div>
+        <div class="cm-popular-courses__details">
+          <h3>Tehničko pisanje</h3>
+          <div class="cm-popular-courses__info">
+            <span>
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              <a href="#">Autor 3</a>
+            </span>
+            <span>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              70 student
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cm-popular-courses__item">
+        <div class="cm-popular-courses__thumbnail">
+          <img
+            src="../assets/img/course-history.jpg"
+            alt="Course - Javascript"
+            class="cm-popular-courses__img"
+          />
+          <div class="cm-popular-courses__hidden">
+            <button class="cm-btn">Detalji</button>
+          </div>
+          <span class="cm-popular-courses__popular">Popularan</span>
+          <span class="cm-popular-courses__price">$19.99</span>
+          <span class="cm-popular-courses__rating">
+            <span class="average">4.8</span>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star active" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <span class="count">(176)</span>
+          </span>
+        </div>
+        <div class="cm-popular-courses__details">
+          <h3>Istorija antičke Grčke</h3>
+          <div class="cm-popular-courses__info">
+            <span>
+              <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+              <a href="#">Autor 4</a>
+            </span>
+            <span>
+              <i class="fa fa-users" aria-hidden="true"></i>
+              201 student
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="cm-btn">Svi kursevi</button>
+  </section>
+
+  <section class="cm-numbers">
+    <div class="cm-numbers__row">
+      <div class="cm-numbers__col">
+        <div class="cm-numbers__main">
+          <h1>100%</h1>
+        </div>
+        <div class="cm-numbers__sub">
+          <span>Stepen uspeha</span>
+        </div>
+      </div>
+      <div class="cm-numbers__col">
+        <div class="cm-numbers__main">
+          <h1>5+</h1>
+        </div>
+        <div class="cm-numbers__sub">
+          <span>Godina postojanja</span>
+        </div>
+      </div>
+      <div class="cm-numbers__col">
+        <div class="cm-numbers__main">
+          <h1>10k</h1>
+        </div>
+        <div class="cm-numbers__sub">
+          <span>Studenata</span>
+        </div>
+      </div>
+      <div class="cm-numbers__col">
+        <div class="cm-numbers__main">
+          <h1>500+</h1>
+        </div>
+        <div class="cm-numbers__sub">
+          <span>Kurseva</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,8 +1,15 @@
 .cm-search {
-    flex: 0 0 60%;
+  flex: 0 0 60%;
+  position: relative;
+  margin: 0 3rem;
+
+  &__form {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 8rem;
+    width: 100%;
+  }
 
   &__input {
     margin: 0;
@@ -11,25 +18,23 @@
     color: inherit;
     font-size: 1.4rem;
     background-color: #f4f2f2;
-    padding: .7rem 2rem;
+    padding: 0.7rem 2rem;
     height: 5rem;
     border-radius: 100px;
     outline: none;
-    width: 80%;
+    width: 100%;
     margin-right: -3.5rem;
     border: none;
     transition: all 0.2s;
   }
 
   &__input::-webkit-input-placeholder {
-    /*font-weight: 100;*/
     color: #ccc;
   }
 
   &__input:focus {
-      outline: none;
-      width: 90%;
-      background-color: $color-grey-light-2;
+    outline: none;
+    background-color: $color-grey-light-2;
   }
 
   &__btn {
@@ -42,5 +47,32 @@
     height: 2.5rem;
     width: 2.5rem;
     fill: #73726c;
+  }
+
+  &__results {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background-color: #fff;
+    border-top: 2px solid #e91e63;
+    border-radius: 0 0 4px 4px;
+    padding: 1.5rem 3rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    display: none;
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    display: block;
+    padding: 1rem 0;
+    font-size: 1.4rem;
+    color: #3c3b37;
+
+    & i {
+      margin-right: 1rem;
+    }
   }
 }

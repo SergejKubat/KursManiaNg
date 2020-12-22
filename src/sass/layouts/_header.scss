@@ -1,5 +1,5 @@
 .cm-header {
-    height: 80vh;
+    height: 85vh;
     background: url('../../assets/img/bckg-header.jpg');
     background-size: cover;
     background-position: bottom;
@@ -70,10 +70,23 @@
     &__top {
         height: 8rem;
         display: flex;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
         align-items: center;
         background-color: #fff;
         box-shadow: 0 .2rem .4rem rgba(0, 0, 0, .08), 0 .4rem 1.2rem rgba(0, 0, 0, .08);
+
+        & .cm-logo {
+            display: flex;
+
+            &__img {
+                margin: 0 1rem;
+            }
+
+            &__text {
+                color: rgba(0, 0, 0, 0.8);
+            }
+
+        }
     }
 
     &__content {
@@ -89,6 +102,7 @@
             padding-top: 1rem;
             background-color: #fff;
             border-radius: 3px;
+            color: rgba(0, 0, 0, 0.8);
 
             &__heading {
                 font-size: 4.2rem;
@@ -133,9 +147,14 @@
 }
 
 .cm-categories {
+    position: relative;
+
+    &:hover > &__hidden {
+        display: block;
+    }
 
     &__btn {
-        height: 7rem;
+        height: 8rem;
         padding: 0 .5rem;
         font-family: inherit;
         font-size: 1.6rem;
@@ -147,7 +166,24 @@
         cursor: pointer;
     }
 
+    &__btn i {
+        font-weight: 600;
+    }
+
+    &__btn:hover + &__hidden {
+        display: block;
+    }
+
     &__hidden {
+        position: absolute;
+        z-index: 10;
+        border-top: 2px solid #e91e63;
+        background-color: #fff;
+        padding: 1.5rem 3rem;
+        min-width: 23rem;
+        box-shadow: 0 10px 15px rgba(0,0,0,.1);
+        border-radius: 0 0 4px 4px;
+        text-align: left;
         display: none;
     }
 
@@ -164,21 +200,61 @@
         text-decoration: none;
         color: #3c3b37;
     }
+
+    &__link:hover {
+        font-weight: 600;
+    }
 }
 
 .cm-user {
+    flex: 1;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
     padding: 0 1rem;
 
     &__card {
+        position: relative;
         margin-right: 1rem;
+
+        &:hover > &--content {
+            display: block;
+        }
+
+        &--container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 8rem;
+            padding: 0 1.5rem;
+        }
 
         &--icon {
             height: 2.6rem;
             width: 2.6rem;
             fill: #73726c;
+        }
+
+        &--content {
+            display: none;
+            position: absolute;
+            right: -1rem;
+            z-index: 10;
+            border-top: 2px solid #e91e63;
+            background-color: #fff;
+            padding: 2rem;
+            min-width: 23rem;
+            box-shadow: 0 10px 15px rgba(0,0,0,.1);
+            border-radius: 0 0 4px 4px;
+            text-align: center;
+            font-size: 1.4rem;
+
+            & a {
+                display: block;
+                margin-top: 2rem;
+                text-decoration: none;
+                color: #e91e63;
+            }
         }
     }
 }
