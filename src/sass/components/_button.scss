@@ -27,6 +27,7 @@
     color: #555333;
     border: 2px solid #e91e63;
     border-radius: 3rem;
+    cursor: pointer;
     transition: all .3s;
 }
 
@@ -34,4 +35,15 @@
 .cm-btn-outline:focus {
     background-color: #e91e63;
     color: #fff;
+}
+
+.cm-btn-white {
+    color: #fff;
+    border-color: #fff;
+}
+
+.cm-btn-white:hover,
+.cm-btn-white:focus {
+    background-color: #fff;
+    color: #e91e63;
 }
