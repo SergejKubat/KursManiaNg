@@ -1,0 +1,109 @@
+@import '../../sass/abstracts/mixins';
+
+.cm-all-categories {
+  margin-top: 6rem;
+
+  &__main,
+  &__sub {
+    display: block;
+    text-align: center;
+  }
+
+  &__main {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 2.4rem;
+    color: #516576;
+  }
+
+  &__sub {
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 5rem;
+    color: #303d48;
+  }
+
+  &__hr {
+    display: block;
+    height: 3px;
+    width: 7rem;
+    margin: 2rem auto;
+    background-color: #e91e63;
+  }
+}
+
+.cm-categories-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 6rem 15rem;
+
+  @include respond(laptop) {
+    margin: 6rem;
+  }
+
+  @include respond(tablet) {
+    margin: 6rem 0;
+  }
+}
+
+.cm-categories-item {
+  position: relative;
+  height: 32rem;
+  width: 30rem;
+  margin: 0 3rem 3rem 0;
+
+  @include respond(mobileL) {
+    margin: 0 0 3rem 0;
+  }
+}
+
+.cm-categories-img {
+  height: 100%;
+  width: 100%;
+}
+
+.cm-categories-desc {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: all 0.5s;
+
+  & h4,
+  & p {
+    transform: translateY(4rem);
+    transition: all 0.7s;
+  }
+
+  & h4 {
+    font-size: 2.2rem;
+    color: #fff;
+  }
+
+  & p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+  }
+}
+
+.cm-categories-item:hover > .cm-categories-desc,
+.cm-categories-item:focus > .cm-categories-desc {
+  opacity: 1;
+}
+
+.cm-categories-item:hover > .cm-categories-desc > h4,
+.cm-categories-item:hover > .cm-categories-desc > p,
+.cm-categories-item:focus > .cm-categories-desc > h4,
+.cm-categories-item:focus > .cm-categories-desc > p {
+  transform: translate(0);
+}

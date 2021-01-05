@@ -1,0 +1,64 @@
+<section class="cm-registration">
+  <div class="cm-registration__container">
+    <div class="cm-registration__content">
+      <h1 class="cm-registration__heading">Registracija</h1>
+      <form action="#" method="POST" class="cm-registration__form">
+        <div class="cm-registration__control">
+          <label for="fullName" class="cm-registration__label"
+            >Ime i prezime</label
+          >
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            class="cm-registration__input"
+            required
+            autocomplete="off"
+            autocapitalize="off"
+          />
+        </div>
+        <div class="cm-registration__control">
+          <label for="email" class="cm-registration__label">Email adresa</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="cm-registration__input"
+            required
+          />
+        </div>
+        <div class="cm-registration__control">
+          <label for="password" class="cm-registration__label">Lozinka</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="cm-registration__input"
+            required
+          />
+        </div>
+        <div class="cm-registration__control">
+          <input
+            type="checkbox"
+            name="terms"
+            id="terms"
+            class="cm-registration__checkbox"
+          />
+          <label for="terms" class="cm-registration__check-container">
+            <span class="cm-registration__checkmark"></span>
+            Prihvatam korisničke uslove.
+          </label>
+        </div>
+        <div class="cm-registration__control">
+          <button type="submit" class="cm-btn cm-registration__submit">
+            Registracija
+          </button>
+        </div>
+      </form>
+      <p class="cm-registration__login">
+        Već imate nalog?
+        <a href="#" class="cm-registration__link">Prijavite se</a>
+      </p>
+    </div>
+  </div>
+</section>

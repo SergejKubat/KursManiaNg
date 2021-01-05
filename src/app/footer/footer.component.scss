@@ -1,0 +1,154 @@
+@import '../../sass/abstracts/mixins';
+
+.cm-footer {
+    font-size: 1.6rem;
+  
+    &__widgets {
+      padding: 7.5rem 0 4.5rem 0;
+      background: #26282c;
+      color: #999;
+    }
+  
+    &__container {
+      max-width: 120rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+  
+    &__row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -1.5rem;
+    }
+  
+    &__col {
+      flex: 0 0 33.33333%;
+      max-width: 33.33333%;
+      position: relative;
+      margin: 0 0 3rem;
+      padding: 0 1.5rem;
+
+      @include respond(mobileL) {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+
+      @include respond(mobileM) {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+  
+      & h4 {
+        margin-bottom: 3.5rem;
+        font-size: 2rem;
+        font-weight: 600;
+        color: #fff;
+      }
+    }
+  
+    &__text {
+      & p {
+        margin: 0 0 1rem;
+      }
+    }
+  
+    &__img {
+      height: auto;
+      max-width: 17rem;
+      margin-bottom: 0.7rem;
+    }
+  
+    &__menu {
+      margin: 0;
+      padding: 0;
+      list-style-type: disc;
+  
+      &-item {
+        position: relative;
+        list-style: none;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  
+        & a {
+          padding-left: 2rem;
+          color: #fff;
+          transition: all 0.4s ease-out;
+        }
+  
+        & a:hover {
+          color: #e91e63;
+        }
+      }
+  
+      &-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 100%;
+        bottom: -1px;
+        height: 1px;
+        background-color: #e91e63;
+        transition: all 0.3s ease-out;
+        transition-property: right;
+      }
+  
+      &-item:hover::before {
+        right: 0;
+      }
+  
+      &-item::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 2.4rem;
+        display: block;
+        width: 0.4rem;
+        height: 0.4rem;
+        background-color: #e91e63;
+      }
+    }
+  
+    &__contact-info {
+      & ul {
+        margin: 0;
+        padding: 0;
+      }
+  
+      & ul li {
+        display: block;
+        padding-bottom: 0;
+        margin-bottom: 1rem;
+      }
+    }
+  
+    &__contact-icon {
+      display: table-cell;
+      padding: 0.4rem 1rem 0 0;
+      vertical-align: top;
+    }
+  
+    &__content {
+      display: table-cell;
+    }
+  
+    &__heading {
+      display: block;
+      margin: 0 1rem 0.5rem 0;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #fff;
+    }
+  
+    &__site-info {
+      font-size: 1.5rem;
+      text-align: center;
+      background-color: #202026;
+      color: #999;
+  
+      & p {
+        padding: 1.5rem 0;
+      }
+    }
+  }

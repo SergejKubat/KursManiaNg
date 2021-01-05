@@ -1,0 +1,116 @@
+@import "../sass/abstracts/mixins";
+
+.cm-about {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 9rem 15rem;
+  background-color: #f7f7f7;
+
+  @include respond(laptop) {
+    padding: 9rem 12rem;
+  }
+
+  @include respond(tablet) {
+    padding: 6rem;
+  }
+
+  @include respond(mobileL) {
+    padding: 3rem;
+  }
+
+  &__details {
+    flex: 0 0 50%;
+    padding-right: 5rem;
+
+    @include respond(tablet) {
+      flex: 0 0 100%;
+      order: 2;
+      padding: 0;
+    }
+
+    & h1 {
+      margin-bottom: 4rem;
+      font-size: 3.6rem;
+      font-weight: 700;
+
+      @include respond(tablet) {
+        margin: 2rem 0;
+      }
+    }
+
+    & p {
+      margin-top: 1rem;
+      font-size: 1.6rem;
+      color: #555;
+    }
+
+    & button {
+      margin-top: 4rem;
+    }
+  }
+
+  &__img {
+    flex: 0 0 50%;
+
+    @include respond(tablet) {
+      flex: 0 0 100%;
+      order: 1;
+    }
+
+    & img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+.cm-numbers {
+  padding: 9rem 12rem;
+  background-color: #e91e63;
+
+  @include respond(tablet) {
+    padding: 6rem;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    flex: 1 1 25%;
+
+    @include respond(mobileL) {
+      padding: 2rem;
+    }
+  }
+
+  &__col:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+    @include respond(mobileL) {
+      border: 0;
+    }
+  }
+
+  &__main {
+    text-align: center;
+
+    & h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+  }
+
+  &__sub {
+    text-align: center;
+
+    & span {
+      font-size: 2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+}

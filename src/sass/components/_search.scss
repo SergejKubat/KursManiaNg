@@ -3,6 +3,19 @@
   position: relative;
   margin: 0 3rem;
 
+  @include respond(laptop) {
+    flex: 0 0 40%;
+    margin: 0 1rem;
+  }
+
+  @include respond(tablet) {
+    flex: 0 0 70%;
+  }
+
+  @include respond(mobileL) {
+    display: none;
+  }
+
   &__form {
     display: flex;
     justify-content: center;

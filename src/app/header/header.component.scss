@@ -1,0 +1,342 @@
+@import "../../sass/abstracts/mixins";
+
+.cm-header {
+  z-index: 20;
+  width: 100%;
+
+  &__top {
+    height: 8rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.08),
+      0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+
+    & .cm-logo {
+      display: flex;
+
+      &__img {
+        margin: 0 1rem;
+      }
+
+      &__text {
+        color: rgba(0, 0, 0, 0.8);
+      }
+    }
+  }
+
+  &__content {
+    height: 70%;
+    position: relative;
+
+    & .cm-login {
+      position: absolute;
+      top: 23%;
+      left: 8%;
+      width: 25%;
+      padding: 0 3rem;
+      padding-top: 1rem;
+      background-color: #fff;
+      border-radius: 3px;
+      color: rgba(0, 0, 0, 0.8);
+
+      &__heading {
+        font-size: 4.2rem;
+        font-weight: 700;
+      }
+
+      &__paragraph {
+        font-size: 1.6rem;
+      }
+
+      &__form {
+        &-control {
+          margin: 2.5rem 0;
+        }
+
+        &-input {
+          display: block;
+          width: 100%;
+          height: 5.4rem;
+          padding: 0.6rem 1.2rem 0.7rem;
+          font-size: 1.6rem;
+          color: #555;
+          font-weight: 600;
+          border: 2px solid #e2e2e2;
+          border-radius: 3px;
+          outline: none;
+          transition: all 0.2s;
+        }
+
+        &-input:focus {
+          border-color: #e91e63;
+        }
+
+        &-input::-webkit-input-placeholder {
+          color: #999;
+        }
+      }
+    }
+  }
+}
+
+.cm-categories {
+  position: relative;
+
+  @include respond(tablet) {
+    display: none;
+  }
+
+  @include respond(laptop) {
+    margin-left: 1rem;
+  }
+
+  &:hover > &__hidden {
+    display: block;
+  }
+
+  &__btn {
+    height: 8rem;
+    padding: 0 0.5rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: rgb(51, 51, 51);
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    @include respond(laptop) {
+      padding: 0;
+      font-weight: 400;
+    }
+  }
+
+  &__btn i {
+    font-weight: 600;
+  }
+
+  &__btn:hover + &__hidden {
+    display: block;
+  }
+
+  &__hidden {
+    position: absolute;
+    z-index: 10;
+    border-top: 2px solid #e91e63;
+    background-color: #fff;
+    padding: 1.5rem 3rem;
+    min-width: 23rem;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 4px 4px;
+    text-align: left;
+    display: none;
+  }
+
+  &__list {
+    list-style-type: none;
+  }
+
+  &__item {
+    margin: 1.5rem 0;
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #3c3b37;
+  }
+
+  &__link:hover {
+    font-weight: 600;
+  }
+}
+
+.cm-user {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 1rem;
+
+  @include respond(tablet) {
+    display: none;
+  }
+
+  &__card {
+    position: relative;
+    margin-right: 1rem;
+
+    &:hover > &--content {
+      display: block;
+    }
+
+    &--container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 8rem;
+      padding: 0 1.5rem;
+
+      @include respond(laptop) {
+        padding: 0 0.5rem;
+      }
+    }
+
+    &--icon {
+      height: 2.6rem;
+      width: 2.6rem;
+      fill: #73726c;
+    }
+
+    &--content {
+      display: none;
+      position: absolute;
+      right: -1rem;
+      z-index: 10;
+      border-top: 2px solid #e91e63;
+      background-color: #fff;
+      padding: 2rem;
+      min-width: 23rem;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 0 0 4px 4px;
+      text-align: center;
+      font-size: 1.4rem;
+
+      & a {
+        display: block;
+        margin-top: 2rem;
+        text-decoration: none;
+        color: #e91e63;
+      }
+    }
+  }
+}
+
+.cm-navigation {
+  display: none;
+
+  @include respond(tablet) {
+    display: block;
+  }
+
+  &__checkbox {
+    display: none;
+  }
+
+  &__checkbox:checked ~ &__items {
+    width: 60%;
+    opacity: 1;
+
+    @include respond(mobileL) {
+      width: 80%;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    top: 2.2rem;
+    right: 1.8rem;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+    height: 3.5rem;
+    width: 3.5rem;
+    text-align: center;
+  }
+
+  &__icon {
+    position: relative;
+
+    &,
+    &::before,
+    &::after {
+      display: inline-block;
+      width: 3rem;
+      height: 3px;
+      background-color: #333;
+      border-radius: 100rem;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      transition: all 0.2s;
+    }
+
+    &::before {
+      top: -0.8rem;
+    }
+
+    &::after {
+      top: 0.8rem;
+    }
+  }
+
+  &__checkbox:checked + &__label &__button &__icon {
+    background-color: transparent;
+  }
+
+  &__checkbox:checked + &__label &__button &__icon::before {
+    top: 0;
+    transform: rotate(135deg);
+  }
+
+  &__checkbox:checked + &__label &__button &__icon::after {
+    top: 0;
+    transform: rotate(-135deg);
+  }
+
+  &__items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    height: 100%;
+    width: 0;
+    padding: 1.5rem;
+    background-color: white;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.08),
+      0 0.4rem 1.2rem rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    transition: 0.4s all ease-in-out;
+  }
+
+  &__list,
+  &__sub-list {
+    list-style-type: none;
+  }
+
+  &__item {
+    padding: 1rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+
+  &__checkbox:checked ~ &__sub-list {
+    height: auto;
+    opacity: 1;
+  }
+
+  &__sub-list {
+    height: 0;
+    opacity: 0;
+    transition: 0.3s all ease-in-out;
+  }
+
+  &__sub-item {
+    padding: 1rem 1rem 1rem 2rem;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
+  &__angle {
+    display: inline-block;
+    padding-left: 0.5rem;
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,48 @@
+@import '../../sass/abstracts/mixins';
+
+.cm-404 {
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      width: 120rem;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+
+        @include respond(tablet) {
+            width: 100%;
+            padding: 0;
+        }
+    }
+  
+    &__content {
+      margin: 9rem 0;
+      flex: 0 0 83.333333%;
+      max-width: 83.333333%;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+  
+    &__heading {
+      font-size: 5.6rem;
+      font-weight: 700;
+      color: #303d48;
+
+      @include respond(tablet) {
+        line-height: 7rem;
+      }
+    }
+  
+    &__desc {
+      margin-bottom: 3rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #516576;
+
+      @include respond(tablet) {
+        margin-top: 3rem;
+      }
+    }
+}
