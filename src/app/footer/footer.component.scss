@@ -1,4 +1,5 @@
 @import '../../sass/abstracts/mixins';
+@import '../../sass/abstracts/variables';
 
 .cm-footer {
     font-size: 1.6rem;
@@ -42,7 +43,7 @@
         margin-bottom: 3.5rem;
         font-size: 2rem;
         font-weight: 600;
-        color: #fff;
+        color: $color-white;
       }
     }
   
@@ -73,12 +74,12 @@
   
         & a {
           padding-left: 2rem;
-          color: #fff;
+          color: $color-white;
           transition: all 0.4s ease-out;
         }
   
         & a:hover {
-          color: #e91e63;
+          color: $color-primary;
         }
       }
   
@@ -89,7 +90,7 @@
         right: 100%;
         bottom: -1px;
         height: 1px;
-        background-color: #e91e63;
+        background-color: $color-primary;
         transition: all 0.3s ease-out;
         transition-property: right;
       }
@@ -106,7 +107,7 @@
         display: block;
         width: 0.4rem;
         height: 0.4rem;
-        background-color: #e91e63;
+        background-color: $color-primary;
       }
     }
   
@@ -138,7 +139,7 @@
       margin: 0 1rem 0.5rem 0;
       font-size: 1.8rem;
       font-weight: 600;
-      color: #fff;
+      color: $color-white;
     }
   
     &__site-info {

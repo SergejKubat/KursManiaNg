@@ -1,4 +1,5 @@
 @import '../../sass/abstracts/mixins';
+@import '../../sass/abstracts/variables';
 @import '../../sass/components/course';
 
 .cm-author {
@@ -60,7 +61,7 @@
       line-height: 1.2;
       letter-spacing: -.02rem;
       text-transform: uppercase;
-      color: #73726c;
+      color: $color-text-1;
     }
   
     &__heading {
@@ -94,7 +95,7 @@
       font-weight: 700;
       line-height: 1.2;
       letter-spacing: -.02rem;
-      color: #73726c;
+      color: $color-text-1;
     }
   
     &__stat-count {

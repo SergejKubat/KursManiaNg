@@ -1,4 +1,5 @@
 @import '../../sass/abstracts/mixins';
+@import '../../sass/abstracts/variables';
 
 .cm-login {
 
@@ -56,7 +57,7 @@
     max-width: 100%;
     font-size: 1.6rem;
     font-weight: 700;
-    color: #333;
+    color: $color-grey-3;
   }
 
   &__input {
@@ -64,14 +65,14 @@
     padding: 0.8rem 1.2rem;
     font-family: inherit;
     font-size: 1.6rem;
-    color: #666;
+    color: $color-grey-4;
     border: 2px solid #ccc;
     border-radius: 3px;
     transition: all 0.4s ease-out;
   }
 
   &__input:focus {
-    border-color: #e91e63;
+    border-color: $color-primary;
   }
 
   &__checkbox {
@@ -104,7 +105,7 @@
     top: 0.2rem;
     width: 0.7rem;
     height: 1.4rem;
-    border: solid white;
+    border: solid $color-white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
   }
@@ -114,7 +115,7 @@
   }
 
   &__checkbox:checked ~ &__check-container &__checkmark {
-    background-color: #e91e63;
+    background-color: $color-primary;
   }
 
   &__checkbox:checked ~ &__check-container &__checkmark::after {
@@ -133,11 +134,11 @@
 
   &__link {
     font-weight: 700;
-    color: #333;
+    color: $color-grey-3;
     transition: all 0.3s ease-out;
   }
 
   &__link:hover {
-    color: #e91e63;
+    color: $color-primary;
   }
 }

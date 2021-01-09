@@ -1,36 +1,9 @@
 @import '../../sass/abstracts/mixins';
+@import '../../sass/abstracts/variables';
+@import '../../sass/base/typography';
 
 .cm-all-categories {
   margin-top: 6rem;
-
-  &__main,
-  &__sub {
-    display: block;
-    text-align: center;
-  }
-
-  &__main {
-    font-size: 1.6rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 2.4rem;
-    color: #516576;
-  }
-
-  &__sub {
-    font-size: 4.8rem;
-    font-weight: 700;
-    line-height: 5rem;
-    color: #303d48;
-  }
-
-  &__hr {
-    display: block;
-    height: 3px;
-    width: 7rem;
-    margin: 2rem auto;
-    background-color: #e91e63;
-  }
 }
 
 .cm-categories-list {
@@ -74,7 +47,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba($color-black, 0.4);
   opacity: 0;
   transition: all 0.5s;
 

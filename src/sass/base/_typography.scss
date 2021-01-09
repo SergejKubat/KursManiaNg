@@ -1,6 +1,37 @@
 body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
-    color: #303d48;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  line-height: 1.7;
+  color: #303d48;
+}
+
+.cm-heading {
+
+  &__main,
+  &__sub {
+    display: block;
+    text-align: center;
+  }
+
+  &__main {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 2.4rem;
+    color: #516576;
+  }
+
+  &__sub {
+    font-size: 4.8rem;
+    font-weight: 700;
+    line-height: 5rem;
+  }
+
+  &__hr {
+    display: block;
+    height: 3px;
+    width: 7rem;
+    margin: 2rem auto;
+    background-color: #e91e63;
+  }
 }
