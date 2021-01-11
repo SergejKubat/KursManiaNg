@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthorComponent } from './author/author.component';
 import { CourseComponent } from './course/course.component';
 import { CourseListComponent } from './courselist/courselist.component';
+import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'kursevi/:q', component: CourseListComponent},
   { path: 'prijava', component: LoginComponent},
   { path: 'registracija', component: RegistrationComponent},
+  { path: '**', component: ErrorComponent}
 ];
 
 @NgModule({

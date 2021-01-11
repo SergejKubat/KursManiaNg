@@ -1,0 +1,356 @@
+@import "../../sass/abstracts/mixins";
+@import "../../sass/abstracts/variables";
+@import "../../sass/base/typography";
+
+.cm-poster {
+  height: 80vh;
+  background-image: linear-gradient(
+      45deg,
+      rgba($color-black, 0.3),
+      rgba($color-black, 0.5)
+    ),
+    url("../../assets/img/bckg-header.jpg");
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 12rem;
+
+  @include respond(mobileL) {
+    padding: 0 3rem;
+  }
+
+  &-heading__main,
+  &-heading__sub {
+    text-align: center;
+    color: $color-white;
+  }
+
+  &-heading__main {
+    margin-bottom: 3rem;
+    font-size: 5rem;
+  }
+
+  &-heading__sub {
+    font-size: 2.4rem;
+  }
+}
+
+.cm-about {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 9rem 15rem;
+  background-color: #f7f7f7;
+
+  @include respond(laptop) {
+    padding: 9rem 12rem;
+  }
+
+  @include respond(tablet) {
+    padding: 6rem;
+  }
+
+  @include respond(mobileL) {
+    padding: 3rem;
+  }
+
+  &__details {
+    flex: 0 0 50%;
+    padding-right: 5rem;
+
+    @include respond(tablet) {
+      flex: 0 0 100%;
+      order: 2;
+      padding: 0;
+    }
+
+    & h1 {
+      margin-bottom: 4rem;
+      font-size: 3.6rem;
+      font-weight: 700;
+
+      @include respond(tablet) {
+        margin: 2rem 0;
+      }
+    }
+
+    & p {
+      margin-top: 1rem;
+      font-size: 1.6rem;
+      color: #555;
+    }
+
+    & button {
+      margin-top: 4rem;
+    }
+  }
+
+  &__img {
+    flex: 0 0 50%;
+
+    @include respond(tablet) {
+      flex: 0 0 100%;
+      order: 1;
+    }
+
+    & img {
+      height: auto;
+      width: 100%;
+    }
+  }
+}
+
+.cm-numbers {
+  padding: 9rem 12rem;
+  background-color: $color-primary;
+
+  @include respond(tablet) {
+    padding: 6rem;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    flex: 1 1 25%;
+
+    @include respond(mobileL) {
+      padding: 2rem;
+    }
+  }
+
+  &__col:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+    @include respond(mobileL) {
+      border: 0;
+    }
+  }
+
+  &__main {
+    text-align: center;
+
+    & h1 {
+      font-size: 4.2rem;
+      font-weight: 700;
+      color: $color-white;
+    }
+  }
+
+  &__sub {
+    text-align: center;
+
+    & span {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $color-white;
+    }
+  }
+}
+
+.cm-featured-instructors {
+  margin: 0 auto;
+  padding: 9rem 0;
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.56) 0%,
+      rgba(255, 255, 255, 0.96) 5%
+    ),
+    url("../../assets/img/bckg-bt.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include respond(tablet) {
+    padding: 3rem 0;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 6rem auto;
+
+    @include respond(laptop) {
+      width: 80%;
+    }
+
+    @include respond(tablet) {
+      width: 90%;
+    }
+  }
+
+  &__col {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+    padding: 0 1.5rem;
+
+    @include respond(tablet) {
+      flex: 0 0 50%;
+      max-width: 50%;
+      margin-bottom: 2rem;
+    }
+
+    @include respond(mobileL) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__item {
+    padding: 5rem 3rem;
+    text-align: center;
+    background-color: $color-white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 6rem -0.6rem rgba(10, 10, 10, 0.2);
+    transition: all 0.3s;
+  }
+
+  &__item:hover {
+    box-shadow: 0 0 3rem 0 rgba(10, 10, 10, 0.2);
+  }
+
+  &__thumb {
+    border: 5px solid transparent;
+    margin: 0 auto 2rem;
+    max-width: 15rem;
+    position: relative;
+    border-radius: 50%;
+  }
+
+  &__thumb::before {
+    content: "";
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+    bottom: -1rem;
+    left: -1rem;
+    height: 16rem;
+    width: auto;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0);
+    transition: all 0.5s;
+  }
+
+  &__item:hover > &__thumb::before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+
+  &__img {
+    border-radius: 50%;
+  }
+
+  &__item h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #303d48;
+  }
+
+  &__item span {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    color: #777;
+  }
+
+  &__item p {
+    font-size: 1.6rem;
+    opacity: 0.7;
+  }
+}
+
+.cm-sponsors {
+  padding: 9rem 12rem;
+
+  @include respond(tablet) {
+    padding: 9rem;
+  }
+
+  @include respond(mobileL) {
+    padding: 6rem 3rem;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__col {
+    flex: 0 0 16.666667%;
+    max-width: 16.666667%;
+    padding: 0 1.5rem;
+
+    @include respond(laptop) {
+      flex: 0 0 33.33334%;
+      max-width: 33.33334%;
+    }
+
+    @include respond(tablet) {
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+
+    @include respond(mobileL) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__logo {
+    margin: 0 auto;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
+.cm-became-teacher {
+  padding: 9rem 0;
+  background-image: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("../../assets/img/bckg-bt.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  &__default {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3.5rem 3rem 4rem;
+    text-align: center;
+    background-color: $color-primary;
+    color: $color-white;
+    border-radius: 3px;
+    box-shadow: 0px 0px 6rem -0.6rem rgba(10, 10, 10, 0.2);
+  }
+
+  &__icon {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  &__content {
+    & h2 {
+      margin-bottom: 0.8rem;
+      font-size: 2.4rem;
+      font-weight: 600;
+    }
+
+    & p {
+      margin-bottom: 2rem;
+      font-size: 1.6rem;
+    }
+  }
+}

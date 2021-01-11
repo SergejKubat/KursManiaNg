@@ -1,6 +1,6 @@
 <header class="cm-header">
   <div class="cm-header__top">
-    <a href="#">
+    <a [routerLink]="['/']">
       <div class="cm-logo">
         <img
           src="../assets/img/favicon.png"
@@ -89,11 +89,11 @@
           <a href="#">Prijavite se</a>
         </div>
       </div>
-      <button class="cm-btn">Prijava</button>
-      <button class="cm-btn">Registracija</button>
+      <a [routerLink]="['/prijava']"><button class="cm-btn">Prijava</button></a>
+      <a [routerLink]="['/registracija']"><button class="cm-btn">Registracija</button></a>
     </div>
     <div class="cm-navigation">
-      <input type="checkbox" id="menu" class="cm-navigation__checkbox" />
+      <input type="checkbox" id="menu" class="cm-navigation__checkbox" [checked]='showMenu' (change)='showMenu = !showMenu' />
       <label for="menu" class="cm-navigation__label">
         <div class="cm-navigation__button">
           <span class="cm-navigation__icon"></span>
@@ -101,6 +101,19 @@
       </label>
       <div class="cm-navigation__items">
         <ul class="cm-navigation__list">
+          <li class="cm-navigation__item">
+            <form action="#" class="cm-search__form-small">
+              <input
+                type="text"
+                name="q"
+                placeholder="Pretražite kurseve"
+                value=""
+                class="cm-search__input-small"
+                autocomplete="off"
+              />
+            </form>
+          </li>
+          <li class="cm-navigation__item"><a [routerLink]="['/']" (click)='showMenu = !showMenu'>Početna</a></li>
           <li class="cm-navigation__item">
             <input
               type="checkbox"
@@ -125,8 +138,8 @@
               <li class="cm-navigation__sub-item">Zdravlje</li>
             </ul>
           </li>
-          <li class="cm-navigation__item">Prijava</li>
-          <li class="cm-navigation__item">Registracija</li>
+          <li class="cm-navigation__item"><a [routerLink]="['/prijava']" (click)='showMenu = !showMenu'>Prijava</a></li>
+          <li class="cm-navigation__item"><a [routerLink]="['/registracija']" (click)='showMenu = !showMenu'>Registracija</a></li>
         </ul>
       </div>
     </div>

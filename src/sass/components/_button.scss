@@ -20,7 +20,7 @@
 
 .cm-btn:hover,
 .cm-btn:focus {
-    background-color: $color-primary;
+    background-color: darken($color-primary, 15%);
 }
 
 .cm-btn-outline {

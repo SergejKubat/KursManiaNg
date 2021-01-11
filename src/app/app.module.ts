@@ -13,6 +13,7 @@ import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ErrorComponent } from './error/error.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { CoursesComponent } from './courses/courses.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CategoriesComponent } from './categories/categories.component';
     LoginComponent,
     RegistrationComponent,
     ErrorComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
