@@ -477,6 +477,99 @@
         margin-bottom: 1rem;
       }
     }
+
+    &__reviews {
+      padding: 3rem;
+
+      &-heading {
+        font-size: 2.2rem;
+        font-weight: 600;
+      }
+
+      &-average,
+      &-rate {
+        font-size: 1.6rem;
+      }
+
+      &-rate {
+        display: flex;
+        align-items: center;
+        padding: .5rem 0;
+      }
+
+      &-rate .active {
+        color: $color-review-star;
+      }
+
+      &-rate .fa {
+        padding: 0 .1rem;
+      }
+
+      &-bar {
+        height: 1.6rem;
+        width: calc(100% - 12rem);
+        margin: 0 1rem;
+        background-color: rgb(236, 229, 229);
+      }
+
+      &-progress {
+        height: 1.6rem;
+        background-color: #95e6f9;
+      }
+
+      &-comments {
+        margin-top: 2rem;
+
+        &-list {
+          margin-top: 1.5rem;
+          list-style-type: none;
+        }
+
+        &-item {
+          margin-bottom: 2rem;
+          padding: 2rem;
+          background-color: #fafafa;
+          border: 1px solid #ddd;
+        }
+
+        &-info {
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        &-avatar {
+          flex: 0 0 20%;
+          max-width: 20%;
+          margin-right: 2rem;
+        }
+
+        &-details {
+          flex: 0 0 80%;
+          max-width: 80%;
+        }
+
+        &-name {
+          font-size: 1.8rem;
+        }
+
+        &-stars {
+          margin-bottom: 1rem;
+          font-size: 1.6rem;
+        }
+
+        &-stars .active {
+          color: $color-review-star;
+        }
+
+        &-stars .fa {
+          padding: 0 .1rem;
+        }
+
+        &-content {
+          font-size: 1.6rem;
+        }
+      }
+    }
   
     &__related {
   
