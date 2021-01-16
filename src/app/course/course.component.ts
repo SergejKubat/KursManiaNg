@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
+  public sadrzaj: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

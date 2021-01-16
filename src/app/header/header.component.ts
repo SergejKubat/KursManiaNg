@@ -8,10 +8,21 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   public showMenu: boolean = false;
+  public searchResultDisplay: boolean = false;
+
+  public query: string;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public getResults() {
+    console.log(this.query);
+  }
+
+  public onSubmit() {
+    console.log('submitovano');
   }
 
 }

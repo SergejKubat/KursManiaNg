@@ -11,7 +11,7 @@
       </div>
     </a>
     <div class="cm-search">
-      <form action="#" class="cm-search__form">
+      <form class="cm-search__form" (submit)="onSubmit()">
         <input
           type="text"
           name="q"
@@ -19,14 +19,16 @@
           value=""
           class="cm-search__input"
           autocomplete="off"
+          [(ngModel)]="query"
+          (change)="getResults()"
         />
-        <button type="submit" class="cm-search__btn">
+        <button class="cm-search__btn">
           <svg class="cm-search__icon">
             <use xlink:href="../assets/svg/icons.svg#icon-search"></use>
           </svg>
         </button>
       </form>
-      <div class="cm-search__results">
+      <div class="cm-search__results" [ngClass]="{'cm-search__results-hidden': !searchResultDisplay}">
         <ul class="cm-search__list">
           <li class="cm-search__item">
             <i class="fa fa-search" aria-hidden="true"></i> Autor
@@ -54,25 +56,25 @@
       <div class="cm-categories__hidden">
         <ul class="cm-categories__list">
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">IT & Softver</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/it&softver']">IT & Softver</a></a>
           </li>
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">Biznis</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/biznis']">Biznis</a></a>
           </li>
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">Marketing</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/marketing']">Marketing</a></a>
           </li>
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">Dizajn</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/dizajn']">Dizajn</a></a>
           </li>
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">Fotografija & video</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/fotografija&video']">Fotografija & video</a></a>
           </li>
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">Muzika</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/muzika']">Muzika</a></a>
           </li>
           <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link">Zdravlje</a>
+            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/zdravlje']">Zdravlje</a></a>
           </li>
         </ul>
       </div>
@@ -86,7 +88,7 @@
         </div>
         <div class="cm-user__card--content">
           <p>Vaša korpa je prazna.</p>
-          <a href="#">Prijavite se</a>
+          <a [routerLink]="['/prijava']">Prijavite se</a>
         </div>
       </div>
       <a [routerLink]="['/prijava']"><button class="cm-btn">Prijava</button></a>
@@ -129,13 +131,13 @@
               ></i>
             </label>
             <ul class="cm-navigation__sub-list">
-              <li class="cm-navigation__sub-item">IT & Softver</li>
-              <li class="cm-navigation__sub-item">Biznis</li>
-              <li class="cm-navigation__sub-item">Marketing</li>
-              <li class="cm-navigation__sub-item">Dizajn</li>
-              <li class="cm-navigation__sub-item">Fotografija & video</li>
-              <li class="cm-navigation__sub-item">Muzika</li>
-              <li class="cm-navigation__sub-item">Zdravlje</li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/it&softver']" (click)='showMenu = !showMenu'>IT & Softver</a></li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/biznis']" (click)='showMenu = !showMenu'>Biznis</a></li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/marketing']" (click)='showMenu = !showMenu'>Marketing</a></li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/dizajn']" (click)='showMenu = !showMenu'>Dizajn</a></li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/fotografija&video']" (click)='showMenu = !showMenu'>Fotografija & video</a></li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/muzika']" (click)='showMenu = !showMenu'>Muzika</a></li>
+              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/zdravlje']" (click)='showMenu = !showMenu'>Zdravlje</a></li>
             </ul>
           </li>
           <li class="cm-navigation__item"><a [routerLink]="['/prijava']" (click)='showMenu = !showMenu'>Prijava</a></li>

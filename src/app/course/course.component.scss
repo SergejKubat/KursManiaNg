@@ -243,7 +243,7 @@
     }
   
     &__overview {
-      display: block;
+      display: none;
       padding: 3rem;
   
       &-text {
@@ -334,6 +334,149 @@
         }
       }
     }
+
+    &__content {
+      display: block;
+      padding: 3rem;
+
+      &-heading {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+      }
+
+      &-collapsible {
+        border: 1px solid $color-white;
+
+        &-checkbox {
+          display: none;
+        }
+
+        &-checkbox:checked ~ &-content {
+          display: block;
+        }
+
+        &-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 1.5rem;
+          background-color: $color-primary;
+        }
+
+        &-heading {
+          font-size: 1.6rem;
+          color: $color-white;
+        }
+
+        &-icon {
+          font-size: 1.4rem;
+          color: $color-white;
+        }
+
+        &-content {
+          display: none;
+          padding: 1.5rem;
+        }
+
+        &-list {
+          list-style-type: none;
+        }
+
+        &-item {
+          padding: 1rem 0;
+          font-size: 1.4rem;
+        }
+
+        &-video {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          & div {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+          }
+
+          &-play {
+            color: $color-primary;
+          }
+
+          &-name {
+            margin-left: 1rem;
+          }
+
+          &-length {
+            color: $color-grey-4;
+          }
+        }
+      }
+    }
+
+    &__author-info {
+      padding: 3rem;
+
+      &-heading {
+        margin-bottom: 2.5rem;
+        font-size: 2.2rem;
+        font-weight: 600;
+      }
+
+      &-row {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      &-avatar {
+        flex: 0 0 16.666667%;
+        max-width: 16.666667%;
+
+        @include respond(laptop) {
+          flex: 0 0 25%;
+          max-width: 25%;
+        }
+
+        @include respond(mobileL) {
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+      }
+
+      &-img {
+        max-width: 100%;
+        border-radius: 50%;
+      }
+
+      &-content {
+        flex: 0 0 83.333333%;
+        max-width: 83.333333%;
+        padding-left: 2rem;
+
+        @include respond(laptop) {
+          flex: 0 0 75%;
+          max-width: 75%;
+        }
+
+        @include respond(mobileL) {
+          flex: 0 0 100%;
+          max-width: 100%;
+          margin-top: 1rem;
+          padding-left: 0;
+        }
+      }
+
+      &-name {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+
+      &-details {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+      }
+    }
   
     &__related {
   
@@ -393,8 +536,8 @@
       }
   
       &-img {
-        max-height: 7rem;
-        min-width: 7rem;
+        height: 7rem;
+        width: 9rem;
       }
   
       &-detail {

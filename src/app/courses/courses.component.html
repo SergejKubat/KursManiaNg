@@ -1,9 +1,8 @@
 <section class="cm-courses">
   <h1 class="cm-heading">
+    <span class="cm-heading__main">Pogledajte neke od najpopularnijih kurseva</span>
     <span class="cm-heading__sub">Popularni kursevi</span>
-    <span class="cm-heading__main"
-      >Pogledajte neke od najpopularnijih kurseva</span
-    >
+    <span class="cm-heading__hr"></span>
     <span class="cm-all-categories__hr"></span>
   </h1>
 
@@ -18,7 +17,7 @@
               class="cm-course-item__img"
             />
             <div class="cm-course-item__hidden">
-              <button class="cm-btn">Detalji</button>
+              <button class="cm-btn" [routerLink]="['/kurs/1']">Detalji</button>
             </div>
             <span class="cm-course-item__popular">Popularan</span>
             <span class="cm-course-item__price">$11.99</span>
