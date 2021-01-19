@@ -49,12 +49,12 @@
             </div>
             <div class="cm-course__tabs">
               <ul class="cm-course__tabs-nav">
-                <li class="cm-course__tabs-tab active"><span class="cm-course__tabs-tab-text">Pregled</span></li>
-                <li class="cm-course__tabs-tab" [ngClass]="sadrzaj ? 'active' : ''" (click)="sadrzaj = !sadrzaj"><span class="cm-course__tabs-tab-text">Sadržaj</span></li>
-                <li class="cm-course__tabs-tab"><span class="cm-course__tabs-tab-text">Autor</span></li>
-                <li class="cm-course__tabs-tab"><span class="cm-course__tabs-tab-text">Ocene</span></li>
+                <li class="cm-course__tabs-tab" [ngClass]="{'active': overviewVisibility}" (click)="showTab(1)"><span class="cm-course__tabs-tab-text">Pregled</span></li>
+                <li class="cm-course__tabs-tab" [ngClass]="{'active': contentVisibility}" (click)="showTab(2)"><span class="cm-course__tabs-tab-text">Sadržaj</span></li>
+                <li class="cm-course__tabs-tab" [ngClass]="{'active': authorVisibility}" (click)="showTab(3)"><span class="cm-course__tabs-tab-text">Autor</span></li>
+                <li class="cm-course__tabs-tab" [ngClass]="{'active': reviewsVisibility}" (click)="showTab(4)"><span class="cm-course__tabs-tab-text">Ocene</span></li>
               </ul>
-              <div class="cm-course__overview">
+              <div class="cm-course__overview" [ngStyle]="{'display': overviewVisibility ? 'block' : 'none'}">
                 <div class="cm-course__row">
                   <div class="cm-course__overview-text">
                     <div class="cm-course__overview-desc">
@@ -95,91 +95,91 @@
                   </div>
                 </div>
               </div>
-              <div class="cm-course__content">
-                <p class="cm-course__content-heading">Sadržaj kursa</p>
-                <div class="cm-course__content-collapsible">
-                  <input type="checkbox" id="sekcija1" class="cm-course__content-collapsible-checkbox" checked>
-                  <label for="sekcija1" class="cm-course__content-collapsible-label">
-                    <div class="cm-course__content-collapsible-header">
-                      <h1 class="cm-course__content-collapsible-heading">Uvod</h1>
-                      <i class="fa fa-plus cm-course__content-collapsible-icon" aria-hidden="true"></i>
+              <div class="cm-course__content2" [ngStyle]="{'display': contentVisibility ? 'block' : 'none'}">
+                <p class="cm-course__content2-heading">Sadržaj kursa</p>
+                <div class="cm-course__content2-collapsible">
+                  <input type="checkbox" id="sekcija1" class="cm-course__content2-collapsible-checkbox" checked>
+                  <label for="sekcija1" class="cm-course__content2-collapsible-label">
+                    <div class="cm-course__content2-collapsible-header">
+                      <h1 class="cm-course__content2-collapsible-heading">Uvod</h1>
+                      <i class="fa fa-plus cm-course__content2-collapsible-icon" aria-hidden="true"></i>
                     </div>
                   </label>
-                  <div class="cm-course__content-collapsible-content">
-                    <ul class="cm-course__content-collapsible-list">
-                      <li class="cm-course__content-collapsible-item">
-                        <div class="cm-course__content-collapsible-video">
+                  <div class="cm-course__content2-collapsible-content">
+                    <ul class="cm-course__content2-collapsible-list">
+                      <li class="cm-course__content2-collapsible-item">
+                        <div class="cm-course__content2-collapsible-video">
                           <div>
-                            <i class="fa fa-play-circle cm-course__content-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content-collapsible-video-name">Video 1</p>
+                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
+                            <p class="cm-course__content2-collapsible-video-name">Video 1</p>
                           </div>
-                          <p class="cm-course__content-collapsible-video-length">01:43</p>
+                          <p class="cm-course__content2-collapsible-video-length">01:43</p>
                         </div>
                       </li>
-                      <li class="cm-course__content-collapsible-item">
-                        <div class="cm-course__content-collapsible-video">
+                      <li class="cm-course__content2-collapsible-item">
+                        <div class="cm-course__content2-collapsible-video">
                           <div>
-                            <i class="fa fa-play-circle cm-course__content-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content-collapsible-video-name">Video 2</p>
+                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
+                            <p class="cm-course__content2-collapsible-video-name">Video 2</p>
                           </div>
-                          <p class="cm-course__content-collapsible-video-length">02:55</p>
+                          <p class="cm-course__content2-collapsible-video-length">02:55</p>
                         </div>
                       </li>
-                      <li class="cm-course__content-collapsible-item">
-                        <div class="cm-course__content-collapsible-video">
+                      <li class="cm-course__content2-collapsible-item">
+                        <div class="cm-course__content2-collapsible-video">
                           <div>
-                            <i class="fa fa-play-circle cm-course__content-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content-collapsible-video-name">Video 3</p>
+                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
+                            <p class="cm-course__content2-collapsible-video-name">Video 3</p>
                           </div>
-                          <p class="cm-course__content-collapsible-video-length">03:34</p>
+                          <p class="cm-course__content2-collapsible-video-length">03:34</p>
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
 
-                <div class="cm-course__content-collapsible">
-                  <input type="checkbox" id="sekcija2" class="cm-course__content-collapsible-checkbox">
-                  <label for="sekcija2" class="cm-course__content-collapsible-label">
-                    <div class="cm-course__content-collapsible-header">
-                      <h1 class="cm-course__content-collapsible-heading">JavaScript osnove</h1>
-                      <i class="fa fa-plus cm-course__content-collapsible-icon" aria-hidden="true"></i>
+                <div class="cm-course__content2-collapsible">
+                  <input type="checkbox" id="sekcija2" class="cm-course__content2-collapsible-checkbox">
+                  <label for="sekcija2" class="cm-course__content2-collapsible-label">
+                    <div class="cm-course__content2-collapsible-header">
+                      <h1 class="cm-course__content2-collapsible-heading">JavaScript osnove</h1>
+                      <i class="fa fa-plus cm-course__content2-collapsible-icon" aria-hidden="true"></i>
                     </div>
                   </label>
-                  <div class="cm-course__content-collapsible-content">
-                    <ul class="cm-course__content-collapsible-list">
-                      <li class="cm-course__content-collapsible-item">
-                        <div class="cm-course__content-collapsible-video">
+                  <div class="cm-course__content2-collapsible-content">
+                    <ul class="cm-course__content2-collapsible-list">
+                      <li class="cm-course__content2-collapsible-item">
+                        <div class="cm-course__content2-collapsible-video">
                           <div>
-                            <i class="fa fa-play-circle cm-course__content-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content-collapsible-video-name">Video 1</p>
+                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
+                            <p class="cm-course__content2-collapsible-video-name">Video 1</p>
                           </div>
-                          <p class="cm-course__content-collapsible-video-length">01:43</p>
+                          <p class="cm-course__content2-collapsible-video-length">01:43</p>
                         </div>
                       </li>
-                      <li class="cm-course__content-collapsible-item">
-                        <div class="cm-course__content-collapsible-video">
+                      <li class="cm-course__content2-collapsible-item">
+                        <div class="cm-course__content2-collapsible-video">
                           <div>
-                            <i class="fa fa-play-circle cm-course__content-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content-collapsible-video-name">Video 2</p>
+                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
+                            <p class="cm-course__content2-collapsible-video-name">Video 2</p>
                           </div>
-                          <p class="cm-course__content-collapsible-video-length">02:55</p>
+                          <p class="cm-course__content2-collapsible-video-length">02:55</p>
                         </div>
                       </li>
-                      <li class="cm-course__content-collapsible-item">
-                        <div class="cm-course__content-collapsible-video">
+                      <li class="cm-course__content2-collapsible-item">
+                        <div class="cm-course__content2-collapsible-video">
                           <div>
-                            <i class="fa fa-play-circle cm-course__content-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content-collapsible-video-name">Video 3</p>
+                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
+                            <p class="cm-course__content2-collapsible-video-name">Video 3</p>
                           </div>
-                          <p class="cm-course__content-collapsible-video-length">03:34</p>
+                          <p class="cm-course__content2-collapsible-video-length">03:34</p>
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
               </div>
-              <div class="cm-course__author-info">
+              <div class="cm-course__author-info" [ngStyle]="{'display': authorVisibility ? 'block' : 'none'}">
                 <h3 class="cm-course__author-info-heading">Autor</h3>
                 <div class="cm-course__author-info-row">
                   <div class="cm-course__author-info-avatar">
@@ -192,7 +192,7 @@
                   </div>
                 </div>
               </div>
-              <div class="cm-course__reviews">
+              <div class="cm-course__reviews" [ngStyle]="{'display': reviewsVisibility ? 'block' : 'none'}">
                 <h3 class="cm-course__reviews-heading">Ocene kursa</h3>
                 <p class="cm-course__reviews-average">Prosek je 5.00 na osnovu 1 ocene.</p>
                 <div class="cm-course__reviews-rate">

@@ -243,7 +243,7 @@
     }
   
     &__overview {
-      display: none;
+      display: block;
       padding: 3rem;
   
       &-text {
@@ -335,7 +335,7 @@
       }
     }
 
-    &__content {
+    &__content2 {
       display: block;
       padding: 3rem;
 

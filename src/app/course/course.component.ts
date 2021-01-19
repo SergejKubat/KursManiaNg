@@ -7,11 +7,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CourseComponent implements OnInit {
 
-  public sadrzaj: boolean = false;
+  public overviewVisibility: boolean = true;
+  public contentVisibility: boolean = false;
+  public authorVisibility: boolean = false;
+  public reviewsVisibility: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public showTab(index: number): void {
+    // RESET
+    this.overviewVisibility = false;
+    this.contentVisibility = false;
+    this.authorVisibility = false;
+    this.reviewsVisibility = false;
+
+    switch(index) {
+      case 1:
+        this.overviewVisibility = true;
+        break;
+      case 2:
+        this.contentVisibility = true;
+        break;
+      case 3:
+        this.authorVisibility = true;
+        break;
+      case 4:
+        this.reviewsVisibility = true;
+      break;
+    }
   }
 
 }
