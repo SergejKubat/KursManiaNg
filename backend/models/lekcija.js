@@ -9,7 +9,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     SEKCIJA_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'sekcija',
+        key: 'SEKCIJA_ID'
+      }
     },
     LEKCIJA_IME: {
       type: DataTypes.STRING(100),

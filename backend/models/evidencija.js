@@ -9,11 +9,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     KORISNIK_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'korisnik',
+        key: 'KORISNIK_ID'
+      }
     },
     KURS_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'kurs',
+        key: 'KURS_ID'
+      }
     },
     EVIDENCIJA_DATUM: {
       type: DataTypes.STRING(50),

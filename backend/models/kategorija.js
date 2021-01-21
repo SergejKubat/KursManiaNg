@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
     KATEGORIJA_NAZIV: {
       type: DataTypes.STRING(100),
       allowNull: true
+    },
+    KATEGORIJA_SLIKA: {
+      type: DataTypes.TEXT,
+      allowNull: true
     }
   }, {
     sequelize,

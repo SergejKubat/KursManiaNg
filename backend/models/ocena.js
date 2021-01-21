@@ -9,7 +9,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     KURS_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'kurs',
+        key: 'KURS_ID'
+      }
+    },
+    KORISNIK_ID: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'korisnik',
+        key: 'KORISNIK_ID'
+      }
     },
     OCENA_VREDNOST: {
       type: DataTypes.INTEGER,
@@ -45,6 +57,13 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "KURS_ID" },
+        ]
+      },
+      {
+        name: "RELATIONSHIP_8_FK",
+        using: "BTREE",
+        fields: [
+          { name: "KORISNIK_ID" },
         ]
       },
     ]

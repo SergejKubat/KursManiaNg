@@ -9,11 +9,19 @@ module.exports = function(sequelize, DataTypes) {
     },
     AUTOR_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'autor',
+        key: 'AUTOR_ID'
+      }
     },
     KATEGORIJA_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'kategorija',
+        key: 'KATEGORIJA_ID'
+      }
     },
     KURS_IME: {
       type: DataTypes.TEXT,

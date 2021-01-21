@@ -9,7 +9,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     KURS_ID: {
       type: DataTypes.INTEGER,
-      allowNull: true
+      allowNull: true,
+      references: {
+        model: 'kurs',
+        key: 'KURS_ID'
+      }
     },
     SEKCIJA_NASLOV: {
       type: DataTypes.TEXT,
