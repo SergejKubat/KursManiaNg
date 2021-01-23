@@ -5,6 +5,9 @@ const kategorijaController = require('../controllers/kategorijaController');
 const kursController = require('../controllers/kursController');
 const evidencijaController = require('../controllers/evidencijaController');
 const korisnikController = require('../controllers/korisnikController');
+const ocenaController = require('../controllers/ocenaController');
+const sekcijaController = require('../controllers/sekcijaController');
+const lekcijaController = require('../controllers/lekcijaController');
 
 const router = express.Router();
 
@@ -23,5 +26,11 @@ router.get('/kursevi/:kursId', kursController.getById);
 router.get('/evidencije', evidencijaController.getAll);
 
 router.get('/korisnici', korisnikController.getAll);
+
+router.get('/ocene', ocenaController.getAll);
+
+router.get('/sekcije', sekcijaController.getAll);
+
+router.get('/lekcije', lekcijaController.getAll);
 
 module.exports = router;

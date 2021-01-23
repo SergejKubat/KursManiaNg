@@ -4,14 +4,21 @@ const initModels = require("../models/init-models");
 const models = initModels(sequelize);
 
 exports.getAll = async (req, res, next) => {
+  const kursId = req.query.kursId;
   try {
-    const results = await models.korisnik.findAll({
+    const query = {
       attributes: [
-        "KORISNIK_IME",
-        "KORISNIK_AVATAR",
-        "KORISNIK_DATUM_REGISTRACIJE",
-      ]
-    });
+          "SEKCIJA_ID",
+          "SEKCIJA_NASLOV",
+        ],
+      where: {}
+    };
+
+    if (kursId) {
+      query.where.KURS_ID = kursId;
+    }
+
+    const results = await models.sekcija.findAll(query);
     res.status(200).json(results);
   } catch (error) {
     console.error(error);

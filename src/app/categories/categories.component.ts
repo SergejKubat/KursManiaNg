@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Kategorija } from '../models/kategorija.model';
 
 @Component({
   selector: 'app-categories',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+
+  public kategorije: Kategorija[] = [];
 
   constructor() { }
 
