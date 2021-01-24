@@ -1,6 +1,5 @@
-export class Kategorija {
-    constructor(public naziv: string, 
-        public slika: string) {
-        
-    }
+export interface Kategorija {
+    id: number;
+    naziv: string;
+    slika: string;
 }

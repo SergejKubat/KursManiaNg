@@ -5,6 +5,7 @@ const models = initModels(sequelize);
 
 exports.getAll = async (req, res, next) => {
   const autorId = req.query.autorId;
+  const kategorijaId = req.query.kategorijaId;
   try {
     const query = {
       attributes: [
@@ -22,6 +23,10 @@ exports.getAll = async (req, res, next) => {
 
     if (autorId) {
       query.where.AUTOR_ID = autorId;
+    }
+
+    if (kategorijaId) {
+      query.where.KATEGORIJA_ID = kategorijaId;
     }
 
     const results = await models.kurs.findAll(query);

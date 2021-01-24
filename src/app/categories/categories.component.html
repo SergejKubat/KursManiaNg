@@ -5,82 +5,16 @@
     <span class="cm-heading__hr"></span>
   </h1>
   <div class="cm-categories-list">
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-it.jpg"
-        alt="Category - IT"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>It & Softver</h4>
-        <p>12 Kurseva</p>
-      </div>
-    </div>
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-business.jpg"
-        alt="Category - Business"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>Biznis</h4>
-        <p>5 Kurseva</p>
-      </div>
-    </div>
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-marketing.jpg"
-        alt="Category - Marketing"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>Marketing</h4>
-        <p>7 Kurseva</p>
-      </div>
-    </div>
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-design.jpg"
-        alt="Category - Design"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>Dizajn</h4>
-        <p>4 Kursa</p>
-      </div>
-    </div>
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-photography.jpeg"
-        alt="Category - Photography"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>Fotografija & Video</h4>
-        <p>8 Kurseva</p>
-      </div>
-    </div>
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-music.jpg"
-        alt="Category - Music"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>Muzika</h4>
-        <p>2 Kursa</p>
-      </div>
-    </div>
-    <div class="cm-categories-item" tabindex="0">
-      <img
-        src="../assets/img/course-health.jpg"
-        alt="Category - Health"
-        class="cm-categories-img"
-      />
-      <div class="cm-categories-desc">
-        <h4>Zdravlje</h4>
-        <p>3 Kursa</p>
-      </div>
+    <div class="cm-categories-item" tabindex="0" *ngFor="let kategorija of kategorije">
+        <img
+          src="{{ kategorija.KATEGORIJA_SLIKA }}"
+          alt="Kategorija - {{ kategorija.KATEGORIJA_NAZIV }}"
+          class="cm-categories-img"
+        />
+        <div class="cm-categories-desc">
+          <h4>{{ kategorija.KATEGORIJA_NAZIV }}</h4>
+          <p>Kurseva</p>
+        </div>
     </div>
   </div>
 </section>
