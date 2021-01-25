@@ -6,7 +6,7 @@ const models = initModels(sequelize);
 exports.getAll = async (req, res, next) => {
   try {
     const results = await models.autor.findAll({
-      attributes: ["AUTOR_IME", "AUTOR_ZANIMANJE", "AUTOR_OPIS"],
+      attributes: ["AUTOR_ID", "AUTOR_IME", "AUTOR_ZANIMANJE", "AUTOR_OPIS", "AUTOR_SLIKA"],
     });
     res.status(200).json(results);
   } catch (error) {
@@ -19,7 +19,7 @@ exports.getById = async (req, res, next) => {
   const autorId = req.params.autorId;
   try {
     const result = await models.autor.findOne({
-      attributes: ["AUTOR_IME", "AUTOR_ZANIMANJE", "AUTOR_OPIS"],
+      attributes: ["AUTOR_ID", "AUTOR_IME", "AUTOR_ZANIMANJE", "AUTOR_OPIS", "AUTOR_SLIKA"],
       where: { AUTOR_ID: autorId }
     });
     res.status(200).json(result);

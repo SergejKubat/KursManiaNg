@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Kurs } from '../models/kurs.model';
@@ -7,6 +7,7 @@ import { Kurs } from '../models/kurs.model';
   providedIn: 'root'
 })
 export class CoursesService {
+  
   private kursevi: Observable<Kurs[]>;
   private readonly kurseviUrl = 'http://localhost:3000/kursevi';
 

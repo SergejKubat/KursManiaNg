@@ -12,7 +12,6 @@ import { CoursesService } from '../services/courses.service';
 export class CategoriesComponent implements OnInit {
 
   public kategorije: Kategorija[] = [];
-  public kursevi: Kurs[] = [];
 
   constructor(private categoriesService: CategoriesService, private coursesService: CoursesService) {
     this.categoriesService.getCategories().subscribe((kategorije: Kategorija[]) => {
@@ -23,12 +22,10 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public getCoursesByCategoryId(kategorijaId: number): number {
-    let brojKurseva: number = 0;
+  public getCoursesByCategoryId(kategorijaId: number) {
     this.coursesService.getKurseviByCategoryId(kategorijaId).subscribe((kursevi: Kurs[]) => {
-      brojKurseva = kursevi.length;
+      
     });
-    return brojKurseva;
   }
 
 }

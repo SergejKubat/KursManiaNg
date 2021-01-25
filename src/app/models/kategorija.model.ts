@@ -1,5 +1,5 @@
 export interface Kategorija {
-    id: number;
-    naziv: string;
-    slika: string;
+    KATEGORIJA_ID: number;
+    KATEGORIJA_NAZIV: string;
+    KATEGORIJA_SLIKA: string;
 }

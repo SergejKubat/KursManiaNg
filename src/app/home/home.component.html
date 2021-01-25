@@ -52,7 +52,7 @@
       </div>
       <div class="cm-numbers__col">
         <div class="cm-numbers__main">
-          <h1>10k</h1>
+          <h1>{{ studenti.length }}</h1>
         </div>
         <div class="cm-numbers__sub">
           <span>Studenata</span>
@@ -60,7 +60,7 @@
       </div>
       <div class="cm-numbers__col">
         <div class="cm-numbers__main">
-          <h1>500+</h1>
+          <h1>{{ kursevi.length }}</h1>
         </div>
         <div class="cm-numbers__sub">
           <span>Kurseva</span>
@@ -77,63 +77,22 @@
       <span class="cm-all-categories__hr"></span>
     </h1>
     <div class="cm-featured-instructors__row">
-      <div class="cm-featured-instructors__col">
+      <div class="cm-featured-instructors__col" *ngFor="let autor of autori">
         <div class="cm-featured-instructors__item">
           <div class="cm-featured-instructors__thumb">
             <img
-              src="../assets/img/autor-1.jpg"
-              alt="Autor 1"
+              src="{{ autor.AUTOR_SLIKA }}"
+              alt="{{ autor.AUTOR_IME }}"
               height="140"
               width="140"
               class="cm-featured-instructors__img"
             />
           </div>
-          <h3>Jelena Dojčinović</h3>
-          <span>Software Developer</span>
+          <h3>{{ autor.AUTOR_IME }}</h3>
+          <span>{{ autor.AUTOR_ZANIMANJE }}</span>
           <span class="cm-all-categories__hr"></span>
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            quisquam eaque nisi optio...
-          </p>
-        </div>
-      </div>
-      <div class="cm-featured-instructors__col">
-        <div class="cm-featured-instructors__item">
-          <div class="cm-featured-instructors__thumb">
-            <img
-              src="../assets/img/autor-2.jpg"
-              alt="Autor 1"
-              height="140"
-              width="140"
-              class="cm-featured-instructors__img"
-            />
-          </div>
-          <h3>Milica Andrić</h3>
-          <span>Web dizajner</span>
-          <span class="cm-all-categories__hr"></span>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam
-            quisquam...
-          </p>
-        </div>
-      </div>
-      <div class="cm-featured-instructors__col">
-        <div class="cm-featured-instructors__item">
-          <div class="cm-featured-instructors__thumb">
-            <img
-              src="../assets/img/autor-3.jpg"
-              alt="Autor 1"
-              height="140"
-              width="140"
-              class="cm-featured-instructors__img"
-            />
-          </div>
-          <h3>Marko Krunić</h3>
-          <span>Električni inženjer</span>
-          <span class="cm-all-categories__hr"></span>
-          <p>
-            Tempora molestias minima illum, quasi veritatis libero voluptas?
-            Non, id! Veniam quisquam...
+            {{ autor.AUTOR_OPIS.substring(0, 80) + "..." }}
           </p>
         </div>
       </div>
@@ -142,7 +101,9 @@
 
   <section class="cm-sponsors">
     <h1 class="cm-heading">
-      <span class="cm-heading__main">Organizacije koje koriste naše usluge.</span>
+      <span class="cm-heading__main"
+        >Organizacije koje koriste naše usluge.</span
+      >
       <span class="cm-heading__sub">Naši sponzori</span>
       <span class="cm-heading__hr"></span>
       <span class="cm-all-categories__hr"></span>
