@@ -4,21 +4,21 @@
         <div class="cm-course__primary">
           <article class="cm-course__content">
             <div class="cm-course__header">
-              <h1>Naslov</h1>
+              <h1>{{ kurs?.KURS_IME }}</h1>
               <div class="cm-course__meta">
                 <div class="cm-course__author">
-                  <img src="../assets/img/autor-4.jpg" alt="Autor" class="cm-course__author-avatar">
+                  <img src="{{ autor?.AUTOR_SLIKA }}" alt="{{ autor?.AUTOR_IME }}" class="cm-course__author-avatar">
                   <div class="cm-course__author-contain">
-                    <label class="cm-course__author-job">Profesor</label>
+                    <label class="cm-course__author-job">Autor</label>
                     <div class="cm-course__author-name">
-                      <a href="#">Nikola Nikolic</a>
+                      <a [routerLink]="['/autor', autor?.AUTOR_ID]">{{ autor?.AUTOR_IME }}</a>
                     </div>
                   </div>
                 </div>
                 <div class="cm-course__category">
                   <label>Kategorija</label>
                   <div class="cm-course__category-name">
-                    <a href="#" class="cm-course__category-link">IT & Softver</a>
+                    <a href="#" class="cm-course__category-link">{{ kategorija?.KATEGORIJA_NAZIV }}</a>
                   </div>
                 </div>
                 <div class="cm-course__review">
@@ -36,8 +36,8 @@
               </div>
               <div class="cm-course__payment">
                 <div class="cm-course__price">
-                  <span class="cm-course__price-old">29.99$</span>
-                  <span class="cm-course__price-new">11.99$</span>
+                  <span class="cm-course__price-old">29.99 $</span>
+                  <span class="cm-course__price-new">{{ kurs?.KURS_CENA }} $</span>
                 </div>
                 <div class="cm-course__button">
                   <button class="cm-btn">Kupite ovaj kurs</button>
@@ -45,7 +45,7 @@
               </div>
             </div>
             <div class="cm-course__thumbnail">
-              <img src="../assets/img/course-javascript.jpg" alt="Javascript thumbnail" class="cm-course__thumbnail-img">
+              <img src="{{ kurs?.KURS_SLIKA }}" alt="{{ kurs?.KURS_IME }}" class="cm-course__thumbnail-img">
             </div>
             <div class="cm-course__tabs">
               <ul class="cm-course__tabs-nav">
@@ -58,9 +58,7 @@
                 <div class="cm-course__row">
                   <div class="cm-course__overview-text">
                     <div class="cm-course__overview-desc">
-                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s.</p>
-                      <p>When an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                      <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using ‘Content here, content here’, making it look like readable English.</p>
+                      <p>{{ kurs?.KURS_OPIS }}</p>
                     </div>
                   </div>
                   <div class="cm-course__overview-info">
@@ -69,7 +67,7 @@
                       <li>
                         <i class="fa fa-users" aria-hidden="true"></i>
                         <span class="cm-course__overview-info-label">Studenti</span>
-                        <span class="cm-course__overview-info-value">151</span>
+                        <span class="cm-course__overview-info-value">{{ evidencija?.length }}</span>
                       </li>
                       <li>
                         <i class="fa fa-clock-o" aria-hidden="true"></i>
@@ -79,12 +77,12 @@
                       <li>
                         <i class="fa fa-level-up" aria-hidden="true"></i>
                         <span class="cm-course__overview-info-label">Veštine</span>
-                        <span class="cm-course__overview-info-value">Programiranje</span>
+                        <span class="cm-course__overview-info-value">{{ kategorija?.KATEGORIJA_NAZIV }}</span>
                       </li>
                       <li>
                         <i class="fa fa-language" aria-hidden="true"></i>
                         <span class="cm-course__overview-info-label">Jezik</span>
-                        <span class="cm-course__overview-info-value">Srpski</span>
+                        <span class="cm-course__overview-info-value">{{ kurs?.KURS_JEZIK }}</span>
                       </li>
                       <li>
                         <i class="fa fa-undo" aria-hidden="true"></i>
@@ -183,12 +181,12 @@
                 <h3 class="cm-course__author-info-heading">Autor</h3>
                 <div class="cm-course__author-info-row">
                   <div class="cm-course__author-info-avatar">
-                    <img src="../../assets/img/max.jpg" alt="Max" class="cm-course__author-info-img">
+                    <img [routerLink]="['/autor', autor?.AUTOR_ID]" src="{{ autor?.AUTOR_SLIKA }}" alt="{{ autor?.AUTOR_IME }}" class="cm-course__author-info-img">
                   </div>
                   <div class="cm-course__author-info-content">
-                    <h3 class="cm-course__author-info-name">Maximilian Schwarzmüller</h3>
-                    <p class="cm-course__author-info-details">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt officia suscipit quo id soluta quisquam perspiciatis fugiat nostrum aut assumenda. Minus, itaque explicabo amet blanditiis nisi iure excepturi voluptas culpa!</p>
-                    <button class="cm-btn">Detaljnije</button>
+                    <h3 [routerLink]="['/autor', autor?.AUTOR_ID]" class="cm-course__author-info-name">{{ autor?.AUTOR_IME }}</h3>
+                    <p class="cm-course__author-info-details">{{ autor?.AUTOR_OPIS.substring(0, 150) + '...' }}</p>
+                    <button [routerLink]="['/autor', autor?.AUTOR_ID]" class="cm-btn">Detaljnije</button>
                   </div>
                 </div>
               </div>

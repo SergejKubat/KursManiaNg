@@ -21,5 +21,9 @@ export class CategoriesService {
 
   public getCategories(): Observable<Kategorija[]> {
     return this.kategorije;
-  } 
+  }
+
+  public getCategory(categoryId: number): Observable<Kategorija> {
+    return this.http.get<Kategorija>(`${this.kategorijeUrl}/${categoryId}`);
+  }
 }

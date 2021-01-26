@@ -5,16 +5,18 @@ const models = initModels(sequelize);
 
 exports.getAll = async (req, res, next) => {
   const kursId = req.query.kursId;
+  const korisnikId = req.query.korisnikId;
   try {
     const query = {
-      attributes: [
-        "KORISNIK_ID"
-      ],
       where: {}
     };
 
     if (kursId) {
       query.where.KURS_ID = kursId;
+    }
+
+    if (korisnikId) {
+      query.where.KORISNIK_ID = korisnikId;
     }
 
     const results = await models.evidencija.findAll(query);

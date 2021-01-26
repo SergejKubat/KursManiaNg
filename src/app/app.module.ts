@@ -16,6 +16,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ErrorComponent } from './error/error.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CoursesComponent } from './courses/courses.component';
+import { OnCreateDirective } from './directives/on-create.directive';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CoursesComponent } from './courses/courses.component';
     RegistrationComponent,
     ErrorComponent,
     CategoriesComponent,
-    CoursesComponent
+    CoursesComponent,
+    OnCreateDirective
   ],
   imports: [
     BrowserModule,

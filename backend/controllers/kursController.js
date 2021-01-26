@@ -8,16 +8,6 @@ exports.getAll = async (req, res, next) => {
   const kategorijaId = req.query.kategorijaId;
   try {
     const query = {
-      attributes: [
-        "AUTOR_ID",
-        "KATEGORIJA_ID",
-        "KURS_IME",
-        "KURS_OPIS",
-        "DATUM_POSLEDNJE_PROMENE",
-        "KURS_JEZIK",
-        "KURS_CENA",
-        "KURS_SLIKA",
-      ],
       where: { KURS_JAVAN: 1 }
     };
 
@@ -41,16 +31,6 @@ exports.getById = async (req, res, next) => {
   const kursId = req.params.kursId;
   try {
     const result = await models.kurs.findOne({
-      attributes: [
-        "AUTOR_ID",
-        "KATEGORIJA_ID",
-        "KURS_IME",
-        "KURS_OPIS",
-        "DATUM_POSLEDNJE_PROMENE",
-        "KURS_JEZIK",
-        "KURS_CENA",
-        "KURS_SLIKA",
-      ],
       where: { KURS_ID: kursId, KURS_JAVAN: 1 }
     });
     res.status(200).json(result);

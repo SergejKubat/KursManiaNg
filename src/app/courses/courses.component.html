@@ -10,7 +10,7 @@
     <div class="cm-courses__content">
       <div class="cm-courses__list">
 
-        <div class="cm-course-item" *ngFor="let kurs of kursevi">
+        <div class="cm-course-item" *ngFor="let kurs of kursevi; let i = index">
           <div class="cm-course-item__thumbnail">
             <img
               src="{{ kurs.KURS_SLIKA }}"
@@ -18,7 +18,7 @@
               class="cm-course-item__img"
             />
             <div class="cm-course-item__hidden">
-              <button class="cm-btn" [routerLink]="['/kurs/1']">Detalji</button>
+              <button class="cm-btn" [routerLink]="['/kurs', kurs.KURS_ID]">Detalji</button>
             </div>
             <span class="cm-course-item__popular">Popularan</span>
             <span class="cm-course-item__price">$ {{ kurs.KURS_CENA }}</span>
@@ -37,11 +37,11 @@
             <div class="cm-course-item__info">
               <span>
                 <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                <a href="#">{{ kurs.AUTOR_ID }}</a>
+                <a [routerLink]="['/autor', kurs.AUTOR_ID]" (onCreate)="getAuthor(kurs.AUTOR_ID)"></a>
               </span>
-              <span>
+              <span (onCreate)="getNumberOfStudents(kurs.KURS_ID)">
                 <i class="fa fa-users" aria-hidden="true"></i>
-                41 student
+                
               </span>
             </div>
           </div>

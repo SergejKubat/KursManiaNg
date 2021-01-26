@@ -24,6 +24,10 @@ export class CoursesService {
     return this.kursevi;
   }
 
+  public getKurs(kursId: number): Observable<Kurs> {
+    return this.http.get<Kurs>(`${this.kurseviUrl}/${kursId}`);
+  }
+
   public getKurseviByCategoryId(kategorijaId: number): Observable<Kurs[]> {
     let params = new HttpParams().set('kategorijaId', kategorijaId.toString());
     return this.http.get<Kurs[]>(this.kurseviUrl, { params });

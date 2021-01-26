@@ -1,12 +1,12 @@
 export interface Kurs {
-    id: number;
-    autorId: number;
-    kategorijaId: number;
-    ime: string;
-    opis: string;
-    datumPoslednjePromene: string;
-    jezik: string;
-    cena: number;
-    slika: string;
-    javan: boolean;
+    KURS_ID: number;
+    AUTOR_ID: number;
+    KATEGORIJA_ID: number;
+    KURS_IME: string;
+    KURS_OPIS: string;
+    DATUM_POSLEDNJE_PROMENE: string;
+    KURS_JEZIK: string;
+    KURS_CENA: number;
+    KURS_SLIKA: string;
+    KURS_JAVAN: boolean;
 }
