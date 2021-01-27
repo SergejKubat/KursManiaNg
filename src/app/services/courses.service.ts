@@ -32,4 +32,9 @@ export class CoursesService {
     let params = new HttpParams().set('kategorijaId', kategorijaId.toString());
     return this.http.get<Kurs[]>(this.kurseviUrl, { params });
   }
+
+  public getKurseviByAuthorId(autorId: number): Observable<Kurs[]> {
+    let params = new HttpParams().set('autorId', autorId.toString());
+    return this.http.get<Kurs[]>(this.kurseviUrl, { params });
+  }
 }

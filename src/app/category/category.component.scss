@@ -1,25 +1,6 @@
-@import '../../sass/abstracts/mixins';
-@import '../../sass/abstracts/variables';
-@import '../../sass/base/typography';
-
-.cm-all-categories {
-  margin-top: 6rem;
-}
-
-.cm-categories-list {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 6rem 15rem;
-
-  @include respond(laptop) {
-    margin: 6rem;
-  }
-
-  @include respond(tablet) {
-    margin: 6rem 0;
-  }
-}
+@import "../../sass/abstracts/mixins";
+@import "../../sass/abstracts/variables";
+@import "../../sass/base/typography";
 
 .cm-categories-item {
   position: relative;

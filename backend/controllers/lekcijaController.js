@@ -8,11 +8,6 @@ exports.getAll = async (req, res, next) => {
   const sekcijaId = req.query.sekcijaId;
   try {
     const query = {
-      attributes: [
-          "LEKCIJA_IME", 
-          "LEKCIJA_OPIS", 
-          "LEKCIJA_VIDEO"
-        ],
       where: {}
     };
 

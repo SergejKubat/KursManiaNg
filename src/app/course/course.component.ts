@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { Autor } from '../models/autor.model';
 import { Evidencija } from '../models/evidencija.model';
-import { Kategorija } from '../models/kategorija.model';
 import { Kurs } from '../models/kurs.model';
+import { Ocena } from '../models/ocena.model';
 import { AutorService } from '../services/autor.service';
-import { CategoriesService } from '../services/categories.service';
-import { CoursesService } from '../services/courses.service';
+import { MarkService } from '../services/mark.service';
 import { RecordService } from '../services/record.service';
 
 @Component({
@@ -15,72 +13,39 @@ import { RecordService } from '../services/record.service';
   styleUrls: ['./course.component.scss'],
 })
 export class CourseComponent implements OnInit {
-  public overviewVisibility: boolean = true;
-  public contentVisibility: boolean = false;
-  public authorVisibility: boolean = false;
-  public reviewsVisibility: boolean = false;
-
-  public kurs: Kurs;
+  @Input() kurs: Kurs;
   public autor: Autor;
-  public kategorija: Kategorija;
   public evidencija: Evidencija[] = [];
+  public ocene: Ocena[] = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private courseService: CoursesService,
     private autorService: AutorService,
-    private categoriesService: CategoriesService,
-    private recordService: RecordService
-  ) {
-    this.route.paramMap.subscribe((params) => {
-      const kursId = Number(params.get('kursId'));
+    private recordService: RecordService,
+    private markService: MarkService
+  ) {}
 
-      this.courseService.getKurs(kursId).subscribe((kurs: Kurs) => {
-        this.kurs = kurs;
+  ngOnInit(): void {
 
-        this.autorService
-          .getAuthor(this.kurs.KURS_ID)
-          .subscribe((autor: Autor) => {
-            this.autor = autor;
-          });
+    this.autorService.getAuthor(this.kurs.AUTOR_ID).subscribe((autor: Autor) => {
+      this.autor = autor;
+    });
 
-        this.categoriesService
-          .getCategory(this.kurs.KATEGORIJA_ID)
-          .subscribe((kategorija: Kategorija) => {
-            this.kategorija = kategorija;
-          });
+    this.recordService.getRecordsByCourseId(this.kurs.KURS_ID).subscribe((evidencija: Evidencija[]) => {
+      this.evidencija = evidencija;
+    });
 
-        this.recordService
-          .getRecordsByCourseId(this.kurs.KURS_ID)
-          .subscribe((evidencija: Evidencija[]) => {
-            this.evidencija = evidencija;
-          });
-      });
+    this.markService.getMarksByCourseId(this.kurs.KURS_ID).subscribe((ocene: Ocena[]) => {
+      this.ocene = ocene;
     });
   }
 
-  ngOnInit(): void {}
-
-  public showTab(index: number): void {
-    // RESET
-    this.overviewVisibility = false;
-    this.contentVisibility = false;
-    this.authorVisibility = false;
-    this.reviewsVisibility = false;
-
-    switch (index) {
-      case 1:
-        this.overviewVisibility = true;
-        break;
-      case 2:
-        this.contentVisibility = true;
-        break;
-      case 3:
-        this.authorVisibility = true;
-        break;
-      case 4:
-        this.reviewsVisibility = true;
-        break;
-    }
+  public countAverageMark(): number {
+    if (!this.ocene.length) return 0;
+    let sum = 0;
+    let length = this.ocene.length;
+    this.ocene.forEach((ocena) => {
+      sum += ocena.OCENA_VREDNOST;
+    });
+    return sum / length;
   }
 }

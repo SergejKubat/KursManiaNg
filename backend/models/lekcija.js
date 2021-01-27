@@ -26,6 +26,10 @@ module.exports = function(sequelize, DataTypes) {
     LEKCIJA_VIDEO: {
       type: DataTypes.TEXT,
       allowNull: true
+    },
+    LEKCIJA_DUZINA_TRAJANJA: {
+      type: DataTypes.INTEGER,
+      allowNull: true
     }
   }, {
     sequelize,

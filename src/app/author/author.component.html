@@ -1,26 +1,26 @@
 <section class="cm-author">
     <div class="cm-author__container">
-      <img src="../assets/img/max.jpg" alt="Max" class="cm-author__img" height="200" width="200">
+      <img src="{{ autor?.AUTOR_SLIKA }}" alt="{{ autor?.AUTOR_IME }}" class="cm-author__img" height="200" width="200">
       <div class="cm-author__content">
         <div class="cm-author__title">Autor</div>
-        <h1 class="cm-author__heading">Maximilian Schwarzmüller</h1>
-        <h2 class="cm-author__job">Professional Web Developer and Instructor</h2>
+        <h1 class="cm-author__heading">{{ autor?.AUTOR_IME }}</h1>
+        <h2 class="cm-author__job">{{ autor?.AUTOR_ZANIMANJE }}</h2>
         <div class="cm-author__stats">
           <div class="cm-author__stat">
             <div class="cm-author__stat-title">Ukupno studenata</div>
-            <div class="cm-author__stat-count">1,432</div>
+            <div class="cm-author__stat-count">{{ brojStudenata }}</div>
           </div>
           <div class="cm-author__stat">
             <div class="cm-author__stat-title">Ocene</div>
-            <div class="cm-author__stat-count">924</div>
+            <div class="cm-author__stat-count">{{ brojOcena }}</div>
           </div>
         </div>
         <h2 class="cm-author__about-heading">O meni</h2>
-        <p class="cm-author__about-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit accusantium ut sunt? Molestiae minus corporis dicta architecto quibusdam iste! Accusantium animi, suscipit a earum iusto aliquam veniam, sed vitae consequuntur, dignissimos minus voluptatibus culpa commodi quidem provident. Deserunt tenetur itaque non cumque nisi laudantium molestiae eligendi omnis, perspiciatis sit reprehenderit tempore, voluptatum nostrum velit! Deserunt consequuntur similique illo minus facere ea animi dolore facilis corporis? Exercitationem ipsum dignissimos iusto voluptatibus amet aspernatur iure ex porro, ullam dicta. Fugiat sit numquam modi illo veritatis, doloremque nam ab. Provident culpa nobis non distinctio nam iusto error similique facilis, repellendus inventore natus dolorem quasi officia! Commodi velit sit nobis accusantium ipsum maiores deleniti saepe. Voluptate, officia sapiente. Sunt, iure labore quidem amet perferendis cupiditate fugiat nostrum aliquid molestias eaque sit ab maxime quis reiciendis incidunt, repellendus quisquam! Quisquam consectetur provident laboriosam sint distinctio sunt magni perspiciatis deserunt sed quas, vel explicabo! Architecto impedit, veniam aliquam et dolore autem maxime, eaque harum quod suscipit perspiciatis! Molestiae quam nemo, obcaecati architecto nisi earum impedit. Eos illum aut, repellat aliquam mollitia fugit temporibus tempora, quibusdam quidem consectetur accusantium. Quasi aperiam pariatur labore blanditiis molestias numquam nulla! Beatae aut tempora, error blanditiis dolor itaque veritatis impedit consequuntur!</p>
+        <p class="cm-author__about-text">{{ autor?.AUTOR_OPIS }}</p>
       </div>
 
       <div class="cm-author__courses">
-        <h2 class="cm-author__courses-title">Moji kursevi (3)</h2>
+        <h2 class="cm-author__courses-title">Moji kursevi ({{ kursevi?.length }})</h2>
         <div class="cm-author__courses-list">
           <div class="cm-course-item">
             <div class="cm-course-item__thumbnail">

@@ -6,7 +6,18 @@
     </h2>
   </section>
 
-  <app-categories></app-categories>
+  <section class="cm-all-categories">
+    <h1 class="cm-heading">
+      <span class="cm-heading__main">Dobrodošli na KursManiju.</span>
+      <span class="cm-heading__sub">Kategorije Kurseva</span>
+      <span class="cm-heading__hr"></span>
+    </h1>
+    <div class="cm-categories-list">
+      <div *ngFor="let kategorija of kategorije">
+        <app-category [kategorija]="kategorija"></app-category>
+      </div>
+    </div>
+  </section>
 
   <section class="cm-about">
     <div class="cm-about__details">
@@ -30,7 +41,24 @@
     </div>
   </section>
 
-  <app-courses></app-courses>
+  <section class="cm-courses">
+    <h1 class="cm-heading">
+      <span class="cm-heading__main">Pogledajte neke od najpopularnijih kurseva</span>
+      <span class="cm-heading__sub">Popularni kursevi</span>
+      <span class="cm-heading__hr"></span>
+      <span class="cm-all-categories__hr"></span>
+    </h1>
+    
+    <div class="cm-courses__container">
+      <div class="cm-courses__content">
+        <div class="cm-courses__list">
+          <div *ngFor="let kurs of kursevi">
+            <app-course [kurs]="kurs"></app-course>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="cm-numbers">
     <div class="cm-numbers__row">

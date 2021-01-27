@@ -17,12 +17,4 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public getResults() {
-    console.log(this.query);
-  }
-
-  public onSubmit() {
-    console.log('submitovano');
-  }
-
 }

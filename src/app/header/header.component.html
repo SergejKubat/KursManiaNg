@@ -10,44 +10,11 @@
         <h1 class="cm-logo__text">KursMania</h1>
       </div>
     </a>
-    <div class="cm-search">
-      <form class="cm-search__form" (submit)="onSubmit()">
-        <input
-          type="text"
-          name="q"
-          placeholder="Pretražite kurseve"
-          value=""
-          class="cm-search__input"
-          autocomplete="off"
-          [(ngModel)]="query"
-          (change)="getResults()"
-        />
-        <button class="cm-search__btn">
-          <svg class="cm-search__icon">
-            <use xlink:href="../assets/svg/icons.svg#icon-search"></use>
-          </svg>
-        </button>
-      </form>
-      <div class="cm-search__results" [ngClass]="{'cm-search__results-hidden': !searchResultDisplay}">
-        <ul class="cm-search__list">
-          <li class="cm-search__item">
-            <i class="fa fa-search" aria-hidden="true"></i> Autor
-          </li>
-          <li class="cm-search__item">
-            <i class="fa fa-search" aria-hidden="true"></i> Kurs 1
-          </li>
-          <li class="cm-search__item">
-            <i class="fa fa-search" aria-hidden="true"></i> Kurs 2
-          </li>
-          <li class="cm-search__item">
-            <i class="fa fa-search" aria-hidden="true"></i> Kategorija
-          </li>
-          <li class="cm-search__item">
-            <i class="fa fa-search" aria-hidden="true"></i> Kurs 2
-          </li>
-        </ul>
-      </div>
+    
+    <div style="flex: 0 0 60%;">
+      <app-search-bar></app-search-bar>
     </div>
+
     <nav class="cm-categories">
       <button class="cm-categories__btn">
         Kategorije

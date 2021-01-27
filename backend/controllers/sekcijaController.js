@@ -7,10 +7,6 @@ exports.getAll = async (req, res, next) => {
   const kursId = req.query.kursId;
   try {
     const query = {
-      attributes: [
-          "SEKCIJA_ID",
-          "SEKCIJA_NASLOV",
-        ],
       where: {}
     };
 

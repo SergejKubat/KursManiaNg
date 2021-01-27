@@ -1,0 +1,35 @@
+<div class="cm-search">
+  <form class="cm-search__form" (submit)="onSubmit()">
+    <input
+      type="text"
+      name="q"
+      placeholder="Pretražite kurseve"
+      value=""
+      #search
+      [ngModel]="query"
+      class="cm-search__input"
+      autocomplete="off"
+      (ngModelChange)="getResults(search)"
+    />
+    <button class="cm-search__btn">
+      <svg class="cm-search__icon">
+        <use xlink:href="../assets/svg/icons.svg#icon-search"></use>
+      </svg>
+    </button>
+  </form>
+  <div
+    class="cm-search__results"
+    [ngClass]="{ 'cm-search__results-hidden': !searchResultDisplay }"
+  >
+    <ul class="cm-search__list">
+      <li class="cm-search__item" *ngFor="let rezultat of prikaz">
+        <a *ngIf="rezultat.tip === 'Kurs'" [routerLink]="['/kurs', rezultat.id]">
+          <i class="fa fa-search" aria-hidden="true"></i> {{ rezultat.ime }}
+        </a>
+        <a *ngIf="rezultat.tip === 'Autor'" [routerLink]="['/autor', rezultat.id]">
+          <i class="fa fa-search" aria-hidden="true"></i> {{ rezultat.ime }}
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

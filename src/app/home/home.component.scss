@@ -39,6 +39,25 @@
   }
 }
 
+.cm-all-categories {
+  margin-top: 6rem;
+}
+
+.cm-categories-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 6rem 15rem;
+
+  @include respond(laptop) {
+    margin: 6rem;
+  }
+
+  @include respond(tablet) {
+    margin: 6rem 0;
+  }
+}
+
 .cm-about {
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +120,47 @@
       width: 100%;
     }
   }
+}
+
+.cm-courses {
+
+  padding: 9rem 0;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 140rem;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+
+    @include respond(laptop) {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    margin: 3rem 0;
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding: 0 1.5rem;
+    text-align: center;
+
+    @include respond(mobileL) {
+      margin: 1rem 0;
+    }
+
+    @include respond(mobileS) {
+      padding: 0;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
 }
 
 .cm-numbers {

@@ -9,14 +9,16 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AuthorComponent } from './author/author.component';
-import { CourseComponent } from './course/course.component';
+import { CourseDetailsComponent } from './course-details/course-details.component';
 import { CourseListComponent } from './courselist/courselist.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ErrorComponent } from './error/error.component';
-import { CategoriesComponent } from './categories/categories.component';
 import { CoursesComponent } from './courses/courses.component';
 import { OnCreateDirective } from './directives/on-create.directive';
+import { CategoryComponent } from './category/category.component';
+import { CourseComponent } from './course/course.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 
 @NgModule({
   declarations: [
@@ -25,14 +27,16 @@ import { OnCreateDirective } from './directives/on-create.directive';
     FooterComponent,
     HomeComponent,
     AuthorComponent,
-    CourseComponent,
+    CourseDetailsComponent,
     CourseListComponent,
     LoginComponent,
     RegistrationComponent,
     ErrorComponent,
-    CategoriesComponent,
     CoursesComponent,
-    OnCreateDirective
+    OnCreateDirective,
+    CategoryComponent,
+    CourseComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,
