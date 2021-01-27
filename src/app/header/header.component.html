@@ -22,26 +22,8 @@
       </button>
       <div class="cm-categories__hidden">
         <ul class="cm-categories__list">
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/it&softver']">IT & Softver</a></a>
-          </li>
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/biznis']">Biznis</a></a>
-          </li>
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/marketing']">Marketing</a></a>
-          </li>
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/dizajn']">Dizajn</a></a>
-          </li>
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/fotografija&video']">Fotografija & video</a></a>
-          </li>
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/muzika']">Muzika</a></a>
-          </li>
-          <li class="cm-categories__item">
-            <a href="#" class="cm-categories__link"><a [routerLink]="['/kursevi/zdravlje']">Zdravlje</a></a>
+          <li class="cm-categories__item" *ngFor="let kategorija of kategorije">
+            <a class="cm-categories__link">{{ kategorija.KATEGORIJA_NAZIV }}</a>
           </li>
         </ul>
       </div>
@@ -98,13 +80,7 @@
               ></i>
             </label>
             <ul class="cm-navigation__sub-list">
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/it&softver']" (click)='showMenu = !showMenu'>IT & Softver</a></li>
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/biznis']" (click)='showMenu = !showMenu'>Biznis</a></li>
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/marketing']" (click)='showMenu = !showMenu'>Marketing</a></li>
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/dizajn']" (click)='showMenu = !showMenu'>Dizajn</a></li>
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/fotografija&video']" (click)='showMenu = !showMenu'>Fotografija & video</a></li>
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/muzika']" (click)='showMenu = !showMenu'>Muzika</a></li>
-              <li class="cm-navigation__sub-item"><a [routerLink]="['/kursevi/zdravlje']" (click)='showMenu = !showMenu'>Zdravlje</a></li>
+              <li class="cm-navigation__sub-item" *ngFor="let kategorija of kategorije"><a (click)='showMenu = !showMenu'>{{ kategorija.KATEGORIJA_NAZIV }}</a></li>
             </ul>
           </li>
           <li class="cm-navigation__item"><a [routerLink]="['/prijava']" (click)='showMenu = !showMenu'>Prijava</a></li>

@@ -1,0 +1,43 @@
+@import "../../sass/abstracts/mixins";
+@import "../../sass/abstracts/variables";
+
+.cm-course__content2 {
+  &-collapsible {
+    border: 1px solid $color-white;
+
+    &-checkbox {
+      display: none;
+    }
+
+    &-checkbox:checked ~ &-content {
+      display: block;
+    }
+
+    &-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      background-color: $color-primary;
+    }
+
+    &-heading {
+      font-size: 1.6rem;
+      color: $color-white;
+    }
+
+    &-icon {
+      font-size: 1.4rem;
+      color: $color-white;
+    }
+
+    &-content {
+      display: none;
+      padding: 1.5rem;
+    }
+
+    &-list {
+      list-style-type: none;
+    }
+  }
+}

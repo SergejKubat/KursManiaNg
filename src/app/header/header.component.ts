@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Kategorija } from '../models/kategorija.model';
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +14,13 @@ export class HeaderComponent implements OnInit {
 
   public query: string;
 
-  constructor() { }
+  public kategorije: Kategorija[] =[];
+
+  constructor(private categoriesService: CategoriesService) {
+    this.categoriesService.getCategories().subscribe((kategorije: Kategorija[]) => {
+      this.kategorije = kategorije;
+    });
+  }
 
   ngOnInit(): void {
   }

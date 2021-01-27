@@ -1,0 +1,37 @@
+@import "../../sass/abstracts/mixins";
+@import "../../sass/abstracts/variables";
+
+.cm-course__content2 {
+  &-collapsible {
+    border: 1px solid $color-white;
+
+    &-item {
+      padding: 1rem 0;
+      font-size: 1.4rem;
+    }
+
+    &-video {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      & div {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      &-play {
+        color: $color-primary;
+      }
+
+      &-name {
+        margin-left: 1rem;
+      }
+
+      &-length {
+        color: $color-grey-4;
+      }
+    }
+  }
+}

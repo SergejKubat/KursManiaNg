@@ -32,7 +32,7 @@ export class CourseDetailsComponent implements OnInit {
   public evidencija: Evidencija[] = [];
   public ocene: Ocena[] = [];
   public sekcije: Sekcija[] = [];
-  public lekcije: Lekcija[] = [];
+  public preporuceniKursevi: Kurs[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -51,7 +51,7 @@ export class CourseDetailsComponent implements OnInit {
         this.kurs = kurs;
 
         this.autorService
-          .getAuthor(this.kurs.KURS_ID)
+          .getAuthor(this.kurs.AUTOR_ID)
           .subscribe((autor: Autor) => {
             this.autor = autor;
           });
@@ -78,15 +78,16 @@ export class CourseDetailsComponent implements OnInit {
           .getSectionsByCourseId(this.kurs.KURS_ID)
           .subscribe((sekcije: Sekcija[]) => {
             this.sekcije = sekcije;
+          });
 
-            sekcije.forEach((section) => {
-              this.lessonService
-                .getLessonsBySectionId(section.SEKCIJA_ID)
-                .subscribe((lekcije: Lekcija[]) => {
-                  this.lekcije.push(...lekcije);
-                });
+        this.courseService
+          .getKurseviByCategoryId(this.kurs.KATEGORIJA_ID)
+          .subscribe((kursevi: Kurs[]) => {
+            kursevi.forEach((k) => {
+              if (k.KURS_ID !== this.kurs.KURS_ID) {
+                this.preporuceniKursevi.push(k);
+              }
             });
-
           });
       });
     });
@@ -130,6 +131,10 @@ export class CourseDetailsComponent implements OnInit {
   public countPercOfSpecMark(mark: number): number {
     if (mark <= 0 && mark > 5) return 0;
     if (!this.ocene.length) return 0;
-    return this.ocene.filter(ocena => ocena.OCENA_VREDNOST == mark).length / this.ocene.length * 100;
+    return (
+      (this.ocene.filter((ocena) => ocena.OCENA_VREDNOST == mark).length /
+        this.ocene.length) *
+      100
+    );
   }
 }

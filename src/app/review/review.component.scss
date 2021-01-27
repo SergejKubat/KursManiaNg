@@ -1,0 +1,53 @@
+@import '../../sass/abstracts/mixins';
+@import '../../sass/abstracts/variables';
+
+.cm-course__reviews-comments {
+  &-item {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: #fafafa;
+    border: 1px solid #ddd;
+  }
+
+  &-info {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &-avatar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    margin-right: 2rem;
+  }
+
+  &-img {
+    height: 7rem;
+    width: 7rem;
+  }
+
+  &-details {
+    flex: 0 0 80%;
+    max-width: 80%;
+  }
+
+  &-name {
+    font-size: 1.8rem;
+  }
+
+  &-stars {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+
+  &-stars .active {
+    color: $color-review-star;
+  }
+
+  &-stars .fa {
+    padding: 0 0.1rem;
+  }
+
+  &-content {
+    font-size: 1.6rem;
+  }
+}

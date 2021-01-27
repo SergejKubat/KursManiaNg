@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Autor } from '../models/autor.model';
 import { Kurs } from '../models/kurs.model';
 import { Rezultat } from '../models/rezultat.model';
@@ -13,7 +14,7 @@ import { CoursesService } from '../services/courses.service';
 export class SearchBarComponent implements OnInit {
 
   public searchResultDisplay: boolean = false;
-  public query: SearchBarComponent;
+  public query: string;
 
   kursevi: Kurs[] = [];
   autori: Autor[] = [];
@@ -21,7 +22,11 @@ export class SearchBarComponent implements OnInit {
   public rezultati: Rezultat[] = [];
   public prikaz: Rezultat[] = [];
 
-  constructor(private coursesService: CoursesService, private autorService: AutorService) {
+  @HostListener('document:click', ['$event']) onDocumentClick(event) {
+    this.searchResultDisplay = false;
+  }
+
+  constructor(private router: Router, private coursesService: CoursesService, private autorService: AutorService) {
 
     this.coursesService.getKursevi().subscribe((kursevi: Kurs[]) => {
       this.kursevi = kursevi;
@@ -53,6 +58,6 @@ export class SearchBarComponent implements OnInit {
   }
 
   public onSubmit() {
-    console.log(this.rezultati);
+    this.router.navigate(['/kursevi'], { queryParams: { q: this.query } });
   }
 }

@@ -6,7 +6,7 @@
       placeholder="Pretražite kurseve"
       value=""
       #search
-      [ngModel]="query"
+      [(ngModel)]="query"
       class="cm-search__input"
       autocomplete="off"
       (ngModelChange)="getResults(search)"

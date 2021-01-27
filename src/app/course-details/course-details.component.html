@@ -95,86 +95,8 @@
               </div>
               <div class="cm-course__content2" [ngStyle]="{'display': contentVisibility ? 'block' : 'none'}">
                 <p class="cm-course__content2-heading">Sadržaj kursa</p>
-                <div class="cm-course__content2-collapsible">
-                  <input type="checkbox" id="sekcija1" class="cm-course__content2-collapsible-checkbox" checked>
-                  <label for="sekcija1" class="cm-course__content2-collapsible-label">
-                    <div class="cm-course__content2-collapsible-header">
-                      <h1 class="cm-course__content2-collapsible-heading">Uvod</h1>
-                      <i class="fa fa-plus cm-course__content2-collapsible-icon" aria-hidden="true"></i>
-                    </div>
-                  </label>
-                  <div class="cm-course__content2-collapsible-content">
-                    <ul class="cm-course__content2-collapsible-list">
-                      <li class="cm-course__content2-collapsible-item">
-                        <div class="cm-course__content2-collapsible-video">
-                          <div>
-                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content2-collapsible-video-name">Video 1</p>
-                          </div>
-                          <p class="cm-course__content2-collapsible-video-length">01:43</p>
-                        </div>
-                      </li>
-                      <li class="cm-course__content2-collapsible-item">
-                        <div class="cm-course__content2-collapsible-video">
-                          <div>
-                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content2-collapsible-video-name">Video 2</p>
-                          </div>
-                          <p class="cm-course__content2-collapsible-video-length">02:55</p>
-                        </div>
-                      </li>
-                      <li class="cm-course__content2-collapsible-item">
-                        <div class="cm-course__content2-collapsible-video">
-                          <div>
-                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content2-collapsible-video-name">Video 3</p>
-                          </div>
-                          <p class="cm-course__content2-collapsible-video-length">03:34</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="cm-course__content2-collapsible">
-                  <input type="checkbox" id="sekcija2" class="cm-course__content2-collapsible-checkbox">
-                  <label for="sekcija2" class="cm-course__content2-collapsible-label">
-                    <div class="cm-course__content2-collapsible-header">
-                      <h1 class="cm-course__content2-collapsible-heading">JavaScript osnove</h1>
-                      <i class="fa fa-plus cm-course__content2-collapsible-icon" aria-hidden="true"></i>
-                    </div>
-                  </label>
-                  <div class="cm-course__content2-collapsible-content">
-                    <ul class="cm-course__content2-collapsible-list">
-                      <li class="cm-course__content2-collapsible-item">
-                        <div class="cm-course__content2-collapsible-video">
-                          <div>
-                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content2-collapsible-video-name">Video 1</p>
-                          </div>
-                          <p class="cm-course__content2-collapsible-video-length">01:43</p>
-                        </div>
-                      </li>
-                      <li class="cm-course__content2-collapsible-item">
-                        <div class="cm-course__content2-collapsible-video">
-                          <div>
-                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content2-collapsible-video-name">Video 2</p>
-                          </div>
-                          <p class="cm-course__content2-collapsible-video-length">02:55</p>
-                        </div>
-                      </li>
-                      <li class="cm-course__content2-collapsible-item">
-                        <div class="cm-course__content2-collapsible-video">
-                          <div>
-                            <i class="fa fa-play-circle cm-course__content2-collapsible-video-play" aria-hidden="true"></i>
-                            <p class="cm-course__content2-collapsible-video-name">Video 3</p>
-                          </div>
-                          <p class="cm-course__content2-collapsible-video-length">03:34</p>
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
+                <div *ngFor="let sekcija of sekcije; let i = index">
+                  <app-section [sekcija]="sekcija" [checked]="i == 0"></app-section>
                 </div>
               </div>
               <div class="cm-course__author-info" [ngStyle]="{'display': authorVisibility ? 'block' : 'none'}">
@@ -251,42 +173,9 @@
                 <div class="cm-course__reviews-comments">
                   <h3 class="cm-course__reviews-heading">Komentari</h3>
                   <ul class="cm-course__reviews-comments-list">
-                    <li class="cm-course__reviews-comments-item">
-                      <div class="cm-course__reviews-comments-info">
-                        <div class="cm-course__reviews-comments-avatar">
-                          <img src="../../assets/img/autor-1.jpg" alt="Autor" class="cm-course__reviews-comments-img">
-                        </div>
-                        <div class="cm-course__reviews-comments-details">
-                          <h4 class="cm-course__reviews-comments-name">Marina Kilibarda</h4>
-                          <div class="cm-course__reviews-comments-stars">
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                          </div>
-                          <p class="cm-course__reviews-comments-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt modi odit iusto. Nisi, quibusdam fuga!</p>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="cm-course__reviews-comments-item">
-                      <div class="cm-course__reviews-comments-info">
-                        <div class="cm-course__reviews-comments-avatar">
-                          <img src="../../assets/img/autor-2.jpg" alt="Autor" class="cm-course__reviews-comments-img">
-                        </div>
-                        <div class="cm-course__reviews-comments-details">
-                          <h4 class="cm-course__reviews-comments-name">Jana Jukić</h4>
-                          <div class="cm-course__reviews-comments-stars">
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star active"></i>
-                            <i aria-hidden="true" class="fa fa-star"></i>
-                          </div>
-                          <p class="cm-course__reviews-comments-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste dolorem vel velit consectetur ea delectus commodi quo esse recusandae minus voluptas sit, libero quis ratione est deserunt pariatur officiis, eligendi ex, architecto maiores suscipit culpa!</p>
-                        </div>
-                      </div>
-                    </li>
+                    <div *ngFor="let ocena of ocene">
+                      <app-review [ocena]="ocena"></app-review>
+                    </div>
                   </ul>
                 </div>
               </div>
@@ -294,115 +183,8 @@
             <div class="cm-course__related">
               <h3 class="cm-course__related-heading">Preporučeni kursevi</h3>
               <div class="cm-course__related-list">
-                <div class="cm-course-item">
-                  <div class="cm-course-item__thumbnail">
-                    <img
-                      src="../assets/img/course-javascript.jpg"
-                      alt="Course - Javascript"
-                      class="cm-course-item__img"
-                    />
-                    <div class="cm-course-item__hidden">
-                      <button class="cm-btn">Detalji</button>
-                    </div>
-                    <span class="cm-course-item__popular">Popularan</span>
-                    <span class="cm-course-item__price">$11.99</span>
-                    <span class="cm-course-item__rating">
-                      <span class="average">4.5</span>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span class="count">(32)</span>
-                    </span>
-                  </div>
-                  <div class="cm-course-item__details">
-                    <h3>JavaScript Full Course</h3>
-                    <div class="cm-course-item__info">
-                      <span>
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <a href="#">Autor 1</a>
-                      </span>
-                      <span>
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        41 student
-                      </span>
-                    </div>
-                  </div>
-                </div>
-          
-                <div class="cm-course-item">
-                  <div class="cm-course-item__thumbnail">
-                    <img
-                      src="../assets/img/course-electrical.jpg"
-                      alt="Course - Javascript"
-                      class="cm-course-item__img"
-                    />
-                    <div class="cm-course-item__hidden">
-                      <button class="cm-btn">Detalji</button>
-                    </div>
-                    <span class="cm-course-item__popular">Popularan</span>
-                    <span class="cm-course-item__price">$19.99</span>
-                    <span class="cm-course-item__rating">
-                      <span class="average">4.3</span>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span class="count">(21)</span>
-                    </span>
-                  </div>
-                  <div class="cm-course-item__details">
-                    <h3>Električno inženjerstvo</h3>
-                    <div class="cm-course-item__info">
-                      <span>
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <a href="#">Autor 2</a>
-                      </span>
-                      <span>
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        29 student
-                      </span>
-                    </div>
-                  </div>
-                </div>
-          
-                <div class="cm-course-item">
-                  <div class="cm-course-item__thumbnail">
-                    <img
-                      src="../assets/img/course-tw.jpg"
-                      alt="Course - Javascript"
-                      class="cm-course-item__img"
-                    />
-                    <div class="cm-course-item__hidden">
-                      <button class="cm-btn">Detalji</button>
-                    </div>
-                    <span class="cm-course-item__popular">Popularan</span>
-                    <span class="cm-course-item__price">$11.99</span>
-                    <span class="cm-course-item__rating">
-                      <span class="average">4.7</span>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star active" aria-hidden="true"></i>
-                      <i class="fa fa-star" aria-hidden="true"></i>
-                      <span class="count">(56)</span>
-                    </span>
-                  </div>
-                  <div class="cm-course-item__details">
-                    <h3>Tehničko pisanje</h3>
-                    <div class="cm-course-item__info">
-                      <span>
-                        <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                        <a href="#">Autor 3</a>
-                      </span>
-                      <span>
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        70 student
-                      </span>
-                    </div>
-                  </div>
+                <div *ngFor="let kurs of preporuceniKursevi">
+                  <app-course [kurs]="kurs"></app-course>
                 </div>
               </div>
             </div>
@@ -414,10 +196,21 @@
             <div class="cm-course__recent-courses-content">
               <div class="cm-course__recent-courses-course">
                 <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-electrical.jpg" alt="Course 1" class="cm-course__recent-courses-img">
+                  <img src="../assets/img/course-rec-1.jpg" alt="UX/UI Principi" class="cm-course__recent-courses-img">
                 </div>
                 <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Kurs 1</h2>
+                  <h2 class="cm-course__recent-courses-title">UX/UI Principi</h2>
+                  <div class="cm-course__recent-courses-meta">
+                    <div class="cm-course__recent-courses-price">$18.99</div>
+                  </div>
+                </div>
+              </div>
+              <div class="cm-course__recent-courses-course">
+                <div class="cm-course__recent-courses-thumb">
+                  <img src="../assets/img/course-rec-2.jpg" alt="Audio produkcija" class="cm-course__recent-courses-img">
+                </div>
+                <div class="cm-course__recent-courses-detail">
+                  <h2 class="cm-course__recent-courses-title">Audio produkcija</h2>
                   <div class="cm-course__recent-courses-meta">
                     <div class="cm-course__recent-courses-price">$11.99</div>
                   </div>
@@ -425,34 +218,23 @@
               </div>
               <div class="cm-course__recent-courses-course">
                 <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-history.jpg" alt="Course 2" class="cm-course__recent-courses-img">
+                  <img src="../assets/img/course-rec-3.jpg" alt="Java za početnike" class="cm-course__recent-courses-img">
                 </div>
                 <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Kurs 2</h2>
+                  <h2 class="cm-course__recent-courses-title">Java za početnike</h2>
                   <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$11.99</div>
+                    <div class="cm-course__recent-courses-price">$9.99</div>
                   </div>
                 </div>
               </div>
               <div class="cm-course__recent-courses-course">
                 <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-tw.jpg" alt="Course 3" class="cm-course__recent-courses-img">
+                  <img src="../assets/img/course-rec-4.jpg" alt="Osnove marketinga" class="cm-course__recent-courses-img">
                 </div>
                 <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Kurs 3</h2>
+                  <h2 class="cm-course__recent-courses-title">Osnove marketinga</h2>
                   <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$11.99</div>
-                  </div>
-                </div>
-              </div>
-              <div class="cm-course__recent-courses-course">
-                <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-design.jpg" alt="Course 4" class="cm-course__recent-courses-img">
-                </div>
-                <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Kurs 4</h2>
-                  <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$11.99</div>
+                    <div class="cm-course__recent-courses-price">$15.99</div>
                   </div>
                 </div>
               </div>

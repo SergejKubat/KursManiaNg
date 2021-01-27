@@ -27,6 +27,8 @@ router.get('/evidencije', evidencijaController.getAll);
 
 router.get('/korisnici', korisnikController.getAll);
 
+router.get('/korisnici/:korisnikId', korisnikController.getById);
+
 router.get('/ocene', ocenaController.getAll);
 
 router.get('/sekcije', sekcijaController.getAll);

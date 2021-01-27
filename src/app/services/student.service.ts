@@ -23,4 +23,8 @@ export class StudentService {
   public getStudents(): Observable<Student[]> {
     return this.studenti;
   }
+
+  public getStudent(studentId: number): Observable<Student> {
+    return this.http.get<Student>(`${this.studentiUrl}/${studentId}`);
+  }
 }

@@ -1,0 +1,21 @@
+<section class="cm-all-courses">
+  <div class="cm-all-courses__container">
+    <div class="cm-all-courses__content">
+      <div class="cm-all-courses__filter-list">
+        <ul class="cm-all-courses__list">
+          <li class="cm-all-courses__filter" (click)="log($event)">
+            <span data-categoryid="0" [ngClass]="{'active': vidljivosti[0]}">Svi</span>
+          </li>
+          <li class="cm-all-courses__filter" *ngFor="let kategorija of kategorije; let i = index;" (click)="log($event)">
+            <span [attr.data-categoryid]="kategorija.KATEGORIJA_ID" [ngClass]="{'active': vidljivosti[i + 1]}">{{ kategorija.KATEGORIJA_NAZIV }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="cm-course__list">
+        <div *ngFor="let kurs of kursevi">
+          <app-course [kurs]="kurs"></app-course>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

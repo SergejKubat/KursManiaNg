@@ -43,12 +43,14 @@
 
   <section class="cm-courses">
     <h1 class="cm-heading">
-      <span class="cm-heading__main">Pogledajte neke od najpopularnijih kurseva</span>
+      <span class="cm-heading__main"
+        >Pogledajte neke od najpopularnijih kurseva</span
+      >
       <span class="cm-heading__sub">Popularni kursevi</span>
       <span class="cm-heading__hr"></span>
       <span class="cm-all-categories__hr"></span>
     </h1>
-    
+
     <div class="cm-courses__container">
       <div class="cm-courses__content">
         <div class="cm-courses__list">
@@ -108,15 +110,19 @@
       <div class="cm-featured-instructors__col" *ngFor="let autor of autori">
         <div class="cm-featured-instructors__item">
           <div class="cm-featured-instructors__thumb">
-            <img
-              src="{{ autor.AUTOR_SLIKA }}"
-              alt="{{ autor.AUTOR_IME }}"
-              height="140"
-              width="140"
-              class="cm-featured-instructors__img"
-            />
+            <a [routerLink]="['/autor', autor.AUTOR_ID]">
+              <img
+                src="{{ autor.AUTOR_SLIKA }}"
+                alt="{{ autor.AUTOR_IME }}"
+                height="140"
+                width="140"
+                class="cm-featured-instructors__img"
+              />
+            </a>
           </div>
-          <h3>{{ autor.AUTOR_IME }}</h3>
+          <a [routerLink]="['/autor', autor.AUTOR_ID]">
+            <h3>{{ autor.AUTOR_IME }}</h3>
+          </a>
           <span>{{ autor.AUTOR_ZANIMANJE }}</span>
           <span class="cm-all-categories__hr"></span>
           <p>

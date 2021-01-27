@@ -10,15 +10,17 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { AuthorComponent } from './author/author.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
-import { CourseListComponent } from './courselist/courselist.component';
+import { CourseListComponent } from './course-list/course-list.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { ErrorComponent } from './error/error.component';
-import { CoursesComponent } from './courses/courses.component';
 import { OnCreateDirective } from './directives/on-create.directive';
 import { CategoryComponent } from './category/category.component';
 import { CourseComponent } from './course/course.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { ReviewComponent } from './review/review.component';
+import { SectionComponent } from './section/section.component';
+import { LessonComponent } from './lesson/lesson.component';
 
 @NgModule({
   declarations: [
@@ -32,11 +34,13 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
     LoginComponent,
     RegistrationComponent,
     ErrorComponent,
-    CoursesComponent,
     OnCreateDirective,
     CategoryComponent,
     CourseComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    ReviewComponent,
+    SectionComponent,
+    LessonComponent
   ],
   imports: [
     BrowserModule,

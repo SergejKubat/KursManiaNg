@@ -343,74 +343,6 @@
         margin-bottom: 1rem;
         font-size: 1.8rem;
       }
-
-      &-collapsible {
-        border: 1px solid $color-white;
-
-        &-checkbox {
-          display: none;
-        }
-
-        &-checkbox:checked ~ &-content {
-          display: block;
-        }
-
-        &-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 1rem 1.5rem;
-          background-color: $color-primary;
-        }
-
-        &-heading {
-          font-size: 1.6rem;
-          color: $color-white;
-        }
-
-        &-icon {
-          font-size: 1.4rem;
-          color: $color-white;
-        }
-
-        &-content {
-          display: none;
-          padding: 1.5rem;
-        }
-
-        &-list {
-          list-style-type: none;
-        }
-
-        &-item {
-          padding: 1rem 0;
-          font-size: 1.4rem;
-        }
-
-        &-video {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-
-          & div {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-          }
-
-          &-play {
-            color: $color-primary;
-          }
-
-          &-name {
-            margin-left: 1rem;
-          }
-
-          &-length {
-            color: $color-grey-4;
-          }
-        }
-      }
     }
 
     &__author-info {
@@ -523,50 +455,6 @@
         &-list {
           margin-top: 1.5rem;
           list-style-type: none;
-        }
-
-        &-item {
-          margin-bottom: 2rem;
-          padding: 2rem;
-          background-color: #fafafa;
-          border: 1px solid #ddd;
-        }
-
-        &-info {
-          display: flex;
-          flex-wrap: wrap;
-        }
-
-        &-avatar {
-          flex: 0 0 20%;
-          max-width: 20%;
-          margin-right: 2rem;
-        }
-
-        &-details {
-          flex: 0 0 80%;
-          max-width: 80%;
-        }
-
-        &-name {
-          font-size: 1.8rem;
-        }
-
-        &-stars {
-          margin-bottom: 1rem;
-          font-size: 1.6rem;
-        }
-
-        &-stars .active {
-          color: $color-review-star;
-        }
-
-        &-stars .fa {
-          padding: 0 .1rem;
-        }
-
-        &-content {
-          font-size: 1.6rem;
         }
       }
     }
