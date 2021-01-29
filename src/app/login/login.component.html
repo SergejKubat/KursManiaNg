@@ -2,7 +2,7 @@
   <div class="cm-login__container">
     <div class="cm-login__content">
       <h1 class="cm-login__heading">Prijava</h1>
-      <form action="#" method="POST" class="cm-login__form">
+      <form (submit)="onLogIn(logInForm)" #logInForm="ngForm" class="cm-login__form">
         <div class="cm-login__control">
           <label for="email" class="cm-login__label">Email adresa</label>
           <input
@@ -11,8 +11,12 @@
             name="email"
             class="cm-login__input"
             required
+            ngModel
+            #email="ngModel"
+            email
           />
         </div>
+        <div class="cm-login__error" *ngIf="email.invalid && email.touched">Email nije u validnom formatu.</div>
         <div class="cm-login__control">
           <label for="password" class="cm-login__label">Lozinka</label>
           <input
@@ -21,17 +25,23 @@
             name="password"
             class="cm-login__input"
             required
+            minlength="8"
+            ngModel
+            #password="ngModel"
           />
         </div>
+        <div class="cm-login__error" *ngIf="password.invalid && password.touched">Lozinka nije u validnom formatu.</div>
         <div class="cm-login__control">
           <input
             type="checkbox"
             name="remember"
             id="remember"
             class="cm-login__checkbox"
+            ngModel
+            #stayLoggedIn="ngModel"
           />
           <label for="remember" class="cm-login__check-container">
-            <span class="cm-login__checkmark"></span>
+            <span class="cm-login__checkmark" tabindex="0"></span>
             Ostanite prijavljeni
           </label>
         </div>

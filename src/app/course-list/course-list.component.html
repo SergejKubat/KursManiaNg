@@ -2,6 +2,8 @@
   <div class="cm-all-courses__container">
     <div class="cm-all-courses__content">
       <div class="cm-all-courses__filter-list">
+        <h1 class="cm-results">Prikazuju se rezultati za pretragu: <span class="cm-query">{{ query }}</span></h1>
+        <br><br>
         <ul class="cm-all-courses__list">
           <li class="cm-all-courses__filter" (click)="log($event)">
             <span data-categoryid="0" [ngClass]="{'active': vidljivosti[0]}">Svi</span>
@@ -11,10 +13,13 @@
           </li>
         </ul>
       </div>
-      <div class="cm-course__list">
+      <div class="cm-course__list" *ngIf="kursevi.length !== 0">
         <div *ngFor="let kurs of kursevi">
           <app-course [kurs]="kurs"></app-course>
         </div>
+      </div>
+      <div *ngIf="kursevi.length === 0">
+        <h2>Nema rezultata.</h2>
       </div>
     </div>
   </div>

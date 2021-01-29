@@ -35,4 +35,8 @@ router.get('/sekcije', sekcijaController.getAll);
 
 router.get('/lekcije', lekcijaController.getAll);
 
+router.post('/prijava', korisnikController.logIn);
+
+router.post('/registracija', korisnikController.registration);
+
 module.exports = router;

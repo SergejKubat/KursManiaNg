@@ -83,6 +83,7 @@
   &__check-container {
     display: block;
     position: relative;
+    margin-top: 1rem;
     margin-bottom: 1.2rem;
     padding-left: 3rem;
     font-size: 1.6rem;
@@ -109,6 +110,10 @@
     border: solid $color-white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
+  }
+
+  &__checkmark:focus {
+    outline: 1px solid $color-primary;
   }
 
   &__check-container:hover &__checkmark {
@@ -140,6 +145,11 @@
   }
 
   &__link:hover {
+    color: $color-primary;
+  }
+
+  &__error {
+    font-size: 1.2rem;
     color: $color-primary;
   }
 }

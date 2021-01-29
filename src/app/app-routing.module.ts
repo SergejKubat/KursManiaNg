@@ -13,7 +13,6 @@ const routes: Routes = [
   { path: 'autor/:autorId', component: AuthorComponent},
   { path: 'kurs/:kursId', component: CourseDetailsComponent},
   { path: 'kursevi', component: CourseListComponent},
-  { path: 'kursevi/:q', component: CourseListComponent},
   { path: 'prijava', component: LoginComponent},
   { path: 'registracija', component: RegistrationComponent},
   { path: '**', component: ErrorComponent}

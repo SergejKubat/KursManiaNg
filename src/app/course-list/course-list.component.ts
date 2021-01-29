@@ -38,14 +38,18 @@ export class CourseListComponent implements OnInit {
     this.coursesService.getKursevi().subscribe((kursevi: Kurs[]) => {
       this.kursevi = kursevi;
 
-      this.route.queryParams.subscribe(params => {
-        this.query = params['q'];
-        this.kursevi = this.kursevi.filter(kurs => kurs.KURS_IME.toLocaleLowerCase().includes(this.query.toLocaleLowerCase()));
-      });
+      this.filterByQuery();
     });
   }
 
   ngOnInit(): void {}
+
+  public filterByQuery() {
+    this.route.queryParams.subscribe(params => {
+      this.query = params['q'];
+      this.kursevi = this.kursevi.filter(kurs => kurs.KURS_IME.toLocaleLowerCase().includes(this.query.toLocaleLowerCase()));
+    });
+  }
 
   public log(event) {
     let categoryId = event.target.dataset.categoryid;
@@ -59,12 +63,16 @@ export class CourseListComponent implements OnInit {
     if (categoryId == 0) {
       this.coursesService.getKursevi().subscribe((kursevi: Kurs[]) => {
         this.kursevi = kursevi;
+
+        this.filterByQuery();
       });
     }
 
     if (categoryId > 0 && categoryId < this.kategorije.length) {
       this.coursesService.getKurseviByCategoryId(categoryId).subscribe((kursevi: Kurs[]) => {
         this.kursevi = kursevi;
+
+        this.filterByQuery();
       });
     }
 
