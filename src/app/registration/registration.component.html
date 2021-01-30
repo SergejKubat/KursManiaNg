@@ -2,7 +2,7 @@
   <div class="cm-registration__container">
     <div class="cm-registration__content">
       <h1 class="cm-registration__heading">Registracija</h1>
-      <form action="#" method="POST" class="cm-registration__form">
+      <form (submit)="onRegister(registrationForm)" #registrationForm="ngForm" class="cm-registration__form">
         <div class="cm-registration__control">
           <label for="fullName" class="cm-registration__label"
             >Ime i prezime</label
@@ -10,13 +10,18 @@
           <input
             type="text"
             id="fullName"
-            name="fullName"
+            name="name"
             class="cm-registration__input"
             required
             autocomplete="off"
             autocapitalize="off"
+            pattern="[a-zA-Z ]{5,64}"
+            ngModel
+            #name="ngModel"
           />
         </div>
+        <div class="cm-registration__error" *ngIf="name.control.errors && name.control.errors.required && name.touched">Morate uneti ime i prezime.</div>
+        <div class="cm-registration__error" *ngIf="name.control.errors && name.control.errors.pattern && name.touched">Ime ili prezime nije u validnom formatu.</div>
         <div class="cm-registration__control">
           <label for="email" class="cm-registration__label">Email adresa</label>
           <input
@@ -25,8 +30,14 @@
             name="email"
             class="cm-registration__input"
             required
+            ngModel
+            #email="ngModel"
+            email
           />
         </div>
+        <div class="cm-registration__error" *ngIf="email.control.errors && email.control.errors.required && email.touched">Morate uneti email adresu.</div>
+        <div class="cm-registration__error" *ngIf="email.control.errors && email.control.errors.email && email.touched">Email adresa nije u validnom formatu.</div>
+        <div class="cm-registration__error" [ngStyle]="{'display': emailExistDisplay}">Email adresa već postoji.</div>
         <div class="cm-registration__control">
           <label for="password" class="cm-registration__label">Lozinka</label>
           <input
@@ -35,20 +46,32 @@
             name="password"
             class="cm-registration__input"
             required
+            minlength="8"
+            maxlength="32"
+            ngModel
+            #password="ngModel"
           />
         </div>
+        <div class="cm-registration__error" *ngIf="password.control.errors && password.control.errors.required && password.touched">Morate uneti lozinku.</div>
+        <div class="cm-registration__error" *ngIf="password.control.errors && password.control.errors.minlength && password.touched">Dužina lozinke mora biti minimum 8 slova.</div>
+        <div class="cm-registration__error" *ngIf="password.control.errors && password.control.errors.maxlength && password.touched">Dužina lozinke mora biti maksimum 32 slova.</div>
         <div class="cm-registration__control">
           <input
             type="checkbox"
             name="terms"
             id="terms"
             class="cm-registration__checkbox"
+            required
+            ngModel
+            #terms="ngModel"
           />
           <label for="terms" class="cm-registration__check-container">
-            <span class="cm-registration__checkmark"></span>
-            Prihvatam korisničke uslove.
+            <span class="cm-registration__checkmark" tabindex="0"></span>
+            Prihvatam uslove korišćenja.
           </label>
         </div>
+        <div class="cm-registration__error" *ngIf="terms.control.errors && terms.control.errors.required && terms.touched">Morate prihvatiti uslove korišćenja.</div>
+        <br>
         <div class="cm-registration__control">
           <button type="submit" class="cm-btn cm-registration__submit">
             Registracija

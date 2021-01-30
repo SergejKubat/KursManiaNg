@@ -111,6 +111,10 @@
     transform: rotate(45deg);
   }
 
+  &__checkmark:focus {
+    outline: 1px solid $color-primary;
+  }
+
   &__check-container:hover &__checkmark {
     background-color: #ccc;
   }
@@ -140,6 +144,11 @@
   }
 
   &__link:hover {
+    color: $color-primary;
+  }
+
+  &__error {
+    font-size: 1.2rem;
     color: $color-primary;
   }
 }

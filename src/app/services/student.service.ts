@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
@@ -26,5 +26,10 @@ export class StudentService {
 
   public getStudent(studentId: number): Observable<Student> {
     return this.http.get<Student>(`${this.studentiUrl}/${studentId}`);
+  }
+
+  public getStudentByEmail(email: string): Observable<Student[]> {
+    let params = new HttpParams().set('email', email);
+    return this.http.get<Student[]>(this.studentiUrl, { params });
   }
 }

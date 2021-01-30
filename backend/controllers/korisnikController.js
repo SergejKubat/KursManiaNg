@@ -1,12 +1,22 @@
 const sequelize = require("../config/database");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const initModels = require("../models/init-models");
 
 const models = initModels(sequelize);
 
 exports.getAll = async (req, res, next) => {
+  const email = req.query.email;
   try {
-    const results = await models.korisnik.findAll();
+    const query = {
+      where: {}
+    };
+
+    if (email) {
+      query.where.KORISNIK_EMAIL = email;
+    }
+
+    const results = await models.korisnik.findAll(query);
     res.status(200).json(results);
   } catch (error) {
     console.error(error);
@@ -29,15 +39,42 @@ exports.getById = async (req, res, next) => {
 
 exports.logIn = async (req, res, next) => {
   const email = req.body.email;
-  const password = await bcrypt.hash(req.body.password, 10);
+  const password = req.body.password;
+
   try {
     const result = await models.korisnik.findOne({
       where: { 
-        KORISNIK_EMAIL: email,
-        KORISNIK_LOZINKA: password
+        KORISNIK_EMAIL: email
       }
     });
-    console.log(result);
+
+    if (result) {
+      const isPasswordMatch = await bcrypt.compare(password, result.KORISNIK_LOZINKA);
+      if (isPasswordMatch) {
+
+        const token = jwt.sign({
+          id: result.KORISNIK_ID,
+          name: result.KORISNIK_IME,
+          email: result.KORISNIK_EMAIL
+          }, 
+          'this_is_my_own_secret_key_for_jwt',
+          {
+            expiresIn: '1h'
+        });
+
+        res.status(200).json({
+          token: token
+        });
+      } else {
+        res.status(401).json({
+          message: 'Lozinke se ne poklapaju.'
+        });
+      }
+    } else {
+      res.status(401).json({
+        message: 'Korisnik ne postoji.'
+      });
+    }
   } catch (error) {
     res.status(404).send();
   }
@@ -47,4 +84,22 @@ exports.registration = async (req, res, next) => {
   const name = req.body.name;
   const email = req.body.email;
   const password = await bcrypt.hash(req.body.password, 10);
+  const avatarUrl = 'http://localhost:3000/images/user.png';
+  const registrationDate = dateToString();
+  const newUser = await models.korisnik.create({
+    KORISNIK_IME: name,
+    KORISNIK_EMAIL: email,
+    KORISNIK_AVATAR: avatarUrl,
+    KORISNIK_DATUM_REGISTRACIJE: registrationDate,
+    KORISNIK_LOZINKA: password,
+    KORISNIK_IS_BLOCKED: false
+  });
+  res.status(200).json({ 
+    message: 'Korisnik uspešno dodat'
+  });
+}
+
+const dateToString = () => {
+  const date = new Date();
+  return ((date.getDate() > 9) ? date.getDate() : ('0' + date.getDate())) + '/' + ((date.getMonth() > 8) ? (date.getMonth() + 1) : ('0' + (date.getMonth() + 1))) + '/' + date.getFullYear();
 }

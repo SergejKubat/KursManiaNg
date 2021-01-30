@@ -32,6 +32,7 @@ export class SearchBarComponent implements OnInit {
       this.kursevi = kursevi;
       this.kursevi.forEach(kurs => {
         this.rezultati.push({tip: 'Kurs', id: kurs.KURS_ID, ime: kurs.KURS_IME});
+        //console.log(kurs.KURS_IME);
       });
     });
 
@@ -54,10 +55,11 @@ export class SearchBarComponent implements OnInit {
       this.searchResultDisplay = false;
     }
 
-    this.prikaz = this.rezultati.filter(rezultat => rezultat.ime.toLocaleLowerCase().includes(query.value.toLocaleLowerCase())); 
+    this.prikaz = this.rezultati.filter(rezultat => rezultat.ime.toLocaleLowerCase().includes(query.value.toLocaleLowerCase()));
   }
 
   public onSubmit() {
     this.router.navigate(['/kursevi'], { queryParams: { q: this.query } });
   }
+
 }

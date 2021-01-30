@@ -16,7 +16,8 @@
             email
           />
         </div>
-        <div class="cm-login__error" *ngIf="email.invalid && email.touched">Email nije u validnom formatu.</div>
+        <div class="cm-login__error" *ngIf="email.control.errors && email.control.errors.required && email.touched">Morate uneti email adresu.</div>
+        <div class="cm-login__error" *ngIf="email.control.errors && email.control.errors.email && email.touched">Email adresa nije u validnom formatu.</div>
         <div class="cm-login__control">
           <label for="password" class="cm-login__label">Lozinka</label>
           <input
@@ -26,11 +27,14 @@
             class="cm-login__input"
             required
             minlength="8"
+            maxlength="32"
             ngModel
             #password="ngModel"
           />
         </div>
-        <div class="cm-login__error" *ngIf="password.invalid && password.touched">Lozinka nije u validnom formatu.</div>
+        <div class="cm-login__error" *ngIf="password.control.errors && password.control.errors.required && password.touched">Morate uneti lozinku.</div>
+        <div class="cm-login__error" *ngIf="password.control.errors && password.control.errors.minlength && password.touched">Dužina lozinke mora biti minimum 8 slova.</div>
+        <div class="cm-login__error" *ngIf="password.control.errors && password.control.errors.maxlength && password.touched">Dužina lozinke mora biti maksimum 32 slova.</div>
         <div class="cm-login__control">
           <input
             type="checkbox"
