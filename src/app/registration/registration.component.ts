@@ -36,12 +36,7 @@ export class RegistrationComponent implements OnInit {
                   form.value.name,
                   form.value.email,
                   form.value.password
-                )
-                .subscribe((result) => {
-                  console.log(result);
-                  form.reset();
-                  this.router.navigate(['/prijava']);
-                });
+                );
             }
           }
         });

@@ -1,4 +1,5 @@
 const express = require('express');
+const checkAuth = require("../auth/check-auth");
 
 const autorController = require('../controllers/autorController');
 const kategorijaController = require('../controllers/kategorijaController');

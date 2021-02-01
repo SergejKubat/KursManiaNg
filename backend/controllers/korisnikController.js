@@ -63,7 +63,9 @@ exports.logIn = async (req, res, next) => {
         });
 
         res.status(200).json({
-          token: token
+          token: token,
+          expiresIn: 3600,
+          studentId: result.KORISNIK_ID
         });
       } else {
         res.status(401).json({

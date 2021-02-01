@@ -37,11 +37,12 @@
         </div>
         <div class="cm-user__card--content">
           <p>Vaša korpa je prazna.</p>
-          <a [routerLink]="['/prijava']">Prijavite se</a>
+          <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']">Prijavite se</a>
         </div>
       </div>
-      <a [routerLink]="['/prijava']"><button class="cm-btn">Prijava</button></a>
-      <a [routerLink]="['/registracija']"><button class="cm-btn">Registracija</button></a>
+      <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']"><button class="cm-btn">Prijava</button></a>
+      <a *ngIf="!isAuthentificated" [routerLink]="['/registracija']"><button class="cm-btn">Registracija</button></a>
+      <button *ngIf="isAuthentificated" class="cm-btn" (click)="onLogOut()">Odjava</button>
     </div>
     <div class="cm-navigation">
       <input type="checkbox" id="menu" class="cm-navigation__checkbox" [checked]='showMenu' (change)='showMenu = !showMenu' />

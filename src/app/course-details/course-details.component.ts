@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Autor } from '../models/autor.model';
 import { Evidencija } from '../models/evidencija.model';
 import { Kategorija } from '../models/kategorija.model';
 import { Kurs } from '../models/kurs.model';
-import { Lekcija } from '../models/lekcija.model';
 import { Ocena } from '../models/ocena.model';
 import { Sekcija } from '../models/sekcija.model';
+import { AuthService } from '../services/auth.service';
 import { AutorService } from '../services/autor.service';
 import { CategoriesService } from '../services/categories.service';
 import { CoursesService } from '../services/courses.service';
@@ -34,6 +35,12 @@ export class CourseDetailsComponent implements OnInit {
   public sekcije: Sekcija[] = [];
   public preporuceniKursevi: Kurs[] = [];
 
+  private authListenerSubs: Subscription;
+
+  public isAuthentificated: boolean = false;
+
+  private studentId: number;
+
   constructor(
     private route: ActivatedRoute,
     private courseService: CoursesService,
@@ -42,7 +49,7 @@ export class CourseDetailsComponent implements OnInit {
     private recordService: RecordService,
     private markService: MarkService,
     private sectionService: SectionService,
-    private lessonService: LessonService
+    private authService: AuthService
   ) {
     this.route.paramMap.subscribe((params) => {
       const kursId = Number(params.get('kursId'));
@@ -93,7 +100,14 @@ export class CourseDetailsComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.isAuthentificated = this.authService.getIsAuth();
+    this.studentId = this.authService.getStudentId();
+    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuth => {
+      this.isAuthentificated = isAuth;
+      this.studentId = this.authService.getStudentId();
+    });
+  }
 
   public showTab(index: number): void {
     // RESET
@@ -118,23 +132,23 @@ export class CourseDetailsComponent implements OnInit {
     }
   }
 
-  public countAverageMark(): number {
+  public countAverageMark() {
     if (!this.ocene.length) return 0;
     let sum = 0;
     let length = this.ocene.length;
     this.ocene.forEach((ocena) => {
       sum += ocena.OCENA_VREDNOST;
     });
-    return sum / length;
+    return (sum / length).toFixed(2);
   }
 
-  public countPercOfSpecMark(mark: number): number {
+  public countPercOfSpecMark(mark: number) {
     if (mark <= 0 && mark > 5) return 0;
     if (!this.ocene.length) return 0;
     return (
       (this.ocene.filter((ocena) => ocena.OCENA_VREDNOST == mark).length /
         this.ocene.length) *
       100
-    );
+    ).toFixed(2);
   }
 }
