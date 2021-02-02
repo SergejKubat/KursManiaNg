@@ -11,7 +11,6 @@ import { AuthService } from '../services/auth.service';
 import { AutorService } from '../services/autor.service';
 import { CategoriesService } from '../services/categories.service';
 import { CoursesService } from '../services/courses.service';
-import { LessonService } from '../services/lesson.service';
 import { MarkService } from '../services/mark.service';
 import { RecordService } from '../services/record.service';
 import { SectionService } from '../services/section.service';
@@ -40,6 +39,8 @@ export class CourseDetailsComponent implements OnInit {
   public isAuthentificated: boolean = false;
 
   private studentId: number;
+
+  public canAddNewMark: boolean = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -103,10 +104,12 @@ export class CourseDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.isAuthentificated = this.authService.getIsAuth();
     this.studentId = this.authService.getStudentId();
-    this.authListenerSubs = this.authService.getAuthStatusListener().subscribe(isAuth => {
-      this.isAuthentificated = isAuth;
-      this.studentId = this.authService.getStudentId();
-    });
+    this.authListenerSubs = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuth) => {
+        this.isAuthentificated = isAuth;
+        this.studentId = this.authService.getStudentId();
+      });
   }
 
   public showTab(index: number): void {
@@ -128,8 +131,40 @@ export class CourseDetailsComponent implements OnInit {
         break;
       case 4:
         this.reviewsVisibility = true;
+        this.checkStudent();
         break;
     }
+  }
+
+  public checkStudent() {
+    let kupljen = false;
+    this.recordService
+      .getRecordsByStudentId(this.studentId)
+      .subscribe((evidencije: Evidencija[]) => {
+        evidencije.forEach((evidencija) => {
+          if (evidencija.KORISNIK_ID == this.studentId) {
+            kupljen = true;
+
+            if (kupljen) {
+              this.markService
+                .getMarksByAuthorId(this.studentId)
+                .subscribe((ocene: Ocena[]) => {
+                  ocene.forEach((ocena) => {
+                    if (ocena.KORISNIK_ID == this.studentId) {
+                      this.canAddNewMark = false;
+                    }
+                  });
+                });
+            } else {
+              this.canAddNewMark = false;
+            }
+          }
+        });
+      });
+  }
+
+  public addOcena(ocena: Ocena) {
+    this.ocene.push(ocena);
   }
 
   public countAverageMark() {
@@ -139,16 +174,16 @@ export class CourseDetailsComponent implements OnInit {
     this.ocene.forEach((ocena) => {
       sum += ocena.OCENA_VREDNOST;
     });
-    return (sum / length).toFixed(2);
+    return Number((sum / length).toFixed(2));
   }
 
   public countPercOfSpecMark(mark: number) {
     if (mark <= 0 && mark > 5) return 0;
     if (!this.ocene.length) return 0;
-    return (
+    return Number(
       (this.ocene.filter((ocena) => ocena.OCENA_VREDNOST == mark).length /
         this.ocene.length) *
-      100
+        100
     ).toFixed(2);
   }
 }

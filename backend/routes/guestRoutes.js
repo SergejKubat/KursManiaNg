@@ -32,6 +32,10 @@ router.get('/korisnici/:korisnikId', korisnikController.getById);
 
 router.get('/ocene', ocenaController.getAll);
 
+router.post('/ocene', ocenaController.addNew);
+
+router.delete('/ocene/:ocenaId', ocenaController.delete);
+
 router.get('/sekcije', sekcijaController.getAll);
 
 router.get('/lekcije', lekcijaController.getAll);

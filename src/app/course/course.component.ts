@@ -39,13 +39,13 @@ export class CourseComponent implements OnInit {
     });
   }
 
-  public countAverageMark(): number {
+  public countAverageMark() {
     if (!this.ocene.length) return 0;
     let sum = 0;
     let length = this.ocene.length;
     this.ocene.forEach((ocena) => {
       sum += ocena.OCENA_VREDNOST;
     });
-    return sum / length;
+    return Number((sum / length).toFixed(2));
   }
 }

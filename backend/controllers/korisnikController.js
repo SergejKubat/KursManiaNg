@@ -97,7 +97,7 @@ exports.registration = async (req, res, next) => {
     KORISNIK_IS_BLOCKED: false
   });
   res.status(200).json({ 
-    message: 'Korisnik uspešno dodat'
+    message: 'Korisnik uspešno dodat.'
   });
 }
 

@@ -177,6 +177,9 @@
                       <app-review [ocena]="ocena"></app-review>
                     </div>
                   </ul>
+                  <div *ngIf="isAuthentificated && canAddNewMark">
+                    <app-create-review [kurs]="kurs"></app-create-review>
+                  </div>
                 </div>
               </div>
             </div>

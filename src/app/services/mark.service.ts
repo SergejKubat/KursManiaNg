@@ -33,4 +33,12 @@ export class MarkService {
     let params = new HttpParams().set('autorId', authorId.toString());
     return this.http.get<Ocena[]>(this.oceneUrl, { params });
   }
+
+  public addMark(mark: Ocena) {
+    return this.http.post<Ocena>(this.oceneUrl, mark);
+  }
+
+  public removeMark(mark: Ocena) {
+    return this.http.delete(`${this.oceneUrl}/${mark.OCENA_ID}`);
+  }
 }

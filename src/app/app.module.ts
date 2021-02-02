@@ -22,6 +22,7 @@ import { ReviewComponent } from './review/review.component';
 import { SectionComponent } from './section/section.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { AuthInterceptor } from './services/auth-interceptor';
+import { CreateReviewComponent } from './create-review/create-review.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { AuthInterceptor } from './services/auth-interceptor';
     ReviewComponent,
     SectionComponent,
     LessonComponent,
+    CreateReviewComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

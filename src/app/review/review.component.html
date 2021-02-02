@@ -19,6 +19,10 @@
       <p class="cm-course__reviews-comments-content">
         {{ ocena.OCENA_KOMENTAR }}
       </p>
+      <div class="cm-course__reviews-comments-actions" *ngIf="studentId == student?.KORISNIK_ID">
+        <button class="cm-btn">Izmeni</button>
+        <button class="cm-btn" (click)="deleteReview()">Obriši</button>
+      </div>
     </div>
   </div>
 </li>
