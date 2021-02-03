@@ -131,40 +131,8 @@ export class CourseDetailsComponent implements OnInit {
         break;
       case 4:
         this.reviewsVisibility = true;
-        this.checkStudent();
         break;
     }
-  }
-
-  public checkStudent() {
-    let kupljen = false;
-    this.recordService
-      .getRecordsByStudentId(this.studentId)
-      .subscribe((evidencije: Evidencija[]) => {
-        evidencije.forEach((evidencija) => {
-          if (evidencija.KORISNIK_ID == this.studentId) {
-            kupljen = true;
-
-            if (kupljen) {
-              this.markService
-                .getMarksByAuthorId(this.studentId)
-                .subscribe((ocene: Ocena[]) => {
-                  ocene.forEach((ocena) => {
-                    if (ocena.KORISNIK_ID == this.studentId) {
-                      this.canAddNewMark = false;
-                    }
-                  });
-                });
-            } else {
-              this.canAddNewMark = false;
-            }
-          }
-        });
-      });
-  }
-
-  public addOcena(ocena: Ocena) {
-    this.ocene.push(ocena);
   }
 
   public countAverageMark() {

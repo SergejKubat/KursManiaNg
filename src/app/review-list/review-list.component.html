@@ -1,0 +1,11 @@
+<div class="cm-course__reviews-comments">
+  <h3 class="cm-course__reviews-heading">Komentari</h3>
+  <ul class="cm-course__reviews-comments-list">
+    <div *ngFor="let ocena of ocene">
+      <app-review [ocena]="ocena" (deleteReviewEvent)="removeOcena($event)"></app-review>
+    </div>
+  </ul>
+  <div *ngIf="isAuthentificated && canAddNewMark">
+    <app-create-review [kurs]="kurs" (newReviewEvent)="addOcena($event)"></app-create-review>
+  </div>
+</div>

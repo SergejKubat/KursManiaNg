@@ -91,6 +91,7 @@ export class CreateReviewComponent implements OnInit, OnDestroy {
     this.markService.addMark(this.ocena).subscribe(result => {
       console.log(result);
       this.addNewMark(this.ocena);
+      form.reset();
     });
   }
 

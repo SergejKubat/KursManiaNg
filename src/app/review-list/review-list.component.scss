@@ -1,0 +1,18 @@
+@import "../../sass/abstracts/mixins";
+@import "../../sass/abstracts/variables";
+
+.cm-course__reviews {
+  &-heading {
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+
+  &-comments {
+    margin-top: 2rem;
+
+    &-list {
+      margin-top: 1.5rem;
+      list-style-type: none;
+    }
+  }
+}

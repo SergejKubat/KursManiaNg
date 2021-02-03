@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Ocena } from '../models/ocena.model';
 import { Student } from '../models/student.model';
@@ -14,6 +14,7 @@ import { StudentService } from '../services/student.service';
 export class ReviewComponent implements OnInit, OnDestroy {
 
   @Input() ocena: Ocena;
+  @Output() deleteReviewEvent = new EventEmitter<Ocena>();
   public student: Student;
 
   private authListenerSubs: Subscription;
@@ -40,6 +41,7 @@ export class ReviewComponent implements OnInit, OnDestroy {
   public deleteReview() {
     this.markService.removeMark(this.ocena).subscribe(response => {
       console.log(response);
+      this.deleteReviewEvent.emit(this.ocena);
     });
   }
 
