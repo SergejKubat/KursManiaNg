@@ -57,7 +57,7 @@ export class AuthService {
         const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
         this.saveAuthData(token, expirationDate, this.studentId);
 
-        this.router.navigate(['/']);
+        this.router.navigate(['/nalog']);
       }
     });
   }

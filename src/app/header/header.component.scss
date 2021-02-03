@@ -163,6 +163,13 @@
       }
     }
   }
+
+  &__avatar {
+    height: 2.5rem;
+    width: 2.5rem;
+    margin-right: 1rem;
+    border-radius: 50%;
+  }
 }
 
 .cm-navigation {

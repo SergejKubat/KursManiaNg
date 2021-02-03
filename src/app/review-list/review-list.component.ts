@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Evidencija } from '../models/evidencija.model';
 import { Kurs } from '../models/kurs.model';
@@ -52,26 +58,30 @@ export class ReviewListComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   public checkStudent() {
-    let kupljen = false;
     this.recordService
       .getRecordsByStudentId(this.studentId)
       .subscribe((evidencije: Evidencija[]) => {
+        if (!evidencije) {
+          this.canAddNewMark = false;
+          return;
+        } 
         evidencije.forEach((evidencija) => {
           if (evidencija.KORISNIK_ID == this.studentId) {
-            kupljen = true;
-            if (kupljen) {
-              this.markService
-                .getMarksByAuthorId(this.studentId)
-                .subscribe((ocene: Ocena[]) => {
-                  ocene.forEach((ocena) => {
-                    if (ocena.KORISNIK_ID == this.studentId) {
-                      this.canAddNewMark = false;
-                    }
-                  });
+            this.markService
+              .getMarksByAuthorId(this.studentId)
+              .subscribe((ocene: Ocena[]) => {
+                if (!ocene) {
+                  this.canAddNewMark = true;
+                  return;
+                }
+                ocene.forEach((ocena) => {
+                  if (ocena.KORISNIK_ID == this.studentId) {
+                    this.canAddNewMark = false;
+                  }
                 });
-            } else {
-              this.canAddNewMark = false;
-            }
+              });
+          } else {
+            this.canAddNewMark = false;
           }
         });
       });

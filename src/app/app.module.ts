@@ -24,6 +24,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewListComponent } from './review-list/review-list.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ReviewListComponent } from './review-list/review-list.component';
     LessonComponent,
     CreateReviewComponent,
     ReviewListComponent,
+    AccountComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [

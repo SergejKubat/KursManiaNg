@@ -42,6 +42,9 @@
       </div>
       <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']"><button class="cm-btn">Prijava</button></a>
       <a *ngIf="!isAuthentificated" [routerLink]="['/registracija']"><button class="cm-btn">Registracija</button></a>
+      <a *ngIf="isAuthentificated" [routerLink]="['/nalog']">
+        <img src="{{ student?.KORISNIK_AVATAR }}" alt="{{ student?.KORISNIK_IME }}" class="cm-user__avatar">
+      </a>
       <button *ngIf="isAuthentificated" class="cm-btn" (click)="onLogOut()">Odjava</button>
     </div>
     <div class="cm-navigation">

@@ -1,0 +1,34 @@
+<div class="cm-account">
+  <div class="cm-account__container">
+    <div class="cm-account__left">
+      <img
+        src="{{ student?.KORISNIK_AVATAR }}"
+        alt="{{ student?.KORISNIK_IME }}"
+        class="cm-account__img"
+        height="200"
+        width="200"
+      />
+    </div>
+    <div class="cm-account__right">
+      <div class="cm-account__content">
+        <h1 class="cm-account__name">
+          {{ student?.KORISNIK_IME }}
+        </h1>
+        <p class="cm-account__email">
+            {{ student?.KORISNIK_EMAIL }}
+        </p>
+        <p class="cm-account__reg-date">
+            Datum registracije: <b> {{ student?.KORISNIK_DATUM_REGISTRACIJE }} </b>
+        </p>
+        <h3 class="cm-account__heading">Kupljeni kursevi:</h3>
+        <div class="cm-account__course-list" *ngFor="let kurs of kursevi">
+            <app-course [kurs]="kurs"></app-course>
+        </div>
+        <h3 class="cm-account__heading">Unete ocene:</h3>
+        <ul class="cm-account__review-list" *ngFor="let ocena of ocene">
+            <app-review [ocena]="ocena" (deleteReviewEvent)="removeOcena($event)"></app-review>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
