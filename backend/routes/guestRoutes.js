@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const checkAuth = require("../auth/check-auth");
 
 const autorController = require('../controllers/autorController');
@@ -11,6 +12,28 @@ const sekcijaController = require('../controllers/sekcijaController');
 const lekcijaController = require('../controllers/lekcijaController');
 
 const router = express.Router();
+
+const MIME_TYPE_MAP = {
+    'image/png': 'png',
+    'image/jpeg': 'jpg',
+    'image/jpg': 'jpg'
+}
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const isValid = MIME_TYPE_MAP[file.mimetype];
+        let error = new Error('Invalid mime type.');
+        if (isValid) {
+            error = null;
+        }
+        cb(error, 'backend/images');
+    },
+    filename: (req, file, cb) => {
+        const name = file.originalname.toLocaleLowerCase().split(' ').join('-');
+        const ext = MIME_TYPE_MAP[file.mimetype];
+        cb(null, `${name}-${Date.now()}.${ext}`);
+    }
+});
 
 router.get('/autori', autorController.getAll);
 
@@ -26,9 +49,13 @@ router.get('/kursevi/:kursId', kursController.getById);
 
 router.get('/evidencije', evidencijaController.getAll);
 
+router.post('/evidencije', checkAuth, evidencijaController.addNew);
+
 router.get('/korisnici', korisnikController.getAll);
 
-router.get('/korisnici/:korisnikId', checkAuth, korisnikController.getById);
+router.get('/korisnici/:korisnikId', korisnikController.getById);
+
+router.put('/korisnici/:korisnikId', checkAuth, multer({ storage: storage }).single('image'), korisnikController.update);
 
 router.get('/ocene', ocenaController.getAll);
 

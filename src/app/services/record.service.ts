@@ -26,8 +26,15 @@ export class RecordService {
   }
 
   public getRecordsByStudentId(studentId: number): Observable<Evidencija[]> {
+    if (!studentId) {
+      return;
+    }
     let params = new HttpParams().set('korisnikId', studentId.toString());
     return this.http.get<Evidencija[]>(this.evindecijaUrl, { params });
+  }
+
+  public addRecord(evidencija: { KORISNIK_ID, KURS_ID }) {
+    return this.http.post(this.evindecijaUrl, evidencija);
   }
 
 }

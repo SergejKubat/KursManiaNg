@@ -27,6 +27,25 @@
     border-radius: 50%;
   }
 
+  &__upload-file {
+    visibility: hidden;
+  }
+
+  &__image-preview {
+    height: 15rem;
+    margin: 1rem 0;
+  }
+
+  &__new-image {
+    height: 100%;
+  }
+
+  &__error {
+    margin-top: .5rem;
+    font-size: 1.4rem;
+    color: $color-primary;
+  }
+
   &__right {
     padding: 0 6.4rem 2.4rem 0;
 

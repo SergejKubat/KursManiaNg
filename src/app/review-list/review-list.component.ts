@@ -18,10 +18,12 @@ import { RecordService } from '../services/record.service';
   templateUrl: './review-list.component.html',
   styleUrls: ['./review-list.component.scss'],
 })
-export class ReviewListComponent implements OnInit, OnDestroy, AfterViewInit {
+export class ReviewListComponent implements OnInit, OnDestroy {
   @Input() kurs: Kurs;
 
   public ocene: Ocena[] = [];
+
+  private evidencije: Evidencija[];
 
   private authListenerSubs: Subscription;
 
@@ -50,42 +52,44 @@ export class ReviewListComponent implements OnInit, OnDestroy, AfterViewInit {
       .getMarksByCourseId(this.kurs.KURS_ID)
       .subscribe((ocene: Ocena[]) => {
         this.ocene = ocene;
+        if (this.isAuthentificated) {
+          this.checkStudent();
+        }
       });
-  }
-
-  ngAfterViewInit(): void {
-    this.checkStudent();
   }
 
   public checkStudent() {
-    this.recordService
-      .getRecordsByStudentId(this.studentId)
-      .subscribe((evidencije: Evidencija[]) => {
-        if (!evidencije) {
-          this.canAddNewMark = false;
-          return;
-        } 
-        evidencije.forEach((evidencija) => {
-          if (evidencija.KORISNIK_ID == this.studentId) {
-            this.markService
-              .getMarksByAuthorId(this.studentId)
-              .subscribe((ocene: Ocena[]) => {
-                if (!ocene) {
-                  this.canAddNewMark = true;
-                  return;
-                }
-                ocene.forEach((ocena) => {
-                  if (ocena.KORISNIK_ID == this.studentId) {
-                    this.canAddNewMark = false;
-                  }
-                });
-              });
-          } else {
-            this.canAddNewMark = false;
+    const studentMarks = this.ocene.filter(mark => mark.KORISNIK_ID == this.studentId);
+    this.recordService.getRecordsByStudentId(this.studentId).subscribe((evidencije: Evidencija[]) => {
+      let isKupljen = false;
+      if (evidencije.length) {
+        evidencije.forEach(ev => {
+          if (ev.KURS_ID == this.kurs.KURS_ID) {
+            isKupljen = true;
           }
         });
-      });
+        if (isKupljen) {
+          if (studentMarks.length) {
+            studentMarks.forEach(mark => {
+              if (mark.KURS_ID == this.kurs.KURS_ID) {
+                this.canAddNewMark = false;
+                return;
+              }
+            });
+          }
+          else {
+            this.canAddNewMark = true;
+          }
+        } else {
+          this.canAddNewMark = false;
+        }
+      }
+      else {
+        this.canAddNewMark = false;
+      }
+    });
   }
+
 
   public addOcena(ocena: Ocena) {
     this.ocene.push(ocena);

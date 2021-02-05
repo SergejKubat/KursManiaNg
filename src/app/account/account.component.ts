@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { from, Subscription } from 'rxjs';
 import { Evidencija } from '../models/evidencija.model';
 import { Kurs } from '../models/kurs.model';
 import { Ocena } from '../models/ocena.model';
@@ -9,6 +10,7 @@ import { CoursesService } from '../services/courses.service';
 import { MarkService } from '../services/mark.service';
 import { RecordService } from '../services/record.service';
 import { StudentService } from '../services/student.service';
+import { mimeType } from '../validators/mime-type.validator';
 
 @Component({
   selector: 'app-account',
@@ -26,6 +28,10 @@ export class AccountComponent implements OnInit {
   public isAuthentificated: boolean = false;
 
   private studentId: number;
+
+  public form: FormGroup;
+
+  public imagePreview: string;
 
   constructor(
     private authService: AuthService,
@@ -67,7 +73,34 @@ export class AccountComponent implements OnInit {
       });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = new FormGroup({
+      image: new FormControl(null, { validators: [Validators.required], asyncValidators: [mimeType] })
+    });
+  }
+
+  public onImagePicked(event: Event) {
+    const file = (event.target as HTMLInputElement).files[0];
+    this.form.patchValue({
+      image: file
+    });
+    this.form.get('image').updateValueAndValidity();
+    const fileReader = new FileReader();
+    fileReader.onload = () => {
+      this.imagePreview = (fileReader.result as string);
+    }
+    fileReader.readAsDataURL(file);
+  }
+
+  public onSubmit() {
+    if (this.form.valid) {
+      this.student.KORISNIK_AVATAR = this.imagePreview;
+      this.studentService.updateStudent(this.form.value.image, this.student).subscribe(result => {
+        console.log(result);
+        this.imagePreview = '';
+      });
+    }
+  }
 
   public removeOcena(ocena: Ocena) {
     const index = this.ocene.indexOf(ocena);

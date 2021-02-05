@@ -1,0 +1,114 @@
+<section class="cm-purchase">
+  <div class="cm-purchase__container">
+    <h1 class="cm-purchase__heading">Kupovina kursa</h1>
+    <h2 class="cm-purchase__selected-course">Izabrani kurs:</h2>
+    <div *ngIf="kurs">
+      <app-course [kurs]="kurs"></app-course>
+    </div>
+    <form [formGroup]="form" class="cm-purchase__form" (submit)="onSubmit()">
+      <div class="cm-purchase__control">
+        <label for="brojKartice" class="cm-purchase__label"
+          >Broj katrice:</label
+        >
+        <input
+          type="text"
+          name="brojKartice"
+          id="brojKartice"
+          class="cm-purchase__input"
+          placeholder="Unesite broj kreditne kartice"
+          autocomplete="cc-number"
+          formControlName="brojKartice"
+        />
+      </div>
+      <div
+        class="cm-purchase__form-error"
+        *ngIf="
+          form.get('brojKartice').errors &&
+          form.get('brojKartice').errors.required &&
+          form.get('brojKartice').touched
+        "
+      >
+        Morate uneti broj kreditne kartice.
+      </div>
+      <div
+        class="cm-purchase__form-error"
+        *ngIf="
+          form.get('brojKartice').errors &&
+          form.get('brojKartice').errors.ccNumberInvalid &&
+          form.get('brojKartice').touched
+        "
+      >
+        Uneti broj nije u validnom formatu.
+      </div>
+      <div class="cm-purchase__control">
+        <label for="datumIsteka" class="cm-purchase__label"
+          >Datum isteka kartice:</label
+        >
+        <input
+          type="text"
+          name="datumIsteka"
+          id="datumIsteka"
+          class="cm-purchase__input"
+          placeholder="Unesite datum isteka kreditne kartice"
+          autocomplete="cc-exp"
+          formControlName="datumIsteka"
+        />
+      </div>
+      <div
+        class="cm-purchase__form-error"
+        *ngIf="
+          form.get('datumIsteka').errors &&
+          form.get('datumIsteka').errors.required &&
+          form.get('datumIsteka').touched
+        "
+      >
+        Morate uneti datum isteka kreditne kartice.
+      </div>
+      <div
+        class="cm-purchase__form-error"
+        *ngIf="
+          form.get('datumIsteka').errors &&
+          form.get('datumIsteka').errors.pattern &&
+          form.get('datumIsteka').touched
+        "
+      >
+        Datum isteka nije u validnom formatu.
+      </div>
+      <div class="cm-purchase__control">
+        <label for="sigurnosniBroj" class="cm-purchase__label"
+          >Sigurnosni broj (CSC):</label
+        >
+        <input
+          type="text"
+          name="sigurnosniBroj"
+          id="sigurnosniBroj"
+          class="cm-purchase__input"
+          placeholder="Unesite sigurnosni kod"
+          autocomplete="cc-csc"
+          formControlName="sigurnosniBroj"
+        />
+      </div>
+      <div
+        class="cm-purchase__form-error"
+        *ngIf="
+          form.get('sigurnosniBroj').errors &&
+          form.get('sigurnosniBroj').errors.required &&
+          form.get('sigurnosniBroj').touched
+        "
+      >
+        Morate uneti sigurnosni broj kreditne kartice.
+      </div>
+      <div
+        class="cm-purchase__form-error"
+        *ngIf="
+          form.get('sigurnosniBroj').errors &&
+          form.get('sigurnosniBroj').errors.pattern &&
+          form.get('sigurnosniBroj').touched
+        "
+      >
+        Sigurnosni broj nije u validnom formatu.
+      </div>
+      <button class="cm-btn" type="submit">Kupite kurs</button>
+    </form>
+  </div>
+</section>

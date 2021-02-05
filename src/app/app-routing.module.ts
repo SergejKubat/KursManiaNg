@@ -7,6 +7,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthGuard } from './services/auth.guard';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'prijava', component: LoginComponent},
   { path: 'registracija', component: RegistrationComponent},
   { path: 'nalog', component: AccountComponent, canActivate: [AuthGuard]},
+  { path: 'kupovina', component: PurchaseComponent, canActivate: [AuthGuard]},
   { path: '**', component: ErrorComponent}
 ];
 

@@ -24,6 +24,7 @@ export class RegistrationComponent implements OnInit {
 
   public onRegister(form: NgForm) {
     if (form.valid) {
+      console.log('forma validna');
       this.studentService
         .getStudentByEmail(form.value.email)
         .subscribe((student: Student[]) => {

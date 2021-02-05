@@ -8,6 +8,17 @@
         height="200"
         width="200"
       />
+      <form [formGroup]="form" class="cm-account__form" (submit)="onSubmit()">
+        <button class="cm-btn" (click)="filePicker.click()">Dodajte avatar</button>
+        <input type="file" class="cm-account__upload-file" #filePicker (change)="onImagePicked($event)">
+        <div class="cm-account__image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">
+          <img [src]="imagePreview" alt="Nova slika" class="cm-account__new-image">
+        </div>
+        <div class="cm-account__error" *ngIf="form.get('image').errors && form.get('image').errors.invalidMimeType">
+          Morate uneti sliku (dostupni formati: .jpg, .jpeg ili .png)
+        </div>
+        <button class="cm-btn" type="submit" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid">Promenite avatar</button>
+      </form>
     </div>
     <div class="cm-account__right">
       <div class="cm-account__content">

@@ -32,4 +32,10 @@ export class StudentService {
     let params = new HttpParams().set('email', email);
     return this.http.get<Student[]>(this.studentiUrl, { params });
   }
+
+  public updateStudent(image: File, student: Student) {
+    const studentData = new FormData();
+    studentData.append('image', image, student.KORISNIK_IME);
+    return this.http.put(`${this.studentiUrl}/${student.KORISNIK_ID}`, studentData);
+  }
 }

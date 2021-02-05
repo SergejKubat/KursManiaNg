@@ -593,3 +593,47 @@
       }
     }
   }
+
+  .cm-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color-black, .5);
+    z-index: 1000;
+
+    &__error {
+      position: relative;
+      padding: 5rem 7rem;
+      text-align: center;
+      background-color: $color-white;
+      border-radius: 1rem;
+
+      &-close {
+        position: absolute;
+        top: .5rem;
+        right: 1.3rem;
+        font-size: 1.8rem;
+
+        & i:hover {
+          color: $color-primary;
+          cursor: pointer;
+        }
+      }
+  
+      &-heading {
+        font-size: 3rem;
+      }
+  
+      &-paragraph {
+        margin: 1.5rem 0 2.2rem 0;
+        font-size: 1.8rem;
+        color: $color-grey-2;
+      }
+
+  }
+}

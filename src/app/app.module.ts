@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +26,7 @@ import { AuthInterceptor } from './services/auth-interceptor';
 import { CreateReviewComponent } from './create-review/create-review.component';
 import { ReviewListComponent } from './review-list/review-list.component';
 import { AccountComponent } from './account/account.component';
+import { PurchaseComponent } from './purchase/purchase.component';
 
 @NgModule({
   declarations: [
@@ -48,8 +50,15 @@ import { AccountComponent } from './account/account.component';
     CreateReviewComponent,
     ReviewListComponent,
     AccountComponent,
+    PurchaseComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],

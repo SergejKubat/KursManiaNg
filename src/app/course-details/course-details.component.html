@@ -1,250 +1,433 @@
-<section class="cm-course">
-    <div class="cm-course__container">
-      <div class="cm-course__row">
-        <div class="cm-course__primary">
-          <article class="cm-course__content">
-            <div class="cm-course__header">
-              <h1>{{ kurs?.KURS_IME }}</h1>
-              <div class="cm-course__meta">
-                <div class="cm-course__author">
-                  <img src="{{ autor?.AUTOR_SLIKA }}" alt="{{ autor?.AUTOR_IME }}" class="cm-course__author-avatar">
-                  <div class="cm-course__author-contain">
-                    <label class="cm-course__author-job">Autor</label>
-                    <div class="cm-course__author-name">
-                      <a [routerLink]="['/autor', autor?.AUTOR_ID]">{{ autor?.AUTOR_IME }}</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="cm-course__category">
-                  <label>Kategorija</label>
-                  <div class="cm-course__category-name">
-                    <a href="#" class="cm-course__category-link">{{ kategorija?.KATEGORIJA_NAZIV }}</a>
-                  </div>
-                </div>
-                <div class="cm-course__review">
-                  <label>Ocene</label>
-                  <span class="cm-course__review-average">{{ countAverageMark() }}</span>
-                  <div class="cm-course__stars">
-                    <i class="fa fa-star" [ngClass]="{'active': countAverageMark() >= 1 ? true : false}" aria-hidden="true"></i>
-                    <i class="fa fa-star" [ngClass]="{'active': countAverageMark() >= 2 ? true : false}" aria-hidden="true"></i>
-                    <i class="fa fa-star" [ngClass]="{'active': countAverageMark() >= 3 ? true : false}" aria-hidden="true"></i>
-                    <i class="fa fa-star" [ngClass]="{'active': countAverageMark() >= 4 ? true : false}" aria-hidden="true"></i>
-                    <i class="fa fa-star" [ngClass]="{'active': countAverageMark() == 5 ? true : false}" aria-hidden="true"></i>
-                  </div>
-                  <span class="cm-course__review-count">({{ ocene?.length }})</span>
-                </div>
-              </div>
-              <div class="cm-course__payment">
-                <div class="cm-course__price">
-                  <span class="cm-course__price-old">29.99 $</span>
-                  <span class="cm-course__price-new">{{ kurs?.KURS_CENA }} $</span>
-                </div>
-                <div class="cm-course__button">
-                  <button class="cm-btn">Kupite ovaj kurs</button>
-                </div>
-              </div>
-            </div>
-            <div class="cm-course__thumbnail">
-              <img src="{{ kurs?.KURS_SLIKA }}" alt="{{ kurs?.KURS_IME }}" class="cm-course__thumbnail-img">
-            </div>
-            <div class="cm-course__tabs">
-              <ul class="cm-course__tabs-nav">
-                <li class="cm-course__tabs-tab" [ngClass]="{'active': overviewVisibility}" (click)="showTab(1)"><span class="cm-course__tabs-tab-text">Pregled</span></li>
-                <li class="cm-course__tabs-tab" [ngClass]="{'active': contentVisibility}" (click)="showTab(2)"><span class="cm-course__tabs-tab-text">Sadržaj</span></li>
-                <li class="cm-course__tabs-tab" [ngClass]="{'active': authorVisibility}" (click)="showTab(3)"><span class="cm-course__tabs-tab-text">Autor</span></li>
-                <li class="cm-course__tabs-tab" [ngClass]="{'active': reviewsVisibility}" (click)="showTab(4)"><span class="cm-course__tabs-tab-text">Ocene</span></li>
-              </ul>
-              <div class="cm-course__overview" [ngStyle]="{'display': overviewVisibility ? 'block' : 'none'}">
-                <div class="cm-course__row">
-                  <div class="cm-course__overview-text">
-                    <div class="cm-course__overview-desc">
-                      <p>{{ kurs?.KURS_OPIS }}</p>
-                    </div>
-                  </div>
-                  <div class="cm-course__overview-info">
-                    <h3>Karakteristike</h3>
-                    <ul>
-                      <li>
-                        <i class="fa fa-users" aria-hidden="true"></i>
-                        <span class="cm-course__overview-info-label">Studenti</span>
-                        <span class="cm-course__overview-info-value">{{ evidencija?.length }}</span>
-                      </li>
-                      <li>
-                        <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        <span class="cm-course__overview-info-label">Trajanje</span>
-                        <span class="cm-course__overview-info-value">22h 5m</span>
-                      </li>
-                      <li>
-                        <i class="fa fa-level-up" aria-hidden="true"></i>
-                        <span class="cm-course__overview-info-label">Veštine</span>
-                        <span class="cm-course__overview-info-value">{{ kategorija?.KATEGORIJA_NAZIV }}</span>
-                      </li>
-                      <li>
-                        <i class="fa fa-language" aria-hidden="true"></i>
-                        <span class="cm-course__overview-info-label">Jezik</span>
-                        <span class="cm-course__overview-info-value">{{ kurs?.KURS_JEZIK }}</span>
-                      </li>
-                      <li>
-                        <i class="fa fa-undo" aria-hidden="true"></i>
-                        <span class="cm-course__overview-info-label">Povraćaj novca</span>
-                        <span class="cm-course__overview-info-value">1 mesec</span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="cm-course__content2" [ngStyle]="{'display': contentVisibility ? 'block' : 'none'}">
-                <p class="cm-course__content2-heading">Sadržaj kursa</p>
-                <div *ngFor="let sekcija of sekcije; let i = index">
-                  <app-section [sekcija]="sekcija" [checked]="i == 0"></app-section>
-                </div>
-              </div>
-              <div class="cm-course__author-info" [ngStyle]="{'display': authorVisibility ? 'block' : 'none'}">
-                <h3 class="cm-course__author-info-heading">Autor</h3>
-                <div class="cm-course__author-info-row">
-                  <div class="cm-course__author-info-avatar">
-                    <img [routerLink]="['/autor', autor?.AUTOR_ID]" src="{{ autor?.AUTOR_SLIKA }}" alt="{{ autor?.AUTOR_IME }}" class="cm-course__author-info-img">
-                  </div>
-                  <div class="cm-course__author-info-content">
-                    <h3 [routerLink]="['/autor', autor?.AUTOR_ID]" class="cm-course__author-info-name">{{ autor?.AUTOR_IME }}</h3>
-                    <p class="cm-course__author-info-details">{{ autor?.AUTOR_OPIS.substring(0, 200) + '...' }}</p>
-                    <button [routerLink]="['/autor', autor?.AUTOR_ID]" class="cm-btn">Detaljnije</button>
-                  </div>
-                </div>
-              </div>
-              <div class="cm-course__reviews" [ngStyle]="{'display': reviewsVisibility ? 'block' : 'none'}">
-                <h3 class="cm-course__reviews-heading">Ocene kursa</h3>
-                <p class="cm-course__reviews-average">Prosek je {{ countAverageMark() }} na osnovu {{ ocene?.length }} ocene.</p>
-                <div class="cm-course__reviews-rate">
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <div class="cm-course__reviews-bar">
-                    <div class="cm-course__reviews-progress" [ngStyle]="{'width': countPercOfSpecMark(5) + '%'}"></div>
-                  </div>
-                  <span>{{ countPercOfSpecMark(5) + '%' }}</span>
-                </div>
-                <div class="cm-course__reviews-rate">
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <div class="cm-course__reviews-bar">
-                    <div class="cm-course__reviews-progress" [ngStyle]="{'width': countPercOfSpecMark(4) + '%'}"></div>
-                  </div>
-                  <span>{{ countPercOfSpecMark(4) + '%' }}</span>
-                </div>
-                <div class="cm-course__reviews-rate">
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <div class="cm-course__reviews-bar">
-                    <div class="cm-course__reviews-progress" [ngStyle]="{'width': countPercOfSpecMark(3) + '%'}"></div>
-                  </div>
-                  <span>{{ countPercOfSpecMark(3) + '%' }}</span>
-                </div>
-                <div class="cm-course__reviews-rate">
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <div class="cm-course__reviews-bar">
-                    <div class="cm-course__reviews-progress" [ngStyle]="{'width': countPercOfSpecMark(2) + '%'}"></div>
-                  </div>
-                  <span>{{ countPercOfSpecMark(2) + '%' }}</span>
-                </div>
-                <div class="cm-course__reviews-rate">
-                  <i aria-hidden="true" class="fa fa-star active"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <i aria-hidden="true" class="fa fa-star"></i>
-                  <div class="cm-course__reviews-bar">
-                    <div class="cm-course__reviews-progress" [ngStyle]="{'width': countPercOfSpecMark(1) + '%'}"></div>
-                  </div>
-                  <span>{{ countPercOfSpecMark(1) + '%' }}</span>
-                </div>
-                <div *ngIf="kurs">
-                  <app-review-list [kurs]="kurs"></app-review-list>
-                </div>
-              </div>
-            </div>
-            <div class="cm-course__related">
-              <h3 class="cm-course__related-heading">Preporučeni kursevi</h3>
-              <div class="cm-course__related-list">
-                <div *ngFor="let kurs of preporuceniKursevi">
-                  <app-course [kurs]="kurs"></app-course>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-        <aside class="cm-course__secondary">
-          <article class="cm-course__recent-courses">
-            <h3>Skorašnji kursevi</h3>
-            <div class="cm-course__recent-courses-content">
-              <div class="cm-course__recent-courses-course">
-                <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-rec-1.jpg" alt="UX/UI Principi" class="cm-course__recent-courses-img">
-                </div>
-                <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">UX/UI Principi</h2>
-                  <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$18.99</div>
-                  </div>
-                </div>
-              </div>
-              <div class="cm-course__recent-courses-course">
-                <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-rec-2.jpg" alt="Audio produkcija" class="cm-course__recent-courses-img">
-                </div>
-                <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Audio produkcija</h2>
-                  <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$11.99</div>
-                  </div>
-                </div>
-              </div>
-              <div class="cm-course__recent-courses-course">
-                <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-rec-3.jpg" alt="Java za početnike" class="cm-course__recent-courses-img">
-                </div>
-                <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Java za početnike</h2>
-                  <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$9.99</div>
-                  </div>
-                </div>
-              </div>
-              <div class="cm-course__recent-courses-course">
-                <div class="cm-course__recent-courses-thumb">
-                  <img src="../assets/img/course-rec-4.jpg" alt="Osnove marketinga" class="cm-course__recent-courses-img">
-                </div>
-                <div class="cm-course__recent-courses-detail">
-                  <h2 class="cm-course__recent-courses-title">Osnove marketinga</h2>
-                  <div class="cm-course__recent-courses-meta">
-                    <div class="cm-course__recent-courses-price">$15.99</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="cm-course__ba">
-            <div class="cm-course__ba-content">
-              <h4 class="cm-course__ba-heading">Postanite autor</h4>
-              <div class="cm-course__ba-text">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-              </div>
-              <button class="cm-course__ba-btn">Priključite se</button>
-            </div>
-          </article>
-        </aside>
-      </div>
+<div class="cm-modal" *ngIf="isErrorVisible">
+  <div class="cm-modal__error">
+    <div class="cm-modal__error-close">
+      <i class="fa fa-times" aria-hidden="true" (click)="isErrorVisible = false"></i>
     </div>
-  </section>
+    <h1 class="cm-modal__error-heading">Niste prijavljeni!</h1>
+    <p class="cm-modal__error-paragraph">
+      Morate se prijaviti da bi ste kupili kurs.
+    </p>
+    <button class="cm-btn" [routerLink]="['/prijava']">Prijavite se</button>
+    <button class="cm-btn" (click)="isErrorVisible = false">Odustanite</button>
+  </div>
+</div>
+<section class="cm-course">
+  <div class="cm-course__container">
+    <div class="cm-course__row">
+      <div class="cm-course__primary">
+        <article class="cm-course__content">
+          <div class="cm-course__header">
+            <h1>{{ kurs?.KURS_IME }}</h1>
+            <div class="cm-course__meta">
+              <div class="cm-course__author">
+                <img
+                  src="{{ autor?.AUTOR_SLIKA }}"
+                  alt="{{ autor?.AUTOR_IME }}"
+                  class="cm-course__author-avatar"
+                />
+                <div class="cm-course__author-contain">
+                  <label class="cm-course__author-job">Autor</label>
+                  <div class="cm-course__author-name">
+                    <a [routerLink]="['/autor', autor?.AUTOR_ID]">{{
+                      autor?.AUTOR_IME
+                    }}</a>
+                  </div>
+                </div>
+              </div>
+              <div class="cm-course__category">
+                <label>Kategorija</label>
+                <div class="cm-course__category-name">
+                  <a href="#" class="cm-course__category-link">{{
+                    kategorija?.KATEGORIJA_NAZIV
+                  }}</a>
+                </div>
+              </div>
+              <div class="cm-course__review">
+                <label>Ocene</label>
+                <span class="cm-course__review-average">{{
+                  countAverageMark()
+                }}</span>
+                <div class="cm-course__stars">
+                  <i
+                    class="fa fa-star"
+                    [ngClass]="{
+                      active: countAverageMark() >= 1 ? true : false
+                    }"
+                    aria-hidden="true"
+                  ></i>
+                  <i
+                    class="fa fa-star"
+                    [ngClass]="{
+                      active: countAverageMark() >= 2 ? true : false
+                    }"
+                    aria-hidden="true"
+                  ></i>
+                  <i
+                    class="fa fa-star"
+                    [ngClass]="{
+                      active: countAverageMark() >= 3 ? true : false
+                    }"
+                    aria-hidden="true"
+                  ></i>
+                  <i
+                    class="fa fa-star"
+                    [ngClass]="{
+                      active: countAverageMark() >= 4 ? true : false
+                    }"
+                    aria-hidden="true"
+                  ></i>
+                  <i
+                    class="fa fa-star"
+                    [ngClass]="{
+                      active: countAverageMark() == 5 ? true : false
+                    }"
+                    aria-hidden="true"
+                  ></i>
+                </div>
+                <span class="cm-course__review-count"
+                  >({{ ocene?.length }})</span
+                >
+              </div>
+            </div>
+            <div class="cm-course__payment">
+              <div class="cm-course__price">
+                <span class="cm-course__price-old">29.99 $</span>
+                <span class="cm-course__price-new"
+                  >{{ kurs?.KURS_CENA }} $</span
+                >
+              </div>
+              <div class="cm-course__button">
+                <button
+                  class="cm-btn"
+                  *ngIf="!isKupljen"
+                  (click)="checkLogInStatus()"
+                >
+                  Kupite ovaj kurs
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="cm-course__thumbnail">
+            <img
+              src="{{ kurs?.KURS_SLIKA }}"
+              alt="{{ kurs?.KURS_IME }}"
+              class="cm-course__thumbnail-img"
+            />
+          </div>
+          <div class="cm-course__tabs">
+            <ul class="cm-course__tabs-nav">
+              <li
+                class="cm-course__tabs-tab"
+                [ngClass]="{ active: overviewVisibility }"
+                (click)="showTab(1)"
+              >
+                <span class="cm-course__tabs-tab-text">Pregled</span>
+              </li>
+              <li
+                class="cm-course__tabs-tab"
+                [ngClass]="{ active: contentVisibility }"
+                (click)="showTab(2)"
+              >
+                <span class="cm-course__tabs-tab-text">Sadržaj</span>
+              </li>
+              <li
+                class="cm-course__tabs-tab"
+                [ngClass]="{ active: authorVisibility }"
+                (click)="showTab(3)"
+              >
+                <span class="cm-course__tabs-tab-text">Autor</span>
+              </li>
+              <li
+                class="cm-course__tabs-tab"
+                [ngClass]="{ active: reviewsVisibility }"
+                (click)="showTab(4)"
+              >
+                <span class="cm-course__tabs-tab-text">Ocene</span>
+              </li>
+            </ul>
+            <div
+              class="cm-course__overview"
+              [ngStyle]="{ display: overviewVisibility ? 'block' : 'none' }"
+            >
+              <div class="cm-course__row">
+                <div class="cm-course__overview-text">
+                  <div class="cm-course__overview-desc">
+                    <p>{{ kurs?.KURS_OPIS }}</p>
+                  </div>
+                </div>
+                <div class="cm-course__overview-info">
+                  <h3>Karakteristike</h3>
+                  <ul>
+                    <li>
+                      <i class="fa fa-users" aria-hidden="true"></i>
+                      <span class="cm-course__overview-info-label"
+                        >Studenti</span
+                      >
+                      <span class="cm-course__overview-info-value">{{
+                        evidencija?.length
+                      }}</span>
+                    </li>
+                    <li>
+                      <i class="fa fa-clock-o" aria-hidden="true"></i>
+                      <span class="cm-course__overview-info-label"
+                        >Trajanje</span
+                      >
+                      <span class="cm-course__overview-info-value">22h 5m</span>
+                    </li>
+                    <li>
+                      <i class="fa fa-level-up" aria-hidden="true"></i>
+                      <span class="cm-course__overview-info-label"
+                        >Veštine</span
+                      >
+                      <span class="cm-course__overview-info-value">{{
+                        kategorija?.KATEGORIJA_NAZIV
+                      }}</span>
+                    </li>
+                    <li>
+                      <i class="fa fa-language" aria-hidden="true"></i>
+                      <span class="cm-course__overview-info-label">Jezik</span>
+                      <span class="cm-course__overview-info-value">{{
+                        kurs?.KURS_JEZIK
+                      }}</span>
+                    </li>
+                    <li>
+                      <i class="fa fa-undo" aria-hidden="true"></i>
+                      <span class="cm-course__overview-info-label"
+                        >Povraćaj novca</span
+                      >
+                      <span class="cm-course__overview-info-value"
+                        >1 mesec</span
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div
+              class="cm-course__content2"
+              [ngStyle]="{ display: contentVisibility ? 'block' : 'none' }"
+            >
+              <p class="cm-course__content2-heading">Sadržaj kursa</p>
+              <div *ngFor="let sekcija of sekcije; let i = index">
+                <app-section
+                  [sekcija]="sekcija"
+                  [checked]="i == 0"
+                ></app-section>
+              </div>
+            </div>
+            <div
+              class="cm-course__author-info"
+              [ngStyle]="{ display: authorVisibility ? 'block' : 'none' }"
+            >
+              <h3 class="cm-course__author-info-heading">Autor</h3>
+              <div class="cm-course__author-info-row">
+                <div class="cm-course__author-info-avatar">
+                  <img
+                    [routerLink]="['/autor', autor?.AUTOR_ID]"
+                    src="{{ autor?.AUTOR_SLIKA }}"
+                    alt="{{ autor?.AUTOR_IME }}"
+                    class="cm-course__author-info-img"
+                  />
+                </div>
+                <div class="cm-course__author-info-content">
+                  <h3
+                    [routerLink]="['/autor', autor?.AUTOR_ID]"
+                    class="cm-course__author-info-name"
+                  >
+                    {{ autor?.AUTOR_IME }}
+                  </h3>
+                  <p class="cm-course__author-info-details">
+                    {{ autor?.AUTOR_OPIS.substring(0, 200) + "..." }}
+                  </p>
+                  <button
+                    [routerLink]="['/autor', autor?.AUTOR_ID]"
+                    class="cm-btn"
+                  >
+                    Detaljnije
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="cm-course__reviews"
+              [ngStyle]="{ display: reviewsVisibility ? 'block' : 'none' }"
+            >
+              <h3 class="cm-course__reviews-heading">Ocene kursa</h3>
+              <p class="cm-course__reviews-average">
+                Prosek je {{ countAverageMark() }} na osnovu
+                {{ ocene?.length }} ocene.
+              </p>
+              <div class="cm-course__reviews-rate">
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <div class="cm-course__reviews-bar">
+                  <div
+                    class="cm-course__reviews-progress"
+                    [ngStyle]="{ width: countPercOfSpecMark(5) + '%' }"
+                  ></div>
+                </div>
+                <span>{{ countPercOfSpecMark(5) + "%" }}</span>
+              </div>
+              <div class="cm-course__reviews-rate">
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <div class="cm-course__reviews-bar">
+                  <div
+                    class="cm-course__reviews-progress"
+                    [ngStyle]="{ width: countPercOfSpecMark(4) + '%' }"
+                  ></div>
+                </div>
+                <span>{{ countPercOfSpecMark(4) + "%" }}</span>
+              </div>
+              <div class="cm-course__reviews-rate">
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <div class="cm-course__reviews-bar">
+                  <div
+                    class="cm-course__reviews-progress"
+                    [ngStyle]="{ width: countPercOfSpecMark(3) + '%' }"
+                  ></div>
+                </div>
+                <span>{{ countPercOfSpecMark(3) + "%" }}</span>
+              </div>
+              <div class="cm-course__reviews-rate">
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <div class="cm-course__reviews-bar">
+                  <div
+                    class="cm-course__reviews-progress"
+                    [ngStyle]="{ width: countPercOfSpecMark(2) + '%' }"
+                  ></div>
+                </div>
+                <span>{{ countPercOfSpecMark(2) + "%" }}</span>
+              </div>
+              <div class="cm-course__reviews-rate">
+                <i aria-hidden="true" class="fa fa-star active"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <i aria-hidden="true" class="fa fa-star"></i>
+                <div class="cm-course__reviews-bar">
+                  <div
+                    class="cm-course__reviews-progress"
+                    [ngStyle]="{ width: countPercOfSpecMark(1) + '%' }"
+                  ></div>
+                </div>
+                <span>{{ countPercOfSpecMark(1) + "%" }}</span>
+              </div>
+              <div *ngIf="kurs">
+                <app-review-list [kurs]="kurs"></app-review-list>
+              </div>
+            </div>
+          </div>
+          <div class="cm-course__related">
+            <h3 class="cm-course__related-heading">Preporučeni kursevi</h3>
+            <div class="cm-course__related-list">
+              <div *ngFor="let kurs of preporuceniKursevi">
+                <app-course [kurs]="kurs"></app-course>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <aside class="cm-course__secondary">
+        <article class="cm-course__recent-courses">
+          <h3>Skorašnji kursevi</h3>
+          <div class="cm-course__recent-courses-content">
+            <div class="cm-course__recent-courses-course">
+              <div class="cm-course__recent-courses-thumb">
+                <img
+                  src="../assets/img/course-rec-1.jpg"
+                  alt="UX/UI Principi"
+                  class="cm-course__recent-courses-img"
+                />
+              </div>
+              <div class="cm-course__recent-courses-detail">
+                <h2 class="cm-course__recent-courses-title">UX/UI Principi</h2>
+                <div class="cm-course__recent-courses-meta">
+                  <div class="cm-course__recent-courses-price">$18.99</div>
+                </div>
+              </div>
+            </div>
+            <div class="cm-course__recent-courses-course">
+              <div class="cm-course__recent-courses-thumb">
+                <img
+                  src="../assets/img/course-rec-2.jpg"
+                  alt="Audio produkcija"
+                  class="cm-course__recent-courses-img"
+                />
+              </div>
+              <div class="cm-course__recent-courses-detail">
+                <h2 class="cm-course__recent-courses-title">
+                  Audio produkcija
+                </h2>
+                <div class="cm-course__recent-courses-meta">
+                  <div class="cm-course__recent-courses-price">$11.99</div>
+                </div>
+              </div>
+            </div>
+            <div class="cm-course__recent-courses-course">
+              <div class="cm-course__recent-courses-thumb">
+                <img
+                  src="../assets/img/course-rec-3.jpg"
+                  alt="Java za početnike"
+                  class="cm-course__recent-courses-img"
+                />
+              </div>
+              <div class="cm-course__recent-courses-detail">
+                <h2 class="cm-course__recent-courses-title">
+                  Java za početnike
+                </h2>
+                <div class="cm-course__recent-courses-meta">
+                  <div class="cm-course__recent-courses-price">$9.99</div>
+                </div>
+              </div>
+            </div>
+            <div class="cm-course__recent-courses-course">
+              <div class="cm-course__recent-courses-thumb">
+                <img
+                  src="../assets/img/course-rec-4.jpg"
+                  alt="Osnove marketinga"
+                  class="cm-course__recent-courses-img"
+                />
+              </div>
+              <div class="cm-course__recent-courses-detail">
+                <h2 class="cm-course__recent-courses-title">
+                  Osnove marketinga
+                </h2>
+                <div class="cm-course__recent-courses-meta">
+                  <div class="cm-course__recent-courses-price">$15.99</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="cm-course__ba">
+          <div class="cm-course__ba-content">
+            <h4 class="cm-course__ba-heading">Postanite autor</h4>
+            <div class="cm-course__ba-text">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry. Lorem Ipsum has been the industry’s standard dummy text
+              ever since. It is a long established fact that a reader will be
+              distracted by the readable content of a page when looking at its
+              layout.
+            </div>
+            <button class="cm-course__ba-btn">Priključite se</button>
+          </div>
+        </article>
+      </aside>
+    </div>
+  </div>
+</section>

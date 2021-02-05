@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Autor } from '../models/autor.model';
 import { Evidencija } from '../models/evidencija.model';
@@ -42,8 +42,13 @@ export class CourseDetailsComponent implements OnInit {
 
   public canAddNewMark: boolean = true;
 
+  public isKupljen: boolean = false;
+
+  public isErrorVisible: boolean = false;
+
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private courseService: CoursesService,
     private autorService: AutorService,
     private categoriesService: CategoriesService,
@@ -74,6 +79,11 @@ export class CourseDetailsComponent implements OnInit {
           .getRecordsByCourseId(this.kurs.KURS_ID)
           .subscribe((evidencija: Evidencija[]) => {
             this.evidencija = evidencija;
+            this.evidencija.forEach(ev => {
+              if (ev.KORISNIK_ID == this.studentId) {
+                this.isKupljen = true;
+              }
+            });
           });
 
         this.markService
@@ -110,6 +120,14 @@ export class CourseDetailsComponent implements OnInit {
         this.isAuthentificated = isAuth;
         this.studentId = this.authService.getStudentId();
       });
+  }
+
+  public checkLogInStatus() {
+    if (this.isAuthentificated) {
+      this.router.navigate(['/kupovina'], { queryParams: { kursId: this.kurs.KURS_ID } });
+    } else {
+      this.isErrorVisible = true;
+    }
   }
 
   public showTab(index: number): void {
