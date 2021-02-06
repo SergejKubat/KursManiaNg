@@ -32,6 +32,13 @@ exports.addNew = async (req, res, next) => {
   const korisnikId = req.body.KORISNIK_ID;
   const kursId = req.body.KURS_ID;
   const datum = util.dateToString();
+
+  const studentId = req.userData.studentId;
+
+  if (korisnikId != studentId) {
+    return res.status(401).json({ message: 'Autorizacija nije uspela.' });
+  }
+  
   try {
     const newRecord = await models.evidencija.create({
       KORISNIK_ID: korisnikId,

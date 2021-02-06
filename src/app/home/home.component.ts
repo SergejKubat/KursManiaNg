@@ -16,6 +16,7 @@ import { StudentService } from '../services/student.service';
 export class HomeComponent implements OnInit {
   public kategorije: Kategorija[] = [];
   public studenti: Student[] = [];
+  public brojKurseva: number;
   public kursevi: Kurs[] = [];
   public autori: Autor[] = [];
 
@@ -34,11 +35,20 @@ export class HomeComponent implements OnInit {
     });
 
     this.courseService.getKursevi().subscribe((kursevi: Kurs[]) => {
-      this.kursevi = kursevi;
+      this.brojKurseva = kursevi.length;
+      if (kursevi.length > 6) {
+        this.kursevi = kursevi.slice(0, 6);
+      } else {
+        this.kursevi = kursevi;
+      }
     });
 
     this.autorService.getAuthors().subscribe((autori: Autor[]) => {
-      this.autori = autori;
+      if (autori.length > 3) {
+        this.autori = autori.slice(0, 3);
+      } else {
+        this.autori = autori;
+      }
     });
   }
 

@@ -10,8 +10,8 @@
         <h1 class="cm-logo__text">KursMania</h1>
       </div>
     </a>
-    
-    <div style="flex: 0 0 60%;">
+
+    <div style="flex: 0 0 60%">
       <app-search-bar></app-search-bar>
     </div>
 
@@ -37,18 +37,36 @@
         </div>
         <div class="cm-user__card--content">
           <p>Vaša korpa je prazna.</p>
-          <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']">Prijavite se</a>
+          <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']"
+            >Prijavite se</a
+          >
         </div>
       </div>
-      <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']"><button class="cm-btn">Prijava</button></a>
-      <a *ngIf="!isAuthentificated" [routerLink]="['/registracija']"><button class="cm-btn">Registracija</button></a>
+      <a *ngIf="!isAuthentificated" [routerLink]="['/prijava']"
+        ><button class="cm-btn">Prijava</button></a
+      >
+      <a *ngIf="!isAuthentificated" [routerLink]="['/registracija']"
+        ><button class="cm-btn">Registracija</button></a
+      >
       <a *ngIf="isAuthentificated" [routerLink]="['/nalog']">
-        <img src="{{ student?.KORISNIK_AVATAR }}" alt="{{ student?.KORISNIK_IME }}" class="cm-user__avatar">
+        <img
+          src="{{ student?.KORISNIK_AVATAR }}"
+          alt="{{ student?.KORISNIK_IME }}"
+          class="cm-user__avatar"
+        />
       </a>
-      <button *ngIf="isAuthentificated" class="cm-btn" (click)="onLogOut()">Odjava</button>
+      <button *ngIf="isAuthentificated" class="cm-btn" (click)="onLogOut()">
+        Odjava
+      </button>
     </div>
     <div class="cm-navigation">
-      <input type="checkbox" id="menu" class="cm-navigation__checkbox" [checked]='showMenu' (change)='showMenu = !showMenu' />
+      <input
+        type="checkbox"
+        id="menu"
+        class="cm-navigation__checkbox"
+        [checked]="showMenu"
+        (change)="showMenu = !showMenu"
+      />
       <label for="menu" class="cm-navigation__label">
         <div class="cm-navigation__button">
           <span class="cm-navigation__icon"></span>
@@ -57,18 +75,33 @@
       <div class="cm-navigation__items">
         <ul class="cm-navigation__list">
           <li class="cm-navigation__item">
-            <form action="#" class="cm-search__form-small">
+            <form #searchForm="ngForm" (submit)="onSubmit(searchForm)" class="cm-search__form-small">
               <input
                 type="text"
                 name="q"
                 placeholder="Pretražite kurseve"
                 value=""
+                #search
+                ngModel
                 class="cm-search__input-small"
                 autocomplete="off"
+                required
               />
             </form>
           </li>
-          <li class="cm-navigation__item"><a [routerLink]="['/']" (click)='showMenu = !showMenu'>Početna</a></li>
+          <li class="cm-navigation__item">
+            <a [routerLink]="['/']" (click)="showMenu = !showMenu">Početna</a>
+          </li>
+          <li *ngIf="isAuthentificated" class="cm-navigation__item">
+            <a [routerLink]="['/nalog']" class="cm-navigation__flex" (click)="showMenu = !showMenu">
+              <img
+                src="{{ student?.KORISNIK_AVATAR }}"
+                alt="{{ student?.KORISNIK_IME }}"
+                class="cm-user__avatar-small"
+              />
+              <span class="cm-user__name">{{ student?.KORISNIK_IME }}</span>
+            </a>
+          </li>
           <li class="cm-navigation__item">
             <input
               type="checkbox"
@@ -84,11 +117,26 @@
               ></i>
             </label>
             <ul class="cm-navigation__sub-list">
-              <li class="cm-navigation__sub-item" *ngFor="let kategorija of kategorije"><a (click)='showMenu = !showMenu'>{{ kategorija.KATEGORIJA_NAZIV }}</a></li>
+              <li
+                class="cm-navigation__sub-item"
+                *ngFor="let kategorija of kategorije"
+              >
+                <a (click)="showMenu = !showMenu">{{
+                  kategorija.KATEGORIJA_NAZIV
+                }}</a>
+              </li>
             </ul>
           </li>
-          <li class="cm-navigation__item"><a [routerLink]="['/prijava']" (click)='showMenu = !showMenu'>Prijava</a></li>
-          <li class="cm-navigation__item"><a [routerLink]="['/registracija']" (click)='showMenu = !showMenu'>Registracija</a></li>
+          <li *ngIf="!isAuthentificated" class="cm-navigation__item">
+            <a [routerLink]="['/prijava']" (click)="showMenu = !showMenu"
+              >Prijava</a
+            >
+          </li>
+          <li *ngIf="!isAuthentificated" class="cm-navigation__item">
+            <a [routerLink]="['/registracija']" (click)="showMenu = !showMenu"
+              >Registracija</a
+            >
+          </li>
         </ul>
       </div>
     </div>

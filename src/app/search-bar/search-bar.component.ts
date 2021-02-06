@@ -56,6 +56,9 @@ export class SearchBarComponent implements OnInit {
     }
 
     this.prikaz = this.rezultati.filter(rezultat => rezultat.ime.toLocaleLowerCase().includes(query.value.toLocaleLowerCase()));
+    if (this.prikaz.length > 10) {
+      this.prikaz = this.prikaz.slice(0, 10);
+    }
   }
 
   public onSubmit() {

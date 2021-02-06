@@ -10,6 +10,13 @@
 
   &__container {
     width: 50%;
+
+    @include respond(tablet) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
   }
 
   &__heading {
@@ -27,6 +34,10 @@
     width: 50%;
     margin: 2rem 0;
     padding-bottom: 5rem;
+
+    @include respond(mobileL) {
+      width: 80%;
+    }
 
     &-error {
       font-size: 1.2rem;

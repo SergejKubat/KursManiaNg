@@ -2,7 +2,7 @@
   <div class="cm-purchase__container">
     <h1 class="cm-purchase__heading">Kupovina kursa</h1>
     <h2 class="cm-purchase__selected-course">Izabrani kurs:</h2>
-    <div *ngIf="kurs">
+    <div *ngIf="kurs" class="cm-purchase__course-container">
       <app-course [kurs]="kurs"></app-course>
     </div>
     <form [formGroup]="form" class="cm-purchase__form" (submit)="onSubmit()">

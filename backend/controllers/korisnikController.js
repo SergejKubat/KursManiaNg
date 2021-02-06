@@ -42,6 +42,13 @@ exports.update = async (req, res, next) => {
   const korisnikId = req.params.korisnikId;
   const url = `${req.protocol}://${req.get("host")}`;
   const imagePath = `${url}/images/${req.file.filename}`;
+
+  const studentId = req.userData.studentId;
+
+  if (korisnikId != studentId) {
+    return res.status(401).json({ message: 'Autorizacija nije uspela.' });
+  }
+
   try {
     const student = await models.korisnik.findOne({
       where: { KORISNIK_ID: korisnikId },

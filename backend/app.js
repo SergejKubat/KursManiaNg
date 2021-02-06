@@ -16,7 +16,9 @@ app.use((req, res, next) => {
 });
 
 const guestRoutes = require('./routes/guestRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 app.use(guestRoutes);
+app.use(userRoutes);
 
 module.exports = app;

@@ -33,6 +33,24 @@ exports.addNew = async (req, res, next) => {
   const kursId = req.body.KURS_ID;
   const vrednost = req.body.OCENA_VREDNOST;
   const komentar = req.body.OCENA_KOMENTAR;
+
+  const studentId = req.userData.studentId;
+
+  if (korisnikId != studentId) {
+    return res.status(401).json({ message: 'Autorizacija nije uspela.' });
+  }
+
+  const ocenaStudenta = await models.ocena.findOne({ 
+    where: {
+      KORISNIK_ID: korisnikId,
+      KURS_ID: kursId
+    }
+  });
+
+  if (ocenaStudenta) {
+    return res.status(403).json({ message: 'Već ste ocenili ovaj kurs.' });
+  }
+
   try {
     const newMark = await models.ocena.create({
       KORISNIK_ID: korisnikId,
